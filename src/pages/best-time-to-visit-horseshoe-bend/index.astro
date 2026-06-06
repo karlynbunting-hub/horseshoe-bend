@@ -1,0 +1,353 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import SchemaLD from '../../components/SchemaLD.astro';
+
+const title = 'Best Time to Visit Horseshoe Bend | Season, Time of Day & Crowds';
+const description = 'Find the best time to visit Horseshoe Bend. Morning light, sunset starburst, avoiding crowds — complete guide to sunrise and sunset visits, seasons, and photography tips.';
+const canonical = 'https://horseshoebend.com/best-time-to-visit-horseshoe-bend/';
+
+const faqs = [
+  {
+    q: 'What is the best time of day to visit Horseshoe Bend?',
+    a: 'There is no single "best" time — the view is spectacular throughout the day. The overlook faces due West, so the river tends to be in shadow at the very start of sunrise and just before sunset. For evenly lit photography, mid-morning through early afternoon (9 AM–2 PM) is ideal. For dramatic shadows, warm colors, and the "starburst" sunset effect, late afternoon is preferred.',
+  },
+  {
+    q: 'Is sunrise or sunset better at Horseshoe Bend?',
+    a: 'Both are excellent for different reasons. Sunrise offers the smallest crowds and cooler temperatures, with the light developing beautifully 30–45 minutes after the sun clears the canyon walls. Sunset delivers the iconic warm orange light and the coveted starburst effect as the sun drops over the horizon — but the river itself is often in shadow. See our dedicated sunrise and sunset guides for full details.',
+  },
+  {
+    q: 'When are crowds the worst?',
+    a: 'Crowds peak between 9 AM and 11 AM and again between 4:30 PM and 6:30 PM, especially May through September. The parking lot is often full between 9 AM and 2 PM in peak season. Arriving at or just after sunrise — or visiting in winter (November through March) — gives you far more space.',
+  },
+  {
+    q: 'What is the best season to visit?',
+    a: 'Spring (March–May) and autumn (September–November) offer the best combination of mild weather and moderate crowds. Summer (June–August) is brutally hot and extremely crowded; avoid midday. Winter (late November–March) is cold but uncrowded — a hidden gem for photographers.',
+  },
+  {
+    q: 'Does the Colorado River ever dry up?',
+    a: 'No. The Colorado River through Horseshoe Bend is regulated by the Glen Canyon Dam 15 miles upstream. A minimum flow is maintained year-round for hydroelectric power. You will always see the emerald green river far below.',
+  },
+];
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map(({ q, a }) => ({
+      '@type': 'Question',
+      name: q,
+      acceptedAnswer: { '@type': 'Answer', text: a },
+    })),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: title,
+    description,
+    url: canonical,
+    breadcrumb: {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://horseshoebend.com/' },
+        { '@type': 'ListItem', position: 2, name: 'Best Time to Visit', item: canonical },
+      ],
+    },
+  },
+];
+---
+
+<PageLayout {title} {description} {canonical}>
+  <SchemaLD slot="head" {schema} />
+
+  <!-- Header -->
+  <header class="page-hero">
+    <div class="wrap">
+      <nav class="bc" aria-label="Breadcrumb">
+        <a href="/">Home</a><span aria-hidden="true">›</span>
+        <span aria-current="page">Best Time to Visit</span>
+      </nav>
+      <p class="kicker on-dark">Light · Crowds · Seasons</p>
+      <h1>Best Time to Visit Horseshoe Bend</h1>
+      <p class="sub">The honest guide — what the light actually does, when crowds are thinnest, and how to choose between sunrise and sunset.</p>
+    </div>
+  </header>
+
+  <!-- Sunrise / Sunset subpage links — prominent internal links -->
+  <section class="sub-cards-sec">
+    <div class="wrap">
+      <p class="sub-intro">Two of the most popular questions about Horseshoe Bend get their own in-depth guides. Start here, or jump straight to the one you need.</p>
+      <div class="sub-cards">
+        <a href="/best-time-to-visit-horseshoe-bend/sunrise/" class="sub-card sub-card--dawn">
+          <div class="sc-icon">🌄</div>
+          <div class="sc-body">
+            <p class="kicker on-dark">Guide</p>
+            <h2>Horseshoe Bend at Sunrise</h2>
+            <p>Cooler air, empty trails, and that first burst of light filling the canyon. Everything you need to time your sunrise visit right.</p>
+            <span class="sc-cta">Read the sunrise guide →</span>
+          </div>
+        </a>
+        <a href="/best-time-to-visit-horseshoe-bend/sunset/" class="sub-card sub-card--dusk">
+          <div class="sc-icon">🌇</div>
+          <div class="sc-body">
+            <p class="kicker on-dark">Guide</p>
+            <h2>Horseshoe Bend at Sunset</h2>
+            <p>Warm orange light, dramatic shadows, and the coveted starburst effect. Plus: what you need to know for the walk back in the dark.</p>
+            <span class="sc-cta">Read the sunset guide →</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Light guide -->
+  <section class="sec light-sec">
+    <div class="wrap">
+      <div class="eyebrow"><span></span><span class="kicker">How the light works</span></div>
+      <h2>Understanding the light at Horseshoe Bend</h2>
+      <p class="lede">The single most important thing to understand: the overlook faces due West. That one fact determines everything about the light at every time of day.</p>
+
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-time">Sunrise</div>
+          <div class="tl-line"></div>
+          <div class="tl-desc">
+            <h3>Before the canyon warms up</h3>
+            <p>At true sunrise, the river below is often in shadow — the canyon walls on the east block the low sun. Light develops gradually over 30–45 minutes. <strong>Upside:</strong> smallest crowds of the day, cool temperatures, beautiful sky colors.</p>
+            <a href="/best-time-to-visit-horseshoe-bend/sunrise/" class="inline-link">Full sunrise guide →</a>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">Mid-morning</div>
+          <div class="tl-line"></div>
+          <div class="tl-desc">
+            <h3>Best for photography</h3>
+            <p>By about 9:30 AM, the Colorado River is fully illuminated with clean, even light. Colors are saturated. This is when most travel photographers time their visit for classic postcard shots.</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">Midday</div>
+          <div class="tl-line"></div>
+          <div class="tl-desc">
+            <h3>Bright but crowded and hot</h3>
+            <p>The river stays fully lit through early afternoon. In summer, midday temperatures on the exposed trail routinely exceed 100°F. Crowds are at their peak. The view is stunning but the conditions are punishing.</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">Late afternoon</div>
+          <div class="tl-line"></div>
+          <div class="tl-desc">
+            <h3>Warm shadows and starburst</h3>
+            <p>As the sun drops toward the western horizon, shadows become dramatic and the canyon walls glow orange-red. The "starburst" effect — where the setting sun appears to burst into rays at the canyon rim — is a highly coveted shot among photographers.</p>
+            <a href="/best-time-to-visit-horseshoe-bend/sunset/" class="inline-link">Full sunset guide →</a>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">Sunset</div>
+          <div class="tl-line"></div>
+          <div class="tl-desc">
+            <h3>Beautiful sky, shadowed river</h3>
+            <p>The river dips into shadow as the sun sets, but the sky above is spectacular. Important: the parking lot closes at sunset. The trail back is completely dark with no lighting — bring a headlamp.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seasons -->
+  <section class="sec seasons-sec">
+    <div class="wrap">
+      <div class="eyebrow"><span></span><span class="kicker">All four seasons</span></div>
+      <h2>When to go by season</h2>
+      <div class="seasons-grid">
+        <div class="season-card season--spring">
+          <div class="s-header">
+            <span class="s-emoji">🌸</span>
+            <h3>Spring <span class="s-months">March – May</span></h3>
+            <div class="s-badge best">Best overall</div>
+          </div>
+          <ul>
+            <li>Mild temperatures: 55–80°F</li>
+            <li>Wildflowers on the plateau</li>
+            <li>Growing crowds by late April/May</li>
+            <li>Book Antelope Canyon tours early</li>
+          </ul>
+        </div>
+        <div class="season-card season--summer">
+          <div class="s-header">
+            <span class="s-emoji">☀️</span>
+            <h3>Summer <span class="s-months">June – August</span></h3>
+            <div class="s-badge busy">Most crowded</div>
+          </div>
+          <ul>
+            <li>90–110°F — no shade on trail</li>
+            <li>Peak crowds; lot often full 9 AM–2 PM</li>
+            <li>Monsoon storms July–August</li>
+            <li>Go at sunrise or stay home until fall</li>
+          </ul>
+        </div>
+        <div class="season-card season--fall">
+          <div class="s-header">
+            <span class="s-emoji">🍂</span>
+            <h3>Autumn <span class="s-months">Sept – November</span></h3>
+            <div class="s-badge best">Best overall</div>
+          </div>
+          <ul>
+            <li>Temperatures drop to 60–80°F</li>
+            <li>Smaller crowds than summer</li>
+            <li>Stunning warm afternoon light</li>
+            <li>Ideal for sunset photography</li>
+          </ul>
+        </div>
+        <div class="season-card season--winter">
+          <div class="s-header">
+            <span class="s-emoji">❄️</span>
+            <h3>Winter <span class="s-months">Dec – February</span></h3>
+            <div class="s-badge quiet">Least crowded</div>
+          </div>
+          <ul>
+            <li>30–55°F — bring warm layers</li>
+            <li>Fewest visitors of the year</li>
+            <li>Occasional frost; rare snow</li>
+            <li>Shorter days (sunset ~5:30 PM)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="sec faq-sec">
+    <div class="wrap">
+      <div class="eyebrow"><span></span><span class="kicker">Common questions</span></div>
+      <h2>Best time FAQs</h2>
+      <div class="faq-list">
+        {faqs.map(({ q, a }) => (
+          <details class="faq-item">
+            <summary class="faq-q">{q}</summary>
+            <p class="faq-a">{a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band">
+    <div class="wrap cta-inner">
+      <div>
+        <p class="kicker on-dark">Ready to plan?</p>
+        <h2>Everything else for your visit</h2>
+        <p>Parking fees, the trail guide, and what to bring.</p>
+      </div>
+      <div class="cta-btns">
+        <a href="/parking-fees/" class="btn btn--primary">Parking fees →</a>
+        <a href="/hike-horseshoe-bend/" class="btn btn--ghost-light">Trail guide →</a>
+      </div>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+.page-hero {
+  background: var(--navy);
+  color: #fff;
+  padding: 80px 0 64px;
+}
+.bc { font-family: var(--font-mono); font-size: 12px; letter-spacing: .06em; color: #9fb0bf; margin-bottom: 24px; display: flex; gap: 8px; align-items: center; }
+.bc a { color: #9fb0bf; }
+.bc a:hover { color: #fff; }
+.page-hero h1 { font-size: clamp(34px, 6vw, 58px); color: #fff; margin: 12px 0 18px; text-transform: uppercase; }
+.page-hero .sub { font-size: 18px; color: #aebcc8; margin: 0; max-width: 60ch; }
+
+/* Sub-cards */
+.sub-cards-sec { background: var(--navy-deep); padding: 56px 0; }
+.sub-intro { font-size: 17px; color: #8fa0af; margin: 0 0 32px; max-width: 60ch; }
+.sub-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.sub-card {
+  display: flex;
+  gap: 20px;
+  padding: 32px;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255,255,255,.1);
+  color: #fff;
+  transition: border-color .2s, background .2s;
+  align-items: flex-start;
+}
+.sub-card--dawn { background: linear-gradient(135deg, #1a3050, #0d2032); }
+.sub-card--dusk { background: linear-gradient(135deg, #3d1a10, #0d2032); }
+.sub-card:hover { border-color: var(--orange-bright); }
+.sc-icon { font-size: 36px; flex: none; }
+.sc-body .kicker { margin-bottom: 6px; }
+.sc-body h2 { font-size: 26px; color: #fff; margin: 0 0 12px; text-transform: uppercase; }
+.sc-body p { font-size: 15px; color: #aebcc8; margin: 0 0 18px; line-height: 1.6; }
+.sc-cta { font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--orange-bright); }
+
+/* Light timeline */
+.light-sec { background: var(--paper); }
+.light-sec h2 { font-size: clamp(28px, 4vw, 40px); text-transform: uppercase; margin: 16px 0 12px; }
+.lede { font-size: 17px; color: var(--ink-soft); margin: 0 0 50px; max-width: 65ch; }
+.timeline { display: flex; flex-direction: column; gap: 0; max-width: 72ch; border-left: 3px solid var(--orange); padding-left: 40px; }
+.tl-item { position: relative; padding: 0 0 44px; }
+.tl-item:last-child { padding-bottom: 0; }
+.tl-item::before {
+  content: '';
+  position: absolute;
+  left: -47px;
+  top: 4px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--orange);
+  border: 3px solid var(--paper);
+}
+.tl-time { font-family: var(--font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--orange-deep); font-weight: 700; margin-bottom: 6px; }
+.tl-desc h3 { font-size: 21px; color: var(--navy); margin: 0 0 10px; text-transform: uppercase; }
+.tl-desc p { font-size: 15px; color: var(--ink-soft); margin: 0 0 10px; line-height: 1.65; }
+.inline-link { font-family: var(--font-mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--orange-deep); font-weight: 700; }
+.inline-link:hover { text-decoration: underline; }
+
+/* Seasons */
+.seasons-sec { background: var(--cream); }
+.seasons-sec h2 { font-size: clamp(28px, 4vw, 40px); text-transform: uppercase; margin: 16px 0 36px; }
+.seasons-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.season-card { background: #fff; border-radius: var(--radius); border: 1px solid var(--sand-line); padding: 24px; }
+.s-header { margin-bottom: 16px; }
+.s-emoji { font-size: 28px; }
+.season-card h3 { font-size: 20px; color: var(--navy); margin: 10px 0 0; text-transform: uppercase; }
+.s-months { font-size: 13px; color: var(--ink-mute); font-weight: 400; display: block; }
+.s-badge { display: inline-block; margin-top: 8px; font-family: var(--font-mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; font-weight: 700; }
+.s-badge.best { background: #e8f5e9; color: #2e7d32; }
+.s-badge.busy { background: #fbe9e7; color: #bf360c; }
+.s-badge.quiet { background: #e3f2fd; color: #1565c0; }
+.season-card ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.season-card li { font-size: 14px; color: var(--ink-soft); padding-left: 16px; position: relative; }
+.season-card li::before { content: '·'; position: absolute; left: 0; color: var(--orange); font-weight: 700; }
+
+/* FAQ */
+.faq-sec { background: var(--paper); }
+.faq-sec h2 { font-size: clamp(28px, 4vw, 40px); text-transform: uppercase; margin: 16px 0 36px; }
+.faq-list { display: flex; flex-direction: column; max-width: 76ch; }
+.faq-item { border-bottom: 1px solid var(--sand-line); }
+.faq-item:first-child { border-top: 1px solid var(--sand-line); }
+.faq-q { list-style: none; padding: 22px 0; font-size: 17px; font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; color: var(--navy); }
+.faq-q::-webkit-details-marker { display: none; }
+.faq-q::after { content: '+'; font-family: var(--font-mono); font-size: 20px; color: var(--orange); flex: none; transition: transform .2s; }
+details[open] .faq-q::after { transform: rotate(45deg); }
+.faq-a { margin: 0 0 22px; font-size: 15px; color: var(--ink-soft); line-height: 1.65; max-width: 68ch; }
+
+/* CTA */
+.cta-band { background: var(--navy); color: #fff; padding: 80px 0; }
+.cta-inner { display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+.cta-band h2 { font-size: clamp(26px, 4vw, 40px); color: #fff; margin: 10px 0 12px; text-transform: uppercase; }
+.cta-band p { color: #aebcc8; margin: 0; font-size: 16px; }
+.cta-btns { display: flex; gap: 14px; flex-wrap: wrap; flex: none; }
+
+@media (max-width: 860px) {
+  .sub-cards { grid-template-columns: 1fr; }
+  .seasons-grid { grid-template-columns: 1fr 1fr; }
+  .cta-inner { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 480px) {
+  .seasons-grid { grid-template-columns: 1fr; }
+}
+</style>

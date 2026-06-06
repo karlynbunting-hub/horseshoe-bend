@@ -1,0 +1,208 @@
+---
+import PageLayout from '../../../layouts/PageLayout.astro';
+import SchemaLD from '../../../components/SchemaLD.astro';
+
+const title = 'Horseshoe Bend Sunrise | Best Tips for Early Morning Visits';
+const description = 'Visiting Horseshoe Bend at sunrise: what time to arrive, how the light develops, crowd conditions, and the honest truth about what you will (and won\'t) see at dawn.';
+const canonical = 'https://horseshoebend.com/best-time-to-visit-horseshoe-bend/sunrise/';
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: title,
+    description,
+    url: canonical,
+    breadcrumb: {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://horseshoebend.com/' },
+        { '@type': 'ListItem', position: 2, name: 'Best Time to Visit', item: 'https://horseshoebend.com/best-time-to-visit-horseshoe-bend/' },
+        { '@type': 'ListItem', position: 3, name: 'Sunrise', item: canonical },
+      ],
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: 'How to Visit Horseshoe Bend at Sunrise',
+    description: 'Step-by-step guide to timing and planning a sunrise visit to Horseshoe Bend, Page, AZ.',
+    step: [
+      { '@type': 'HowToStep', name: 'Check sunrise time', text: 'Look up the exact sunrise time for Page, AZ for your date. In summer, sunrise is around 5:00–5:30 AM. In winter, around 7:15–7:45 AM.' },
+      { '@type': 'HowToStep', name: 'Arrive 30–45 minutes early', text: 'The parking lot gate may not be staffed yet, but you can enter. Park and begin the 0.6-mile hike to the rim in time for first light.' },
+      { '@type': 'HowToStep', name: 'Bring a headlamp', text: 'The trail has no artificial lighting. A headlamp is essential for the hike in during pre-dawn darkness.' },
+      { '@type': 'HowToStep', name: 'Stay 30–45 minutes after sunrise', text: 'The most dramatic light develops as the sun rises over the canyon walls. Plan to stay at the rim for at least 45 minutes, not just for the moment of sunrise.' },
+      { '@type': 'HowToStep', name: 'Bring layers', text: 'Even in summer, pre-dawn temperatures at Horseshoe Bend can be significantly cooler than afternoon. A light jacket and layers are smart.' },
+    ],
+  },
+];
+---
+
+<PageLayout {title} {description} {canonical}>
+  <SchemaLD slot="head" {schema} />
+
+  <header class="page-hero page-hero--dawn">
+    <div class="wrap">
+      <nav class="bc" aria-label="Breadcrumb">
+        <a href="/">Home</a><span>›</span>
+        <a href="/best-time-to-visit-horseshoe-bend/">Best Time to Visit</a><span>›</span>
+        <span aria-current="page">Sunrise</span>
+      </nav>
+      <p class="kicker on-dark">Dawn · Early morning · Photography</p>
+      <h1>Horseshoe Bend at Sunrise</h1>
+      <p class="sub">Cooler air, quiet trails, and a sky that transforms from inky black to gold. Here's what you actually need to know to time it right.</p>
+    </div>
+  </header>
+
+  <!-- Quick facts -->
+  <div class="quick-bar">
+    <div class="wrap quick-inner">
+      <div class="qf"><span class="qf-label">Summer sunrise</span><span class="qf-val">~5:00–5:30 AM</span></div>
+      <div class="qf"><span class="qf-label">Winter sunrise</span><span class="qf-val">~7:15–7:45 AM</span></div>
+      <div class="qf"><span class="qf-label">Arrive before</span><span class="qf-val">30–45 min early</span></div>
+      <div class="qf"><span class="qf-label">Must bring</span><span class="qf-val">Headlamp</span></div>
+      <div class="qf"><span class="qf-label">Crowd level</span><span class="qf-val">Low ✓</span></div>
+    </div>
+  </div>
+
+  <!-- Main content -->
+  <section class="sec main-sec">
+    <div class="wrap content-wrap">
+      <div class="content">
+        <h2>The honest truth about sunrise at Horseshoe Bend</h2>
+        <p>The overlook faces due West. At the exact moment of sunrise, the sun rises in the East — directly behind you and behind the canyon walls. That means the Colorado River far below is often still in shadow when the sun first appears on the horizon.</p>
+        <p>This surprises many visitors who expect a pink-and-gold river glowing at sunrise. The actual magic develops <strong>30 to 45 minutes after true sunrise</strong>, as the sun climbs high enough to clear the eastern canyon walls and begin illuminating the river below.</p>
+        <p>That doesn't make it a disappointment — it makes it a different kind of beautiful. The sky above you turns extraordinary colors. The silence at 5 AM on an empty trail is its own reward.</p>
+
+        <h2>When to arrive</h2>
+        <p>To be at the rim for first light, you need to be at the parking lot 30–45 minutes before sunrise and walking. The hike from the lot to the rim takes about 20–25 minutes at a moderate pace.</p>
+        <p>The parking lot booth is typically unstaffed before official opening time at sunrise. You can usually pull in and begin hiking. The $10 fee will be collected when you return — or you may need to pay on the way in if booth hours change.</p>
+
+        <div class="tip-box">
+          <div class="tip-icon">💡</div>
+          <div>
+            <strong>Pro tip:</strong> Spend time at the rim watching the light develop, not just capturing the sunrise moment. The river goes from dark shadow to glowing emerald over about 45 minutes. That transition is worth seeing.
+          </div>
+        </div>
+
+        <h2>What to bring for a sunrise visit</h2>
+        <ul class="check-list">
+          <li><strong>Headlamp or flashlight</strong> — essential for the pre-dawn hike in. The trail has zero artificial lighting.</li>
+          <li><strong>Layers</strong> — even in summer, 5 AM at Horseshoe Bend is noticeably cooler than midday. Bring a light jacket; you can remove it as the sun rises.</li>
+          <li><strong>Water</strong> — even in cool morning hours, the desert is dry.</li>
+          <li><strong>Camera with low-light capability</strong> — you'll be shooting in dim conditions initially. A tripod is helpful if you're a photographer.</li>
+          <li><strong>Fully charged phone</strong> — for navigation and photos; signal is limited at the rim.</li>
+        </ul>
+
+        <h2>Crowds at sunrise</h2>
+        <p>Sunrise is consistently the least crowded time at Horseshoe Bend. In peak season (May–September), you may still encounter 20–50 people at the rim at first light, but that is a small fraction of the 500–1,000 people who will be there by mid-morning. In spring and autumn, you may genuinely have the overlook nearly to yourself.</p>
+        <p>Arriving at sunrise also gets you out before the parking lot fills — typically between 9 and 11 AM in peak season. You'll return to your car well before the crowds arrive.</p>
+
+        <h2>Sunrise times by season</h2>
+        <div class="sunrise-table-wrap">
+          <table class="sunrise-table">
+            <thead>
+              <tr><th>Season</th><th>Approximate sunrise</th><th>Arrive by</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Winter (Dec–Feb)</td><td>7:15–7:45 AM</td><td>6:45 AM</td></tr>
+              <tr><td>Spring (Mar–May)</td><td>5:30–6:30 AM</td><td>5:00 AM</td></tr>
+              <tr><td>Summer (Jun–Aug)</td><td>5:00–5:30 AM</td><td>4:30 AM</td></tr>
+              <tr><td>Autumn (Sep–Nov)</td><td>5:45–7:00 AM</td><td>5:15 AM</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="table-note">Check exact sunrise time for Page, AZ on your specific visit date. Times shift significantly through the year.</p>
+      </div>
+
+      <aside class="sidebar">
+        <div class="sb-card">
+          <h4>Related guides</h4>
+          <ul>
+            <li><a href="/best-time-to-visit-horseshoe-bend/">Best time to visit overview</a></li>
+            <li><a href="/best-time-to-visit-horseshoe-bend/sunset/">Sunset guide →</a></li>
+            <li><a href="/hike-horseshoe-bend/">Trail guide</a></li>
+            <li><a href="/parking-fees/">Parking fees &amp; hours</a></li>
+          </ul>
+        </div>
+        <div class="sb-card sb-card--dark">
+          <h4>Key facts</h4>
+          <ul>
+            <li>Overlook faces <strong>West</strong></li>
+            <li>River in shadow at true sunrise</li>
+            <li>Light fills canyon ~45 min after sunrise</li>
+            <li>No trail lighting — bring headlamp</li>
+            <li>Parking lot may be unstaffed at dawn</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Subpage nav -->
+  <div class="subpage-nav">
+    <div class="wrap spn-inner">
+      <a href="/best-time-to-visit-horseshoe-bend/" class="spn-link">← Best time overview</a>
+      <a href="/best-time-to-visit-horseshoe-bend/sunset/" class="spn-link">Sunset guide →</a>
+    </div>
+  </div>
+</PageLayout>
+
+<style>
+.page-hero { background: var(--navy-deep); color: #fff; padding: 80px 0 64px; }
+.page-hero--dawn { background: linear-gradient(135deg, #0d1c2e 0%, #1a2f45 100%); }
+.bc { font-family: var(--font-mono); font-size: 12px; letter-spacing: .06em; color: #9fb0bf; margin-bottom: 24px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.bc a { color: #9fb0bf; }
+.bc a:hover { color: #fff; }
+.page-hero h1 { font-size: clamp(34px, 6vw, 58px); color: #fff; margin: 12px 0 18px; text-transform: uppercase; }
+.page-hero .sub { font-size: 18px; color: #aebcc8; margin: 0; max-width: 58ch; }
+
+.quick-bar { background: var(--orange); padding: 20px 0; }
+.quick-inner { display: flex; gap: 0; flex-wrap: wrap; }
+.qf { flex: 1; min-width: 120px; border-right: 1px solid rgba(255,255,255,.25); padding: 0 24px; text-align: center; }
+.qf:last-child { border-right: none; }
+.qf-label { display: block; font-family: var(--font-mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.75); margin-bottom: 4px; }
+.qf-val { display: block; font-weight: 700; font-size: 15px; color: #fff; }
+
+.main-sec { background: var(--paper); }
+.content-wrap { display: grid; grid-template-columns: 1fr 320px; gap: 72px; align-items: start; }
+.content h2 { font-size: clamp(24px, 3.5vw, 36px); text-transform: uppercase; margin: 36px 0 14px; color: var(--navy); }
+.content h2:first-child { margin-top: 0; }
+.content p { font-size: 16px; color: var(--ink-soft); margin: 0 0 18px; line-height: 1.68; }
+
+.tip-box { display: flex; gap: 14px; background: #fdf3ec; border: 1px solid #f4c99a; border-radius: var(--radius); padding: 20px; margin: 28px 0; font-size: 15px; color: var(--ink); }
+.tip-icon { font-size: 22px; flex: none; }
+
+.check-list { margin: 0 0 24px; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.check-list li { font-size: 15px; color: var(--ink-soft); padding-left: 24px; position: relative; line-height: 1.5; }
+.check-list li::before { content: '✓'; position: absolute; left: 0; color: var(--orange); font-weight: 700; }
+
+.sunrise-table-wrap { overflow-x: auto; margin: 20px 0; }
+.sunrise-table { width: 100%; border-collapse: collapse; font-size: 15px; }
+.sunrise-table th { background: var(--navy); color: #fff; text-align: left; padding: 12px 16px; font-family: var(--font-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; }
+.sunrise-table td { padding: 14px 16px; border-bottom: 1px solid var(--sand-line); }
+.table-note { font-size: 13px; color: var(--ink-mute); font-style: italic; margin-top: 8px; }
+
+.sidebar { position: sticky; top: 100px; }
+.sb-card { background: var(--cream); border-radius: var(--radius); padding: 24px; margin-bottom: 20px; }
+.sb-card--dark { background: var(--navy); color: #fff; }
+.sb-card h4 { font-size: 14px; text-transform: uppercase; letter-spacing: .1em; margin: 0 0 16px; color: var(--navy); font-family: var(--font-mono); }
+.sb-card--dark h4 { color: #fff; }
+.sb-card ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.sb-card li { font-size: 14px; color: var(--ink-soft); }
+.sb-card--dark li { color: #aebcc8; }
+.sb-card a { color: var(--navy); font-weight: 600; }
+.sb-card a:hover { color: var(--orange); }
+
+.subpage-nav { background: var(--cream); border-top: 1px solid var(--sand-line); padding: 24px 0; }
+.spn-inner { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+.spn-link { font-family: var(--font-mono); font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--navy); font-weight: 700; }
+.spn-link:hover { color: var(--orange); }
+
+@media (max-width: 860px) {
+  .content-wrap { grid-template-columns: 1fr; }
+  .sidebar { position: static; }
+  .quick-inner { justify-content: center; }
+  .qf { min-width: 140px; padding: 12px 16px; }
+}
+</style>

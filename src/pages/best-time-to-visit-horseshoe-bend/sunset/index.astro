@@ -1,0 +1,221 @@
+---
+import PageLayout from '../../../layouts/PageLayout.astro';
+import SchemaLD from '../../../components/SchemaLD.astro';
+
+const title = 'Horseshoe Bend Sunset | Tips for the Perfect Evening Visit';
+const description = 'Everything about visiting Horseshoe Bend at sunset: the starburst effect, when to arrive, what the light actually does, and how to get back safely in the dark.';
+const canonical = 'https://horseshoebend.com/best-time-to-visit-horseshoe-bend/sunset/';
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: title,
+    description,
+    url: canonical,
+    breadcrumb: {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://horseshoebend.com/' },
+        { '@type': 'ListItem', position: 2, name: 'Best Time to Visit', item: 'https://horseshoebend.com/best-time-to-visit-horseshoe-bend/' },
+        { '@type': 'ListItem', position: 3, name: 'Sunset', item: canonical },
+      ],
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: 'How to Visit Horseshoe Bend at Sunset',
+    description: 'Guide to timing and planning a sunset visit to Horseshoe Bend for the starburst effect and dramatic late-day light.',
+    step: [
+      { '@type': 'HowToStep', name: 'Check sunset time', text: 'Look up the exact sunset time for Page, AZ for your date. In summer sunset is around 7:45–8:00 PM. In winter around 5:15–5:30 PM.' },
+      { '@type': 'HowToStep', name: 'Arrive 60–90 minutes before sunset', text: 'The parking lot closes at sunset. You need time to hike in (20–25 min) and be at the rim well before the light fades.' },
+      { '@type': 'HowToStep', name: 'Photograph the starburst', text: 'The starburst effect appears as the sun drops below the canyon rim to the west, just before the river goes into shadow. Shoot with a small aperture (f/11–f/16) to maximize the effect.' },
+      { '@type': 'HowToStep', name: 'Prepare for darkness', text: 'Once the sun sets, it gets dark quickly. Bring a headlamp for the hike back. The trail has no artificial lighting and the rim edge is unfenced.' },
+      { '@type': 'HowToStep', name: 'Be back at the car before the lot closes', text: 'The parking lot closes at sunset. Leave the rim with enough time to hike back (20–25 min) before the lot is gated.' },
+    ],
+  },
+];
+---
+
+<PageLayout {title} {description} {canonical}>
+  <SchemaLD slot="head" {schema} />
+
+  <header class="page-hero page-hero--dusk">
+    <div class="wrap">
+      <nav class="bc" aria-label="Breadcrumb">
+        <a href="/">Home</a><span>›</span>
+        <a href="/best-time-to-visit-horseshoe-bend/">Best Time to Visit</a><span>›</span>
+        <span aria-current="page">Sunset</span>
+      </nav>
+      <p class="kicker on-dark">Dusk · Golden hour · Photography</p>
+      <h1>Horseshoe Bend at Sunset</h1>
+      <p class="sub">Warm light, canyon shadows, and the coveted starburst effect. The complete guide to an evening visit — including how to get back safely in the dark.</p>
+    </div>
+  </header>
+
+  <!-- Quick facts -->
+  <div class="quick-bar">
+    <div class="wrap quick-inner">
+      <div class="qf"><span class="qf-label">Summer sunset</span><span class="qf-val">~7:45–8:00 PM</span></div>
+      <div class="qf"><span class="qf-label">Winter sunset</span><span class="qf-val">~5:15–5:30 PM</span></div>
+      <div class="qf"><span class="qf-label">Arrive before</span><span class="qf-val">60–90 min early</span></div>
+      <div class="qf"><span class="qf-label">Must bring</span><span class="qf-val">Headlamp</span></div>
+      <div class="qf"><span class="qf-label">Starburst effect</span><span class="qf-val">As sun hits rim ✦</span></div>
+    </div>
+  </div>
+
+  <!-- Main content -->
+  <section class="sec main-sec">
+    <div class="wrap content-wrap">
+      <div class="content">
+        <h2>What happens at sunset at Horseshoe Bend</h2>
+        <p>The overlook faces due West — the same direction the sun sets. This makes sunset a complex time: dramatic in some ways, shadowy in others. Here's the honest picture.</p>
+        <p>As the sun drops toward the western horizon, the canyon walls and the river below are bathed in warm orange-red light. This is the golden hour photographers chase. The intensity builds over 60–90 minutes as the sun descends.</p>
+        <p>Then, as the sun drops below the rim of the canyon, something special happens: the <strong>starburst effect</strong>. Because the canyon rim acts as a natural straight edge, shooting into the setting sun at the moment it crosses that line produces a starburst burst of light rays — one of the most coveted shots at Horseshoe Bend.</p>
+        <p>Moments later, the river dips into shadow. The sky above remains brilliant for another 20–30 minutes, but the Colorado River is no longer illuminated from above.</p>
+
+        <div class="tip-box">
+          <div class="tip-icon">✦</div>
+          <div>
+            <strong>Starburst tip:</strong> To maximize the starburst effect, set your camera to a small aperture (f/11–f/16 or smaller). The narrower the aperture, the more pronounced the star rays. A tripod helps with the slower shutter speeds involved.
+          </div>
+        </div>
+
+        <h2>When to arrive for sunset</h2>
+        <p>Arrive at the parking lot 60–90 minutes before sunset. That gives you 20–25 minutes to hike in, time to find your spot at the rim (especially important if crowds are building), and time to settle in before the light show begins.</p>
+        <p>The parking lot closes at sunset. If you're still at the rim when the lot closes, you risk finding a locked gate when you return — or paying a fine. Plan your hike back to allow 20–25 minutes before official closing time.</p>
+
+        <div class="warn-box">
+          <div class="warn-icon">⚠️</div>
+          <div>
+            <strong>Bring a headlamp.</strong> Once the sun sets, the trail back to the parking lot is completely dark. There is no artificial lighting on the trail. The overlook rim has no guardrails. Do not attempt the return hike without a light source.
+          </div>
+        </div>
+
+        <h2>Late afternoon vs. sunset: what to expect</h2>
+        <p>Many photographers who visit for "sunset" actually spend most of their time shooting in the 60–90 minutes before the sun drops — what's known as golden hour. During this window:</p>
+        <ul class="check-list">
+          <li>The Colorado River is still lit and glowing</li>
+          <li>Canyon walls glow deep orange-red</li>
+          <li>Shadows create dramatic depth and texture</li>
+          <li>Warm colors are more saturated than midday</li>
+        </ul>
+        <p>True sunset — when the sun actually hits the horizon — gives you the starburst effect and then rapid darkness. Plan to stay through both phases.</p>
+
+        <h2>Sunset times by season</h2>
+        <div class="sunrise-table-wrap">
+          <table class="sunrise-table">
+            <thead>
+              <tr><th>Season</th><th>Approximate sunset</th><th>Arrive by</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Winter (Dec–Feb)</td><td>5:15–5:30 PM</td><td>3:45–4:00 PM</td></tr>
+              <tr><td>Spring (Mar–May)</td><td>6:30–7:30 PM</td><td>5:00–6:00 PM</td></tr>
+              <tr><td>Summer (Jun–Aug)</td><td>7:45–8:00 PM</td><td>6:15–6:30 PM</td></tr>
+              <tr><td>Autumn (Sep–Nov)</td><td>6:00–7:15 PM</td><td>4:30–5:45 PM</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="table-note">Check exact sunset time for Page, AZ on your specific date. Arizona does not observe Daylight Saving Time.</p>
+
+        <h2>Crowds at sunset</h2>
+        <p>Sunset is popular — but less crowded than the mid-morning peak. In summer, expect 100–300 people at the rim near sunset. In autumn and spring, crowds are noticeably thinner. Winter sunsets are often near-empty.</p>
+        <p>One advantage: visitors often start leaving the rim as the sun sets and light fades. If you stay 20–30 minutes past the moment of sunset, you'll have much more space and the alpenglow sky to yourself.</p>
+      </div>
+
+      <aside class="sidebar">
+        <div class="sb-card">
+          <h4>Related guides</h4>
+          <ul>
+            <li><a href="/best-time-to-visit-horseshoe-bend/">Best time overview</a></li>
+            <li><a href="/best-time-to-visit-horseshoe-bend/sunrise/">← Sunrise guide</a></li>
+            <li><a href="/hike-horseshoe-bend/">Trail guide</a></li>
+            <li><a href="/parking-fees/">Parking fees &amp; hours</a></li>
+          </ul>
+        </div>
+        <div class="sb-card sb-card--dusk">
+          <h4>Sunset checklist</h4>
+          <ul>
+            <li>Headlamp <span class="req">required</span></li>
+            <li>Arrive 60–90 min early</li>
+            <li>Leave rim before lot closes</li>
+            <li>f/11–f/16 for starburst</li>
+            <li>Tripod for low-light shots</li>
+            <li>Layers — cools fast after dark</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Subpage nav -->
+  <div class="subpage-nav">
+    <div class="wrap spn-inner">
+      <a href="/best-time-to-visit-horseshoe-bend/sunrise/" class="spn-link">← Sunrise guide</a>
+      <a href="/best-time-to-visit-horseshoe-bend/" class="spn-link">Best time overview →</a>
+    </div>
+  </div>
+</PageLayout>
+
+<style>
+.page-hero { background: var(--navy-deep); color: #fff; padding: 80px 0 64px; }
+.page-hero--dusk { background: linear-gradient(135deg, #2c1005 0%, #1a1a2e 100%); }
+.bc { font-family: var(--font-mono); font-size: 12px; letter-spacing: .06em; color: #9fb0bf; margin-bottom: 24px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.bc a { color: #9fb0bf; }
+.bc a:hover { color: #fff; }
+.page-hero h1 { font-size: clamp(34px, 6vw, 58px); color: #fff; margin: 12px 0 18px; text-transform: uppercase; }
+.page-hero .sub { font-size: 18px; color: #aebcc8; margin: 0; max-width: 58ch; }
+
+.quick-bar { background: var(--navy); padding: 20px 0; }
+.quick-inner { display: flex; gap: 0; flex-wrap: wrap; }
+.qf { flex: 1; min-width: 120px; border-right: 1px solid rgba(255,255,255,.15); padding: 0 24px; text-align: center; }
+.qf:last-child { border-right: none; }
+.qf-label { display: block; font-family: var(--font-mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.6); margin-bottom: 4px; }
+.qf-val { display: block; font-weight: 700; font-size: 15px; color: #fff; }
+
+.main-sec { background: var(--paper); }
+.content-wrap { display: grid; grid-template-columns: 1fr 320px; gap: 72px; align-items: start; }
+.content h2 { font-size: clamp(24px, 3.5vw, 36px); text-transform: uppercase; margin: 36px 0 14px; color: var(--navy); }
+.content h2:first-child { margin-top: 0; }
+.content p { font-size: 16px; color: var(--ink-soft); margin: 0 0 18px; line-height: 1.68; }
+
+.tip-box { display: flex; gap: 14px; background: #fdf3ec; border: 1px solid #f4c99a; border-radius: var(--radius); padding: 20px; margin: 28px 0; font-size: 15px; color: var(--ink); }
+.tip-icon { font-size: 22px; flex: none; }
+.warn-box { display: flex; gap: 14px; background: #fff3e0; border: 1px solid #ffcc80; border-radius: var(--radius); padding: 20px; margin: 28px 0; font-size: 15px; color: var(--ink); }
+.warn-icon { font-size: 22px; flex: none; }
+
+.check-list { margin: 0 0 24px; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.check-list li { font-size: 15px; color: var(--ink-soft); padding-left: 24px; position: relative; }
+.check-list li::before { content: '✓'; position: absolute; left: 0; color: var(--orange); font-weight: 700; }
+
+.sunrise-table-wrap { overflow-x: auto; margin: 20px 0; }
+.sunrise-table { width: 100%; border-collapse: collapse; font-size: 15px; }
+.sunrise-table th { background: var(--navy); color: #fff; text-align: left; padding: 12px 16px; font-family: var(--font-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; }
+.sunrise-table td { padding: 14px 16px; border-bottom: 1px solid var(--sand-line); }
+.table-note { font-size: 13px; color: var(--ink-mute); font-style: italic; margin-top: 8px; }
+
+.sidebar { position: sticky; top: 100px; }
+.sb-card { background: var(--cream); border-radius: var(--radius); padding: 24px; margin-bottom: 20px; }
+.sb-card--dusk { background: var(--navy-deep); color: #fff; }
+.sb-card h4 { font-size: 14px; text-transform: uppercase; letter-spacing: .1em; margin: 0 0 16px; color: var(--navy); font-family: var(--font-mono); }
+.sb-card--dusk h4 { color: #fff; }
+.sb-card ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.sb-card li { font-size: 14px; color: var(--ink-soft); }
+.sb-card--dusk li { color: #aebcc8; }
+.sb-card a { color: var(--navy); font-weight: 600; }
+.sb-card a:hover { color: var(--orange); }
+.req { font-family: var(--font-mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--orange-bright); font-weight: 700; margin-left: 4px; }
+
+.subpage-nav { background: var(--cream); border-top: 1px solid var(--sand-line); padding: 24px 0; }
+.spn-inner { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+.spn-link { font-family: var(--font-mono); font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--navy); font-weight: 700; }
+.spn-link:hover { color: var(--orange); }
+
+@media (max-width: 860px) {
+  .content-wrap { grid-template-columns: 1fr; }
+  .sidebar { position: static; }
+  .quick-inner { justify-content: center; }
+  .qf { min-width: 140px; padding: 12px 16px; }
+}
+</style>

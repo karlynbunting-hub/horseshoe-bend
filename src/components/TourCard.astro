@@ -1,0 +1,63 @@
+---
+interface Props {
+  name: string;
+  tagLabel: string;
+  price: string;
+  description: string;
+  meta1: string;
+  meta2: string;
+  meta3: string;
+  href: string;
+  ctaLabel?: string;
+  imgAlt?: string;
+  dark?: boolean;
+}
+const {
+  name, tagLabel, price, description, meta1, meta2, meta3,
+  href, ctaLabel = 'View tours', imgAlt = '', dark = false,
+} = Astro.props;
+---
+<div class="tour-card">
+  <div class:list={['pic', 'ph', dark ? 'ph--navy' : '']}>
+    <span class="pill tag" style="background:rgba(13,32,50,.7);color:#fff;border:0">{tagLabel}</span>
+    {imgAlt && <span class="ph__label">{imgAlt}</span>}
+    <span class="price">{price}</span>
+  </div>
+  <div class="body">
+    <h3>{name}</h3>
+    <p class="desc">{description}</p>
+    <div class="meta">
+      <span><b>{meta1.split(' ')[0]}</b> {meta1.split(' ').slice(1).join(' ')}</span>
+      <span><b>{meta2.split(' ')[0]}</b> {meta2.split(' ').slice(1).join(' ')}</span>
+      <span><b>{meta3.split(' ')[0]}</b> {meta3.split(' ').slice(1).join(' ')}</span>
+    </div>
+    <a class="btn btn--navy go" href={href}>{ctaLabel}</a>
+  </div>
+</div>
+
+<style>
+.tour-card {
+  background: #fff; border: 1px solid var(--sand-line);
+  border-radius: var(--radius-lg); overflow: hidden;
+  display: flex; flex-direction: column;
+  transition: transform .22s, box-shadow .22s;
+}
+.tour-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+.pic { aspect-ratio: 3/2; position: relative; }
+.pic .pill { position: absolute; top: 14px; left: 14px; z-index: 1; }
+.price {
+  position: absolute; bottom: 14px; right: 14px; z-index: 1;
+  background: rgba(13,32,50,.82); color: #fff;
+  font-family: var(--font-mono); font-weight: 700; font-size: 13px;
+  padding: 7px 11px; border-radius: 8px; backdrop-filter: blur(4px);
+}
+.body { padding: 24px 24px 26px; display: flex; flex-direction: column; flex: 1; }
+h3 { font-size: 23px; color: var(--navy); text-transform: uppercase; }
+.desc { color: var(--ink-soft); font-size: 15px; margin: 10px 0 18px; }
+.meta {
+  display: flex; gap: 16px; font-family: var(--font-mono); font-size: 12px;
+  color: var(--ink-mute); margin-bottom: 20px; flex-wrap: wrap;
+}
+.meta b { color: var(--navy); }
+.go { margin-top: auto; }
+</style>

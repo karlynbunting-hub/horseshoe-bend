@@ -1,0 +1,78 @@
+---
+---
+<section class="hike sec" id="hike">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow"><span></span><span class="kicker on-dark">The trail</span></div>
+      <h2>Getting to the overlook</h2>
+      <p>The 0.6-mile trail from the parking lot is well-maintained, partially paved, and achievable for most visitors.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <h4>Park &amp; pay</h4>
+        <p>Pull into the City of Page lot off US-89. Pay the $10 vehicle fee at the booth — cash or card accepted. No roadside parking.</p>
+      </div>
+      <div class="step">
+        <h4>Hit the trail</h4>
+        <p>Follow the paved path from the trailhead. It transitions to packed sand. The surface is accessible for strollers and wheelchairs with assistance.</p>
+      </div>
+      <div class="step">
+        <h4>Reach the rim</h4>
+        <p>After about 20–25 minutes, the canyon opens before you — a 1,000-foot drop to the Colorado River's emerald bend.</p>
+      </div>
+      <div class="step">
+        <h4>Stay safe</h4>
+        <p>There are no guardrails at the overlook edge. Keep children close. The drop is sheer. Do not approach the edge for photos.</p>
+      </div>
+    </div>
+    <div class="hike-row">
+      <div class="warn">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <span><strong>No guardrails.</strong> The overlook rim has no fencing. Stay back from the edge and supervise children at all times.</span>
+      </div>
+      <div class="warn">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+        <span><strong>No shade on trail.</strong> Bring at least one liter of water per person. Wear a hat and sunscreen. Avoid the midday hours in summer.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.hike { background: var(--navy-deep); color: #fff; }
+.hike .sec-head h2 { color: #fff; }
+.hike .sec-head p { color: #aebcc8; }
+.steps {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px;
+  margin-top: 50px; counter-reset: s;
+}
+.step { position: relative; padding-top: 30px; }
+.step::before {
+  counter-increment: s;
+  content: "0" counter(s);
+  position: absolute; top: 0; left: 0;
+  font-family: var(--font-mono); font-weight: 700; font-size: 13px; color: var(--orange-bright);
+}
+.step::after {
+  content: ""; position: absolute; top: 6px; left: 34px; right: -11px;
+  height: 1px; background: rgba(255,255,255,.16);
+}
+.step:last-child::after { display: none; }
+.step h4 { font-size: 19px; margin-bottom: 8px; }
+.step p { color: #aebcc8; font-size: 15px; margin: 0; }
+.hike-row { display: flex; gap: 14px; margin-top: 46px; flex-wrap: wrap; }
+.warn {
+  display: flex; align-items: center; gap: 12px;
+  background: rgba(217,96,31,.16); border: 1px solid rgba(236,122,44,.4);
+  border-radius: 12px; padding: 14px 18px; font-size: 15px; color: #ffe2cf; flex: 1; min-width: 260px;
+}
+.warn svg { color: var(--orange-bright); flex: none; }
+
+@media (max-width: 860px) {
+  .steps { grid-template-columns: 1fr 1fr; }
+  .step::after { display: none; }
+}
+@media (max-width: 480px) {
+  .steps { grid-template-columns: 1fr; }
+}
+</style>

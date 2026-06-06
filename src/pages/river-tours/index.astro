@@ -1,0 +1,289 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import SchemaLD from '../../components/SchemaLD.astro';
+import BookingButton from '../../components/islands/BookingButton.astro';
+
+const title = 'Horseshoe Bend Boat & River Tours | Kayak, Raft & Lake Powell';
+const description = 'Experience Horseshoe Bend from the water. Guided kayak tours, Colorado River half-day rafts, and Antelope Canyon boat tours from Antelope Point Marina on Lake Powell.';
+const canonical = 'https://horseshoebend.com/river-tours/';
+
+const tours = [
+  {
+    id: 'float',
+    tag: 'Most popular',
+    name: 'Glen Canyon Half-Day Float Trip',
+    description: 'Board a comfortable pontoon raft at Lees Ferry and drift 15 miles through the last intact stretch of Glen Canyon — past Horseshoe Bend — to the edge of the Grand Canyon. Calm water. Suitable for ages 4 and up.',
+    highlights: [
+      'See Horseshoe Bend from the river (wave to people on the rim)',
+      'Petroglyph Beach stop for swimming and ancient rock art',
+      'Expert naturalist guide covers geology, history, wildlife',
+      'No white water — calm, smooth Colorado River',
+      'Departs from Lees Ferry (~1 hour from Page)',
+    ],
+    duration: 'Half day (~5–6 hrs)',
+    minAge: 'Ages 4+',
+    season: 'Year-round',
+    price: 'from $96/person',
+    operator: 'Wilderness River Adventures',
+  },
+  {
+    id: 'kayak',
+    tag: 'Most adventurous',
+    name: 'Kayak Horseshoe Bend',
+    description: 'Get a backhaul boat ride from Lees Ferry up to the base of Glen Canyon Dam, then paddle your own kayak or SUP downstream through Horseshoe Bend at your own pace. First-timers welcome.',
+    highlights: [
+      'Paddle through the bend at river level — a perspective almost no one gets',
+      'Single or tandem kayaks available, or bring your own',
+      'Wildlife: bighorn sheep, eagles, herons, condors',
+      'Optional: camp at designated river sites overnight',
+      'Free Backcountry River Permit required (sign up at Lees Ferry kiosk)',
+    ],
+    duration: 'Half day or full day',
+    minAge: 'Ages 5+',
+    season: 'Year-round',
+    price: 'from $95/person',
+    operator: 'Kayak Horseshoe Bend / Lees Ferry Anglers',
+  },
+  {
+    id: 'lake-powell',
+    tag: 'Lake Powell',
+    name: 'Antelope Canyon Boat Tour',
+    description: 'Cruise from Antelope Point Marina up Lake Powell to where the walls of Antelope Canyon plunge into the water. An open-air tour boat travels through towering canyon walls with cool lake breezes.',
+    highlights: [
+      'Departs from Antelope Point Marina (~30 min from Page)',
+      'See slot canyon walls from the water — unique perspective',
+      'Lake Powell\'s turquoise water and red canyon backdrop',
+      'Calm, flat-water lake cruise — suitable for all ages',
+      'Evening departures available — great for photography',
+    ],
+    duration: '2.5–3 hrs',
+    minAge: 'All ages',
+    season: 'April–October',
+    price: 'from $59/person',
+    operator: 'Antelope Canyon Boat Tours',
+  },
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'River & Boat Tours at Horseshoe Bend',
+  description: 'Guided water-based tours near Horseshoe Bend, Page, AZ: Colorado River rafts, kayak tours, and Lake Powell boat tours.',
+  numberOfItems: tours.length,
+  itemListElement: tours.map((t, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    item: {
+      '@type': 'TouristTrip',
+      name: t.name,
+      description: t.description,
+      touristType: 'Adventure traveler',
+      offers: {
+        '@type': 'Offer',
+        price: t.price.replace('from $', ''),
+        priceCurrency: 'USD',
+        availability: 'https://schema.org/InStock',
+      },
+    },
+  })),
+};
+---
+
+<PageLayout {title} {description} {canonical}>
+  <SchemaLD slot="head" {schema} />
+
+  <!-- Hero -->
+  <header class="river-hero">
+    <div class="rh-bg ph ph--navy">
+      <span class="ph__label">Colorado River below Horseshoe Bend — emerald water in Glen Canyon</span>
+    </div>
+    <div class="rh-overlay"></div>
+    <div class="wrap rh-body">
+      <nav class="bc" aria-label="Breadcrumb">
+        <a href="/">Home</a><span>›</span>
+        <span aria-current="page">River Tours</span>
+      </nav>
+      <p class="kicker on-dark">Colorado River · Lake Powell · Glen Canyon</p>
+      <h1>See the Bend from the Water</h1>
+      <p class="rh-sub">Guided raft trips, kayak adventures, and Lake Powell boat tours that put you on the very river you looked down at from the overlook.</p>
+      <div class="rh-btns">
+        <BookingButton label="Book water tours" variant="primary" />
+        <a href="#tours" class="btn btn--ghost-light">See all options</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Why on the water -->
+  <section class="why-sec">
+    <div class="wrap why-inner">
+      <div class="why-text">
+        <div class="eyebrow"><span></span><span class="kicker">A different perspective</span></div>
+        <h2>What you can only see from the river</h2>
+        <p>From the overlook, you see the bend from 1,000 feet above. From the river, you see the same walls from within — pale sandstone rising 800 feet around you, the canyon silence broken only by your paddle or the raft's gentle churn.</p>
+        <p>The Colorado River through Glen Canyon is calm, rapid-free water. No white-water experience needed. Kids as young as 4 are welcome on the raft trips.</p>
+      </div>
+      <div class="why-stats">
+        <div class="stat"><span class="sv">15</span><span class="sl">miles of intact Glen Canyon</span></div>
+        <div class="stat"><span class="sv">800<span class="su">ft</span></span><span class="sl">canyon walls above the river</span></div>
+        <div class="stat"><span class="sv">0</span><span class="sl">rapids — calm, smooth water</span></div>
+        <div class="stat"><span class="sv">1 hr</span><span class="sl">from Page to Lees Ferry</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tours -->
+  <section class="sec tours-sec" id="tours">
+    <div class="wrap">
+      <div class="eyebrow"><span></span><span class="kicker">Your options</span></div>
+      <h2>River &amp; boat tours from Page, AZ</h2>
+      <div class="river-tours">
+        {tours.map((t) => (
+          <div class="rtour">
+            <div class="rtour-img ph ph--navy">
+              <span class="rtag">{t.tag}</span>
+              <span class="ph__label">{t.name}</span>
+            </div>
+            <div class="rtour-body">
+              <h3>{t.name}</h3>
+              <p class="rtour-desc">{t.description}</p>
+              <ul class="rtour-highlights">
+                {t.highlights.map((h) => <li>{h}</li>)}
+              </ul>
+              <div class="rtour-meta">
+                <span><b>Duration</b> {t.duration}</span>
+                <span><b>Ages</b> {t.minAge}</span>
+                <span><b>Season</b> {t.season}</span>
+                <span><b>Operator</b> {t.operator}</span>
+              </div>
+              <div class="rtour-footer">
+                <span class="rtour-price">{t.price}</span>
+                <BookingButton label="Check availability" variant="primary" />
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Need to know -->
+  <section class="sec info-sec">
+    <div class="wrap">
+      <div class="eyebrow"><span></span><span class="kicker">Before you book</span></div>
+      <h2>What you need to know</h2>
+      <div class="info-grid">
+        <div class="info-card">
+          <h3>Getting to Lees Ferry</h3>
+          <p>Most river tours depart from Lees Ferry, approximately 1 hour south of Page, AZ. Your tour operator will provide detailed directions and meeting point instructions when you book. Do not attempt to arrive independently without confirming the exact launch site.</p>
+        </div>
+        <div class="info-card">
+          <h3>Backcountry River Permit</h3>
+          <p>As of June 1, 2023, all watercraft using the 16-mile stretch between Glen Canyon Dam and Lees Ferry must register for a free Backcountry River Permit at the self-serve kiosk above the Lees Ferry Parking Lot. Your tour operator will explain the process.</p>
+        </div>
+        <div class="info-card">
+          <h3>Time zone note</h3>
+          <p>Page, AZ is on Mountain Standard Time year-round — Arizona does not observe Daylight Saving Time. The Navajo Nation surrounding Page DOES observe DST. If your tour or marina is on Navajo land, confirm the correct arrival time with your operator.</p>
+        </div>
+        <div class="info-card">
+          <h3>What to bring</h3>
+          <p>Sunscreen, hat, water shoes or closed-toe sandals, at least 1 liter of water per person, a change of clothes. Camera in a waterproof bag or case. Light jacket for early morning departures — the river canyon is cool even in summer.</p>
+        </div>
+        <div class="info-card">
+          <h3>Antelope Point Marina</h3>
+          <p>Lake Powell boat tours depart from Antelope Point Marina, approximately 30 minutes from downtown Page. If you're staying at Lake Powell Resort, add 15 minutes to your drive time. Confirm your check-in time when you book — they operate on Navajo time.</p>
+        </div>
+        <div class="info-card">
+          <h3>Booking in advance</h3>
+          <p>Peak season (May–September) fills fast. Book your river tour at least 2–4 weeks in advance, or as early as possible. If you arrive without a reservation, same-day spots are available but not guaranteed. Winter tours may require a minimum group size.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band">
+    <div class="wrap cta-inner">
+      <div>
+        <p class="kicker on-dark">Not ready for the water?</p>
+        <h2>Hike to the overlook instead</h2>
+        <p>The self-guided 0.6-mile trail from the parking lot is free to hike and open sunrise to sunset.</p>
+      </div>
+      <div class="cta-btns">
+        <a href="/hike-horseshoe-bend/" class="btn btn--primary">Trail guide →</a>
+        <a href="/tours/" class="btn btn--ghost-light">All tours →</a>
+      </div>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+/* Hero */
+.river-hero { position: relative; min-height: 80vh; display: flex; align-items: center; overflow: hidden; color: #fff; }
+.rh-bg { position: absolute; inset: 0; z-index: 0; }
+.rh-overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(160deg, rgba(13,32,50,.4) 0%, rgba(13,32,50,.8) 100%); }
+.rh-body { position: relative; z-index: 2; padding-top: 110px; padding-bottom: 72px; }
+.bc { font-family: var(--font-mono); font-size: 12px; letter-spacing: .06em; color: #9fb0bf; margin-bottom: 24px; display: flex; gap: 8px; align-items: center; }
+.bc a { color: #9fb0bf; }
+.bc a:hover { color: #fff; }
+.river-hero h1 { font-size: clamp(42px, 8vw, 80px); color: #fff; text-transform: uppercase; margin: 14px 0 24px; line-height: .9; letter-spacing: -.03em; }
+.rh-sub { font-size: clamp(16px, 2vw, 19px); color: rgba(255,255,255,.82); max-width: 54ch; margin: 0 0 36px; line-height: 1.5; }
+.rh-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+
+/* Why section */
+.why-sec { background: var(--navy); color: #fff; padding: 80px 0; }
+.why-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.why-text h2 { font-size: clamp(28px, 4vw, 42px); text-transform: uppercase; color: #fff; margin: 16px 0 18px; }
+.why-text p { font-size: 16px; color: #aebcc8; margin: 0 0 16px; line-height: 1.65; }
+.why-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.stat { background: rgba(255,255,255,.06); border-radius: var(--radius); padding: 24px; }
+.sv { display: block; font-family: var(--font-display); font-weight: 900; font-size: 44px; color: var(--orange-bright); line-height: 1; }
+.su { font-size: 24px; }
+.sl { display: block; font-size: 13px; color: #8fa0af; margin-top: 6px; line-height: 1.4; }
+
+/* Tours */
+.tours-sec { background: var(--paper); }
+.tours-sec h2 { font-size: clamp(28px, 4vw, 44px); text-transform: uppercase; margin: 16px 0 44px; }
+.river-tours { display: flex; flex-direction: column; gap: 48px; }
+.rtour { display: grid; grid-template-columns: 420px 1fr; gap: 0; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--sand-line); background: #fff; }
+.rtour-img { position: relative; min-height: 320px; }
+.rtag { position: absolute; top: 16px; left: 16px; font-family: var(--font-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; background: var(--orange); color: #fff; padding: 6px 12px; border-radius: 999px; font-weight: 700; z-index: 1; }
+.rtour-body { padding: 36px; }
+.rtour-body h3 { font-size: 26px; color: var(--navy); text-transform: uppercase; margin: 0 0 14px; }
+.rtour-desc { font-size: 16px; color: var(--ink-soft); margin: 0 0 20px; line-height: 1.6; }
+.rtour-highlights { margin: 0 0 24px; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.rtour-highlights li { font-size: 14px; color: var(--ink-soft); padding-left: 22px; position: relative; line-height: 1.4; }
+.rtour-highlights li::before { content: '→'; position: absolute; left: 0; color: var(--orange); font-weight: 700; font-size: 12px; }
+.rtour-meta { display: flex; gap: 20px; flex-wrap: wrap; font-size: 13px; color: var(--ink-mute); margin-bottom: 24px; padding: 16px 0; border-top: 1px solid var(--sand-line); font-family: var(--font-mono); }
+.rtour-meta b { color: var(--navy); display: block; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 2px; }
+.rtour-footer { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+.rtour-price { font-family: var(--font-display); font-weight: 900; font-size: 22px; color: var(--navy); }
+
+/* Info grid */
+.info-sec { background: var(--cream); }
+.info-sec h2 { font-size: clamp(28px, 4vw, 40px); text-transform: uppercase; margin: 16px 0 40px; }
+.info-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.info-card { background: #fff; border-radius: var(--radius); padding: 24px; border: 1px solid var(--sand-line); }
+.info-card h3 { font-size: 18px; color: var(--navy); text-transform: uppercase; margin: 0 0 12px; }
+.info-card p { font-size: 14px; color: var(--ink-soft); margin: 0; line-height: 1.6; }
+
+/* CTA */
+.cta-band { background: var(--navy-deep); color: #fff; padding: 80px 0; }
+.cta-inner { display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+.cta-band h2 { font-size: clamp(26px, 4vw, 40px); color: #fff; margin: 10px 0 12px; text-transform: uppercase; }
+.cta-band p { color: #aebcc8; margin: 0; font-size: 16px; }
+.cta-btns { display: flex; gap: 14px; flex-wrap: wrap; flex: none; }
+
+@media (max-width: 1024px) {
+  .rtour { grid-template-columns: 1fr; }
+  .rtour-img { min-height: 240px; }
+}
+@media (max-width: 860px) {
+  .why-inner { grid-template-columns: 1fr; gap: 40px; }
+  .info-grid { grid-template-columns: 1fr 1fr; }
+  .cta-inner { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 480px) {
+  .info-grid { grid-template-columns: 1fr; }
+  .rh-btns { flex-direction: column; }
+}
+</style>

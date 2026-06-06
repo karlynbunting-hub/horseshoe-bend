@@ -1,0 +1,166 @@
+---
+// WeatherWidget — live NWS weather for Page, AZ + ticking MST clock
+// Fetches NWS API client-side; caches gridpoint in localStorage (24 h TTL)
+---
+<div class="wx" id="weather-widget">
+  <div class="now">
+    <div class="temp" id="wx-temp">—°</div>
+    <div>
+      <div class="cond" id="wx-cond">Loading…</div>
+      <div class="loc">Page, AZ · Horseshoe Bend</div>
+    </div>
+  </div>
+  <div class="clock">
+    <div style="display:flex;align-items:baseline;gap:4px">
+      <div class="ct" id="wx-time">—:——</div>
+      <div class="cs" id="wx-secs">:——</div>
+    </div>
+    <div class="cl">Local time · MST (no DST)</div>
+  </div>
+  <div class="wx-days" id="wx-days">
+    {[0,1,2,3].map(() => (
+      <div class="wx-day">
+        <div class="d">—</div>
+        <div class="ic">🌡</div>
+        <div class="hi">—°</div>
+        <div class="lo">—</div>
+      </div>
+    ))}
+  </div>
+  <div class="best">
+    <b>Best time to visit</b>
+    Arrive before 9 AM or after 5 PM. Sunrise and sunset deliver the best light on the Colorado River.
+  </div>
+</div>
+
+<script>
+(function () {
+  const TZ = 'America/Phoenix';
+  const LAT = 36.8791;
+  const LON = -111.5100;
+  const UA = 'horseshoebend.com contact@horseshoebend.com';
+  const CACHE_KEY = 'hb_wx_grid_v1';
+  const CACHE_TTL = 86_400_000; // 24 h
+
+  // ── Clock ──────────────────────────────────────────────────────────
+  const timeFmt = new Intl.DateTimeFormat('en-US', { timeZone: TZ, hour: 'numeric', minute: '2-digit', hour12: true });
+  const secFmt  = new Intl.DateTimeFormat('en-US', { timeZone: TZ, second: '2-digit' });
+  const dayFmt  = new Intl.DateTimeFormat('en-US', { timeZone: TZ, weekday: 'short' });
+
+  function tick() {
+    const now = new Date();
+    const parts = timeFmt.formatToParts(now);
+    const h = parts.find(p => p.type === 'hour')?.value ?? '—';
+    const m = parts.find(p => p.type === 'minute')?.value ?? '——';
+    const ampm = parts.find(p => p.type === 'dayperiod')?.value ?? '';
+    const s = secFmt.formatToParts(now).find(p => p.type === 'second')?.value?.padStart(2, '0') ?? '——';
+    const timeEl = document.getElementById('wx-time');
+    const secsEl = document.getElementById('wx-secs');
+    if (timeEl) timeEl.textContent = `${h}:${m} ${ampm}`;
+    if (secsEl) secsEl.textContent = `:${s}`;
+  }
+  tick();
+  setInterval(tick, 1000);
+
+  // ── NWS Weather ───────────────────────────────────────────────────
+  const WX_ICONS: Record<string, string> = {
+    sunny: '☀️', clear: '☀️', 'mostly sunny': '🌤', 'partly sunny': '⛅',
+    'partly cloudy': '⛅', 'mostly cloudy': '🌥', cloudy: '☁️', overcast: '☁️',
+    rain: '🌧', showers: '🌦', thunderstorm: '⛈', snow: '❄️',
+    windy: '💨', fog: '🌫', haze: '🌫',
+  };
+
+  function wxIcon(shortForecast: string): string {
+    const sf = (shortForecast || '').toLowerCase();
+    for (const [key, icon] of Object.entries(WX_ICONS)) {
+      if (sf.includes(key)) return icon;
+    }
+    return '🌡';
+  }
+
+  async function getGridpoint(): Promise<{ forecastUrl: string; forecastHourlyUrl: string }> {
+    try {
+      const cached = localStorage.getItem(CACHE_KEY);
+      if (cached) {
+        const { data, ts } = JSON.parse(cached);
+        if (Date.now() - ts < CACHE_TTL) return data;
+      }
+    } catch {}
+    const res = await fetch(`https://api.weather.gov/points/${LAT},${LON}`, {
+      headers: { 'User-Agent': UA },
+    });
+    if (!res.ok) throw new Error(`NWS points: ${res.status}`);
+    const json = await res.json();
+    const data = {
+      forecastUrl: json.properties.forecast as string,
+      forecastHourlyUrl: json.properties.forecastHourly as string,
+    };
+    try { localStorage.setItem(CACHE_KEY, JSON.stringify({ data, ts: Date.now() })); } catch {}
+    return data;
+  }
+
+  (async () => {
+    try {
+      const { forecastUrl, forecastHourlyUrl } = await getGridpoint();
+
+      const [hourlyRes, forecastRes] = await Promise.all([
+        fetch(forecastHourlyUrl, { headers: { 'User-Agent': UA } }),
+        fetch(forecastUrl,       { headers: { 'User-Agent': UA } }),
+      ]);
+
+      if (hourlyRes.ok) {
+        const d = await hourlyRes.json();
+        const cur = d.properties.periods[0];
+        const tempEl = document.getElementById('wx-temp');
+        const condEl = document.getElementById('wx-cond');
+        if (tempEl) tempEl.textContent = `${cur.temperature}°`;
+        if (condEl) condEl.textContent = cur.shortForecast;
+      }
+
+      if (forecastRes.ok) {
+        const d = await forecastRes.json();
+        const days = (d.properties.periods as any[]).filter(p => p.isDaytime).slice(0, 4);
+        const daysEl = document.getElementById('wx-days');
+        if (daysEl) {
+          daysEl.innerHTML = days.map(day => {
+            const name = dayFmt.format(new Date(day.startTime));
+            return `<div class="wx-day">
+              <div class="d">${name}</div>
+              <div class="ic">${wxIcon(day.shortForecast)}</div>
+              <div class="hi">${day.temperature}°</div>
+              <div class="lo" title="${day.shortForecast}">${day.shortForecast.split(' ').slice(0, 2).join(' ')}</div>
+            </div>`;
+          }).join('');
+        }
+      }
+    } catch {
+      const condEl = document.getElementById('wx-cond');
+      if (condEl) condEl.textContent = 'Sunny · ~75°F avg';
+    }
+  })();
+})();
+</script>
+
+<style>
+.wx { background: var(--navy); color: #fff; border-radius: var(--radius-lg); padding: 28px; display: flex; flex-direction: column; height: 100%; }
+.now { display: flex; align-items: baseline; gap: 14px; }
+.temp { font-family: var(--font-display); font-weight: 900; font-size: 62px; line-height: .9; }
+.cond { font-family: var(--font-mono); font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--orange-bright); }
+.loc { font-size: 14px; color: #aebcc8; margin-top: 4px; }
+.clock {
+  display: flex; align-items: baseline; gap: 10px; margin-top: 18px;
+  padding-top: 16px; border-top: 1px solid rgba(255,255,255,.14);
+  flex-wrap: wrap;
+}
+.ct { font-family: var(--font-mono); font-weight: 700; font-size: 28px; color: #fff; line-height: 1; font-variant-numeric: tabular-nums; }
+.cs { font-family: var(--font-mono); font-size: 16px; color: var(--orange-bright); font-weight: 700; }
+.cl { font-family: var(--font-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: #9fb0bf; margin-top: 4px; width: 100%; }
+.wx-days { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 24px 0; }
+.wx-day { background: rgba(255,255,255,.07); border-radius: 11px; padding: 13px 6px; text-align: center; }
+.wx-day .d { font-family: var(--font-mono); font-size: 11px; color: #9fb0bf; letter-spacing: .04em; }
+.wx-day .ic { font-size: 22px; margin: 8px 0; }
+.wx-day .hi { font-weight: 800; font-size: 16px; }
+.wx-day .lo { font-size: 11px; color: #9fb0bf; }
+.best { margin-top: auto; font-size: 14px; color: #d8e0e8; border-top: 1px solid rgba(255,255,255,.14); padding-top: 16px; }
+.best b { color: var(--orange-bright); font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; display: block; margin-bottom: 4px; }
+</style>

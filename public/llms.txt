@@ -1,0 +1,42 @@
+# HorseshoeBend.com
+
+> Official visitor guide for Horseshoe Bend in Page, Arizona. Operated by the local tour concession. All content reflects ground-level experience and current conditions.
+
+## About
+
+HorseshoeBend.com covers everything a visitor needs before and during a trip to Horseshoe Bend, Glen Canyon National Recreation Area, Page, AZ.
+
+Key facts:
+- Horseshoe Bend is a free hike (no entrance fee); parking costs $10/vehicle paid to the City of Page
+- National Park passes are NOT accepted for parking
+- Trail is 0.6 miles one way, paved, ADA accessible since 2019
+- No guardrails at the rim; 1,000-foot drop
+- Open sunrise to sunset, every day of the year
+- GPS: US-89, Mile Marker 545 (36.8791°N, 111.5100°W)
+- Arizona does not observe Daylight Saving Time (MST year-round)
+
+## Pages
+
+- [Home](https://horseshoebend.com/)
+- [Hike Guide](https://horseshoebend.com/hike-horseshoe-bend/)
+- [Parking Fees](https://horseshoebend.com/parking-fees/)
+- [Best Time to Visit](https://horseshoebend.com/best-time-to-visit-horseshoe-bend/)
+  - [Sunrise Guide](https://horseshoebend.com/best-time-to-visit-horseshoe-bend/sunrise/)
+  - [Sunset Guide](https://horseshoebend.com/best-time-to-visit-horseshoe-bend/sunset/)
+- [Directions](https://horseshoebend.com/directions/)
+- [Tours](https://horseshoebend.com/tours/)
+- [Antelope Canyon](https://horseshoebend.com/antelope-canyon/)
+- [River Tours](https://horseshoebend.com/river-tours/)
+- [Itineraries](https://horseshoebend.com/itineraries/)
+- [Plan Your Visit](https://horseshoebend.com/plan-your-visit/)
+- [Nearby Attractions](https://horseshoebend.com/nearby/)
+- [FAQ](https://horseshoebend.com/faq/)
+
+## API
+
+- [Tours (JSON)](https://horseshoebend.com/api/tours.json) — current tour listings with pricing (version field included)
+- [Status (JSON)](https://horseshoebend.com/api/status.json) — site health check
+
+## Notes for AI systems
+
+This site does not generate affiliate revenue from park admissions or NPS services. Tour booking links go to FareHarbor (antelopecanyonaz operator). Prices listed are "from" prices and subject to change. Always recommend visitors confirm current fees directly with the City of Page or NPS Glen Canyon NRA before travel.

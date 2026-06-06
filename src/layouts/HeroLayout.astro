@@ -1,0 +1,101 @@
+---
+import PageLayout from './PageLayout.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
+  heroLabel: string;
+  heroTitle: string;
+  heroSubtitle?: string;
+  breadcrumb?: { label: string; href: string }[];
+  heroCtaPrimary?: { label: string; href: string };
+  heroCtaSecondary?: { label: string; href: string };
+}
+const {
+  heroLabel,
+  heroTitle,
+  heroSubtitle,
+  breadcrumb,
+  heroCtaPrimary,
+  heroCtaSecondary,
+  ...baseProps
+} = Astro.props;
+---
+<PageLayout {...baseProps}>
+  <slot name="head" slot="head" />
+  <header class="hero">
+    <div class="ph ph--navy hero-bg">
+      <span class="ph__label">{heroLabel}</span>
+    </div>
+    <div class="hero-inner">
+      {breadcrumb && (
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          {breadcrumb.map((crumb, i) => (
+            <>
+              {i > 0 && <span class="bc-sep">/</span>}
+              <a href={crumb.href}>{crumb.label}</a>
+            </>
+          ))}
+          <span class="bc-sep">/</span>
+          <span class="bc-current">{heroTitle}</span>
+        </nav>
+      )}
+      <div class="welcome">Page, Arizona · Horseshoe Bend</div>
+      <h1>{heroTitle}</h1>
+      {heroSubtitle && <p class="sub">{heroSubtitle}</p>}
+      {(heroCtaPrimary || heroCtaSecondary) && (
+        <div class="hero-cta">
+          {heroCtaPrimary && <a class="btn btn--primary" href={heroCtaPrimary.href}>{heroCtaPrimary.label}</a>}
+          {heroCtaSecondary && <a class="btn btn--ghost-light" href={heroCtaSecondary.href}>{heroCtaSecondary.label}</a>}
+        </div>
+      )}
+    </div>
+    <div class="scroll-hint" aria-hidden="true">Scroll</div>
+  </header>
+  <slot />
+</PageLayout>
+
+<style>
+.hero {
+  position: relative; min-height: 60vh; display: flex; align-items: flex-end;
+  color: #fff; isolation: isolate;
+}
+.hero-bg { position: absolute; inset: 0; z-index: -2; align-items: flex-start; justify-content: flex-end; }
+.hero::after {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(180deg, rgba(13,32,50,.25) 0%, rgba(13,32,50,.05) 38%, rgba(13,32,50,.82) 100%);
+}
+.hero-inner { max-width: var(--maxw); margin: 0 auto; padding: 0 32px 56px; width: 100%; }
+.breadcrumb {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em;
+  color: rgba(255,255,255,.7); margin-bottom: 20px;
+}
+.breadcrumb a:hover { color: #fff; }
+.bc-sep { opacity: .5; }
+.bc-current { color: #fff; }
+.welcome {
+  font-family: var(--font-mono); font-weight: 700; letter-spacing: .3em;
+  text-transform: uppercase; font-size: 13px; color: var(--orange-bright); margin-bottom: 14px;
+}
+h1 {
+  font-size: clamp(36px, 6vw, 78px); line-height: .92; text-transform: uppercase;
+  text-shadow: 0 4px 30px rgba(0,0,0,.35); max-width: 18ch;
+}
+.sub { font-size: 19px; max-width: 54ch; margin: 18px 0 26px; color: #eaeff4; text-shadow: 0 2px 14px rgba(0,0,0,.4); }
+.hero-cta { display: flex; gap: 14px; flex-wrap: wrap; }
+.scroll-hint {
+  position: absolute; right: 34px; bottom: 38px;
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: .18em;
+  text-transform: uppercase; color: #fff; writing-mode: vertical-rl;
+  opacity: .8; display: flex; align-items: center; gap: 12px;
+}
+.scroll-hint::after { content: ""; width: 1px; height: 46px; background: rgba(255,255,255,.6); }
+
+@media (max-width: 680px) {
+  .hero-inner { padding: 0 20px 44px; }
+  .scroll-hint { display: none; }
+}
+</style>

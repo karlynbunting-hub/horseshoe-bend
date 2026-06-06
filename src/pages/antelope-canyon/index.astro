@@ -1,0 +1,213 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import SchemaLD from '../../components/SchemaLD.astro';
+import BookingButton from '../../components/islands/BookingButton.astro';
+
+const title = 'Antelope Canyon Tours from Page, AZ | Upper, Lower & Cathedral';
+const description = 'Book guided tours of Upper and Lower Antelope Canyon, plus Cathedral Slot Canyon — 4 miles from Horseshoe Bend. Navajo-guided tours required. Book well in advance.';
+const canonical = 'https://horseshoebend.com/antelope-canyon/';
+
+const canyons = [
+  {
+    name: 'Upper Antelope Canyon',
+    aka: 'The Crack',
+    type: 'Most iconic',
+    difficulty: 'Easy',
+    length: '100 yards, flat',
+    notes: 'The canyon most people have seen in photos — swirling sandstone chambers, light beams. The easiest to tour. Requires tour from one of three Page-based outfitters.',
+    bestFor: 'Families, first-timers, photographers chasing light beams (midday May–July)',
+  },
+  {
+    name: 'Lower Antelope Canyon',
+    aka: 'The Corkscrew',
+    type: 'Most visited',
+    difficulty: 'Moderate',
+    length: '~¼ mile, ladders required',
+    notes: 'Slightly more adventurous with metal staircases and tighter passages. Often less crowded than Upper. Tour with Ken\'s Tours or Dixie Ellis at the Tribal Park Entrance Gate.',
+    bestFor: 'Those comfortable with ladders and confined spaces; better for independent photography',
+  },
+  {
+    name: 'Cathedral Slot Canyon',
+    aka: 'Cathedral Canyon',
+    type: 'Hidden gem',
+    difficulty: 'Moderate',
+    length: 'Full slot canyon + exterior formations',
+    notes: 'Less-known alternative to Upper and Lower. Features similar swirling sandstone plus unique exterior rock formations. Far fewer crowds — great option when other tours are sold out.',
+    bestFor: 'Adventure seekers, those who missed Upper/Lower bookings, photography enthusiasts',
+  },
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'TouristAttraction',
+  name: 'Antelope Canyon',
+  description: 'A series of slot canyons on Navajo land near Page, AZ, famous for wave-like sandstone walls and light beams. Guided tours required.',
+  url: canonical,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Page',
+    addressRegion: 'AZ',
+    postalCode: '86040',
+    addressCountry: 'US',
+  },
+  geo: { '@type': 'GeoCoordinates', latitude: 36.8619, longitude: -111.3743 },
+  touristType: 'Photographers, Families, Hikers',
+  isAccessibleForFree: false,
+};
+---
+
+<PageLayout {title} {description} {canonical}>
+  <SchemaLD slot="head" {schema} />
+
+  <header class="page-hero">
+    <div class="wrap">
+      <nav class="bc" aria-label="Breadcrumb">
+        <a href="/">Home</a><span>›</span>
+        <span aria-current="page">Antelope Canyon</span>
+      </nav>
+      <p class="kicker on-dark">4 miles from Horseshoe Bend · Navajo Nation</p>
+      <h1>Antelope Canyon Tours</h1>
+      <p class="sub">The world's most photographed slot canyon — a 10-minute drive from Horseshoe Bend. A guided tour is required. Book weeks in advance in peak season.</p>
+      <div class="hero-btns">
+        <BookingButton label="Book Antelope Canyon tour" variant="primary" />
+      </div>
+    </div>
+  </header>
+
+  <!-- Important notice -->
+  <div class="notice-bar">
+    <div class="wrap notice-inner">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+      <p><strong>Guided tour is required.</strong> Antelope Canyon is on Navajo Tribal Land. You cannot enter without a licensed Navajo guide. No walk-ins. Reservations required — book as early as possible, especially for summer visits.</p>
+    </div>
+  </div>
+
+  <!-- Canyon options -->
+  <section class="sec canyons-sec">
+    <div class="wrap">
+      <div class="eyebrow"><span></span><span class="kicker">Your options</span></div>
+      <h2>Which Antelope Canyon should you visit?</h2>
+      <div class="canyons-grid">
+        {canyons.map((c) => (
+          <div class="canyon-card">
+            <div class="cc-img ph ph--navy">
+              <span class="cc-tag">{c.type}</span>
+              <span class="ph__label">{c.name} — slot canyon sandstone walls</span>
+            </div>
+            <div class="cc-body">
+              <p class="kicker">{c.aka}</p>
+              <h3>{c.name}</h3>
+              <p class="cc-desc">{c.notes}</p>
+              <div class="cc-meta">
+                <div class="cm-item"><span>Difficulty</span><strong>{c.difficulty}</strong></div>
+                <div class="cm-item"><span>Length</span><strong>{c.length}</strong></div>
+              </div>
+              <p class="cc-best"><strong>Best for:</strong> {c.bestFor}</p>
+              <BookingButton label={`Book ${c.name}`} variant="navy" />
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Key facts -->
+  <section class="sec facts-sec">
+    <div class="wrap">
+      <div class="eyebrow"><span></span><span class="kicker">Before you book</span></div>
+      <h2>What to know about Antelope Canyon tours</h2>
+      <div class="facts-grid">
+        <div class="fact-card">
+          <h3>Book as early as possible</h3>
+          <p>Peak season (March–October) tours book up weeks or months in advance. If you're visiting in summer, try to book your tour the moment your travel dates are confirmed.</p>
+        </div>
+        <div class="fact-card">
+          <h3>Light beams happen midday in summer</h3>
+          <p>The iconic light beams in Upper Antelope Canyon only occur when the sun is directly overhead — typically May through July, around midday. Tours at other times (and all of Lower Antelope) don't feature light beams.</p>
+        </div>
+        <div class="fact-card">
+          <h3>Photography tips</h3>
+          <p>Phone cameras work well. For serious photography, check if your tour operator allows tripods — not all do. Midday tours in summer in Upper Antelope are best for light beams.</p>
+        </div>
+        <div class="fact-card">
+          <h3>Sold out? Try Cathedral Canyon</h3>
+          <p>Cathedral Slot Canyon is a compelling alternative when Upper and Lower are fully booked. It's less famous but equally stunning — and far less crowded.</p>
+          <a href="/tours/" class="inline-link">Cathedral Slot Canyon tour →</a>
+        </div>
+        <div class="fact-card">
+          <h3>Time zone note</h3>
+          <p>Antelope Canyon is on Navajo Nation land, which observes Daylight Saving Time. Page, AZ does not. In summer, Navajo time is one hour ahead of Page time. Confirm your check-in time carefully.</p>
+        </div>
+        <div class="fact-card">
+          <h3>Distance from Horseshoe Bend</h3>
+          <p>Antelope Canyon is approximately 4–7 miles from Horseshoe Bend (depending on which branch you tour), a 10–15 minute drive. Both can easily be done in one day.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band">
+    <div class="wrap cta-inner">
+      <div>
+        <p class="kicker on-dark">Also nearby</p>
+        <h2>Pair it with the overlook hike</h2>
+        <p>Horseshoe Bend is 10 minutes away. The hike takes 1–2 hours and requires only a $10 parking fee.</p>
+      </div>
+      <div class="cta-btns">
+        <a href="/hike-horseshoe-bend/" class="btn btn--primary">Hike guide →</a>
+        <a href="/itineraries/" class="btn btn--ghost-light">48-hr itinerary →</a>
+      </div>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+.page-hero { background: var(--navy); color: #fff; padding: 80px 0 64px; }
+.bc { font-family: var(--font-mono); font-size: 12px; letter-spacing: .06em; color: #9fb0bf; margin-bottom: 24px; display: flex; gap: 8px; align-items: center; }
+.bc a { color: #9fb0bf; }
+.bc a:hover { color: #fff; }
+.page-hero h1 { font-size: clamp(32px, 6vw, 56px); color: #fff; margin: 12px 0 18px; text-transform: uppercase; }
+.page-hero .sub { font-size: 18px; color: #aebcc8; margin: 0 0 28px; max-width: 60ch; }
+.hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+
+.notice-bar { background: #fdf3ec; border-bottom: 1px solid #f4c99a; padding: 18px 0; }
+.notice-inner { display: flex; gap: 14px; align-items: flex-start; }
+.notice-inner svg { color: var(--orange); flex: none; margin-top: 2px; }
+.notice-inner p { margin: 0; font-size: 15px; color: var(--ink); }
+
+.canyons-sec { background: var(--paper); }
+.canyons-sec h2 { font-size: clamp(28px, 4vw, 42px); text-transform: uppercase; margin: 16px 0 40px; }
+.canyons-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.canyon-card { background: #fff; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--sand-line); display: flex; flex-direction: column; }
+.cc-img { aspect-ratio: 3/2; position: relative; }
+.cc-tag { position: absolute; top: 14px; left: 14px; font-family: var(--font-mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; background: var(--orange); color: #fff; padding: 5px 10px; border-radius: 999px; z-index: 1; font-weight: 700; }
+.cc-body { padding: 24px; display: flex; flex-direction: column; flex: 1; }
+.cc-body .kicker { margin-bottom: 4px; }
+.cc-body h3 { font-size: 22px; color: var(--navy); text-transform: uppercase; margin: 0 0 12px; }
+.cc-desc { font-size: 14px; color: var(--ink-soft); margin: 0 0 16px; line-height: 1.6; }
+.cc-meta { display: flex; gap: 20px; font-size: 13px; color: var(--ink-mute); margin-bottom: 14px; font-family: var(--font-mono); }
+.cm-item span { display: block; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; }
+.cm-item strong { color: var(--navy); font-size: 14px; }
+.cc-best { font-size: 13px; color: var(--ink-soft); margin: 0 0 20px; }
+.cc-body .btn { margin-top: auto; }
+
+.facts-sec { background: var(--cream); }
+.facts-sec h2 { font-size: clamp(28px, 4vw, 40px); text-transform: uppercase; margin: 16px 0 40px; }
+.facts-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.fact-card { background: #fff; border-radius: var(--radius); padding: 24px; border: 1px solid var(--sand-line); }
+.fact-card h3 { font-size: 18px; color: var(--navy); text-transform: uppercase; margin: 0 0 12px; }
+.fact-card p { font-size: 14px; color: var(--ink-soft); margin: 0 0 8px; line-height: 1.6; }
+.inline-link { font-family: var(--font-mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--orange-deep); font-weight: 700; }
+
+.cta-band { background: var(--navy-deep); color: #fff; padding: 80px 0; }
+.cta-inner { display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+.cta-band h2 { font-size: clamp(26px, 4vw, 40px); color: #fff; margin: 10px 0 12px; text-transform: uppercase; }
+.cta-band p { color: #aebcc8; margin: 0; font-size: 16px; }
+.cta-btns { display: flex; gap: 14px; flex-wrap: wrap; flex: none; }
+
+@media (max-width: 860px) {
+  .canyons-grid, .facts-grid { grid-template-columns: 1fr; }
+  .cta-inner { flex-direction: column; align-items: flex-start; }
+}
+</style>

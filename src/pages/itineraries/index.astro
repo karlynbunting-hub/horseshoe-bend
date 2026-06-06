@@ -1,0 +1,241 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import SchemaLD from '../../components/SchemaLD.astro';
+
+const title = 'Page, AZ Itineraries | 24 Hours, 48 Hours & Grand Circle Road Trips';
+const description = 'How to spend 24 or 48 hours in Page, AZ: Horseshoe Bend, Antelope Canyon, river tours, and the Grand Circle. Drive times and day-by-day plans from Las Vegas, Phoenix, and Grand Canyon.';
+const canonical = 'https://horseshoebend.com/itineraries/';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: title,
+  description,
+  url: canonical,
+  breadcrumb: {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://horseshoebend.com/' },
+      { '@type': 'ListItem', position: 2, name: 'Itineraries', item: canonical },
+    ],
+  },
+};
+
+const grandCircleStops = [
+  { name: 'Las Vegas, NV', dist: 'Starting point', icon: '🎰' },
+  { name: 'Zion National Park', dist: '2.5 hrs from LV', icon: '🏔️' },
+  { name: 'Bryce Canyon NP', dist: '1.5 hrs from Zion', icon: '🌵' },
+  { name: 'Page, AZ', dist: '2 hrs from Bryce', icon: '📍' },
+  { name: 'Horseshoe Bend', dist: '5 mi from Page', icon: '🌊' },
+  { name: 'Antelope Canyon', dist: '4 mi from HB', icon: '🏜️' },
+  { name: 'Monument Valley', dist: '2 hrs from Page', icon: '🗿' },
+  { name: 'Grand Canyon South Rim', dist: '2.5 hrs from Page', icon: '🦅' },
+  { name: 'Sedona, AZ', dist: '1.5 hrs from GC', icon: '🔴' },
+  { name: 'Back to Las Vegas', dist: '4.5 hrs from Sedona', icon: '🎰' },
+];
+---
+
+<PageLayout {title} {description} {canonical}>
+  <SchemaLD slot="head" {schema} />
+
+  <header class="page-hero">
+    <div class="wrap">
+      <nav class="bc" aria-label="Breadcrumb">
+        <a href="/">Home</a><span>›</span>
+        <span aria-current="page">Itineraries</span>
+      </nav>
+      <p class="kicker on-dark">Page, AZ · Grand Circle · Road trips</p>
+      <h1>Page, AZ Itineraries</h1>
+      <p class="sub">Whether you have one day or two weeks, here's how to make the most of Horseshoe Bend and the American Southwest.</p>
+    </div>
+  </header>
+
+  <!-- 24-hour plan -->
+  <section class="sec plan-sec" id="24-hours">
+    <div class="wrap">
+      <div class="eyebrow"><span></span><span class="kicker">One day</span></div>
+      <h2>24 Hours in Page, Arizona</h2>
+      <p class="plan-intro">Arriving from Grand Canyon South Rim, Flagstaff, or Sedona? Here's the essential one-day loop.</p>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-time">Morning</div>
+          <div class="tl-desc">
+            <h3>Horseshoe Bend Overlook</h3>
+            <p>Horseshoe Bend is 5 miles south of Page on US-89 — hit it on the way into town. Arrive between sunrise and 9 AM to beat the crowds and avoid the midday heat. Give yourself 1–2 hours. Pay the $10 parking fee at the booth.</p>
+            <a href="/hike-horseshoe-bend/" class="ilink">Trail guide →</a>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">Mid-morning</div>
+          <div class="tl-desc">
+            <h3>Check in, then Antelope Canyon</h3>
+            <p>Drop your bags at your hotel, then head to your pre-booked Antelope Canyon tour. Upper Antelope is easiest; Lower Antelope is more adventurous. Book before you arrive — in peak season, tours sell out days or weeks ahead.</p>
+            <a href="/antelope-canyon/" class="ilink">Antelope Canyon guide →</a>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">Afternoon</div>
+          <div class="tl-desc">
+            <h3>Glen Canyon Dam + Lake Powell drive</h3>
+            <p>After your canyon tour, take a self-guided walk around the Glen Canyon Dam Overlook and the Carl Hayden Visitor Center. Then drive the scenic Lakeshore Drive inside the Lake Powell Resort area for stunning views of the reservoir (entrance fee required).</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">Evening</div>
+          <div class="tl-desc">
+            <h3>Dinner in Page</h3>
+            <p>Page has a wide range of restaurants. The Ranch House Grille is a local favorite for breakfast/dinner. Into the Grand offers upscale cuisine with canyon views. Most restaurants are centrally located on Lake Powell Blvd.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 48-hour plan -->
+  <section class="sec plan-sec plan-sec--alt" id="48-hours">
+    <div class="wrap">
+      <div class="eyebrow"><span></span><span class="kicker">Two days</span></div>
+      <h2>48 Hours in Page, Arizona</h2>
+      <p class="plan-intro">Two days unlocks the water. Day 1 covers the sights; Day 2 puts you on the Colorado River.</p>
+
+      <div class="two-day">
+        <div class="day-block">
+          <div class="day-label">Day 1</div>
+          <div class="timeline">
+            <div class="tl-item">
+              <div class="tl-time">Mid-morning</div>
+              <div class="tl-desc">
+                <h3>Horseshoe Bend</h3>
+                <p>Hit the overlook on arrival from the south. 1–2 hours, $10 parking.</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-time">Early afternoon</div>
+              <div class="tl-desc">
+                <h3>Antelope Canyon tour</h3>
+                <p>Pre-booked Upper or Lower Antelope Canyon. Allow 2–3 hours including transport.</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-time">Late afternoon</div>
+              <div class="tl-desc">
+                <h3>Glen Canyon area</h3>
+                <p>Dam overlook, Carl Hayden Visitor Center, or the Lakeshore scenic drive.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="day-block">
+          <div class="day-label">Day 2</div>
+          <div class="timeline">
+            <div class="tl-item">
+              <div class="tl-time">Early morning (7 AM)</div>
+              <div class="tl-desc">
+                <h3>Glen Canyon Float Trip</h3>
+                <p>The half-day raft from Lees Ferry is the highlight of a two-day Page visit. Calm water, ages 4+, returns mid-afternoon. Or substitute a kayak trip for a more active experience.</p>
+                <a href="/river-tours/" class="ilink">River tours →</a>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-time">Afternoon</div>
+              <div class="tl-desc">
+                <h3>John Wesley Powell Museum</h3>
+                <p>The museum in downtown Page tells the story of the Colorado River explorer and the creation of Lake Powell. Fascinating and air-conditioned.</p>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-time">Evening</div>
+              <div class="tl-desc">
+                <h3>Depart or extend</h3>
+                <p>From Page: Monument Valley is 2 hours east, Grand Canyon South Rim is 2.5 hours south, Las Vegas is 4.5 hours west.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Grand Circle -->
+  <section class="sec gc-sec">
+    <div class="wrap">
+      <div class="eyebrow"><span></span><span class="kicker">Big picture</span></div>
+      <h2>The Grand Circle Road Trip</h2>
+      <p class="plan-intro">Page, AZ sits at the geographic heart of the American Southwest's greatest road trip circuit — five national parks and dozens of scenic wonders within a 300-mile loop from Las Vegas.</p>
+      <div class="gc-stops">
+        {grandCircleStops.map((s) => (
+          <div class="gc-stop">
+            <span class="gc-icon">{s.icon}</span>
+            <div>
+              <strong>{s.name}</strong>
+              <span class="gc-dist">{s.dist}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+      <p class="gc-note">Minimum 7–10 days recommended for the full Grand Circle. With 14 days, you can take your time, stay overnight at each destination, and add Arches, Canyonlands, Capitol Reef, or Monument Valley to the loop.</p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band">
+    <div class="wrap cta-inner">
+      <div>
+        <p class="kicker on-dark">Start planning</p>
+        <h2>Book your tours first</h2>
+        <p>Antelope Canyon tours and river trips fill up fast. Lock in your tour dates before booking accommodation.</p>
+      </div>
+      <div class="cta-btns">
+        <a href="/antelope-canyon/" class="btn btn--primary">Antelope Canyon →</a>
+        <a href="/river-tours/" class="btn btn--ghost-light">River tours →</a>
+      </div>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+.page-hero { background: var(--navy); color: #fff; padding: 80px 0 64px; }
+.bc { font-family: var(--font-mono); font-size: 12px; letter-spacing: .06em; color: #9fb0bf; margin-bottom: 24px; display: flex; gap: 8px; align-items: center; }
+.bc a { color: #9fb0bf; }
+.bc a:hover { color: #fff; }
+.page-hero h1 { font-size: clamp(32px, 6vw, 56px); color: #fff; margin: 12px 0 18px; text-transform: uppercase; }
+.page-hero .sub { font-size: 18px; color: #aebcc8; margin: 0; max-width: 60ch; }
+
+.plan-sec { background: var(--paper); }
+.plan-sec--alt { background: var(--cream); }
+.plan-sec h2 { font-size: clamp(28px, 4vw, 42px); text-transform: uppercase; margin: 16px 0 12px; }
+.plan-intro { font-size: 17px; color: var(--ink-soft); margin: 0 0 40px; max-width: 65ch; }
+.timeline { display: flex; flex-direction: column; border-left: 3px solid var(--orange); padding-left: 40px; gap: 0; }
+.tl-item { position: relative; padding: 0 0 36px; }
+.tl-item::before { content: ''; position: absolute; left: -47px; top: 4px; width: 12px; height: 12px; border-radius: 50%; background: var(--orange); border: 3px solid var(--paper); }
+.plan-sec--alt .tl-item::before { border-color: var(--cream); }
+.tl-time { font-family: var(--font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--orange-deep); font-weight: 700; margin-bottom: 6px; }
+.tl-desc h3 { font-size: 21px; color: var(--navy); margin: 0 0 8px; text-transform: uppercase; }
+.tl-desc p { font-size: 15px; color: var(--ink-soft); margin: 0 0 8px; line-height: 1.6; }
+.ilink { font-family: var(--font-mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--orange-deep); font-weight: 700; }
+.ilink:hover { text-decoration: underline; }
+
+.two-day { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+.day-label { font-family: var(--font-display); font-weight: 900; font-size: 52px; color: var(--orange); line-height: 1; margin-bottom: 28px; }
+
+.gc-sec { background: var(--navy); color: #fff; }
+.gc-sec h2 { font-size: clamp(28px, 4vw, 42px); text-transform: uppercase; color: #fff; margin: 16px 0 12px; }
+.gc-sec .plan-intro { color: #aebcc8; }
+.gc-stops { display: flex; flex-wrap: wrap; gap: 0; margin: 32px 0; border: 1px solid rgba(255,255,255,.1); border-radius: var(--radius-lg); overflow: hidden; }
+.gc-stop { display: flex; align-items: center; gap: 12px; padding: 16px 20px; border-right: 1px solid rgba(255,255,255,.1); border-bottom: 1px solid rgba(255,255,255,.1); flex: 1; min-width: 160px; background: rgba(255,255,255,.04); }
+.gc-icon { font-size: 22px; flex: none; }
+.gc-stop strong { display: block; font-size: 15px; color: #fff; }
+.gc-dist { font-family: var(--font-mono); font-size: 11px; color: #7f90a0; letter-spacing: .04em; }
+.gc-note { font-size: 15px; color: #aebcc8; margin: 24px 0 0; max-width: 72ch; }
+
+.cta-band { background: var(--orange); color: #fff; padding: 80px 0; }
+.cta-inner { display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+.cta-band h2 { font-size: clamp(26px, 4vw, 40px); color: #fff; margin: 10px 0 12px; text-transform: uppercase; }
+.cta-band p { color: rgba(255,255,255,.85); margin: 0; font-size: 16px; }
+.cta-btns { display: flex; gap: 14px; flex-wrap: wrap; flex: none; }
+
+@media (max-width: 860px) {
+  .two-day { grid-template-columns: 1fr; }
+  .cta-inner { flex-direction: column; align-items: flex-start; }
+}
+</style>

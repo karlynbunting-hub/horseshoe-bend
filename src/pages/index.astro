@@ -1,17 +1,424 @@
 ---
+import PageLayout from '../layouts/PageLayout.astro';
+import SchemaLD from '../components/SchemaLD.astro';
+import FactsStrip from '../components/FactsStrip.astro';
+import TourCard from '../components/TourCard.astro';
+import HikeSteps from '../components/HikeSteps.astro';
+import NearbyCard from '../components/NearbyCard.astro';
+import WeatherWidget from '../components/islands/WeatherWidget.astro';
+import BookingButton from '../components/islands/BookingButton.astro';
+import { featuredTours } from '../data/tours';
 
+const title = 'Horseshoe Bend | Colorado River Overlook, Page, AZ';
+const description = 'Horseshoe Bend is a 270° meander of the Colorado River near Page, AZ. Hike 0.6 miles from the parking lot to one of the most photographed views in the American West.';
+const canonical = 'https://horseshoebend.com/';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'TouristAttraction',
+  name: 'Horseshoe Bend',
+  description:
+    'A 270-degree incised meander of the Colorado River, located 5 miles south of Page, AZ within Glen Canyon National Recreation Area.',
+  url: 'https://horseshoebend.com/',
+  image: 'https://horseshoebend.com/og-horseshoe-bend.jpg',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'US-89, Mile Marker 545',
+    addressLocality: 'Page',
+    addressRegion: 'AZ',
+    postalCode: '86040',
+    addressCountry: 'US',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 36.8791,
+    longitude: -111.51,
+  },
+  openingHours: 'Mo-Su sunrise-sunset',
+  publicAccess: true,
+  touristType: 'Hikers, Photographers, Families',
+  isAccessibleForFree: false,
+  priceRange: '$10 parking per vehicle',
+};
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<PageLayout {title} {description} {canonical}>
+  <SchemaLD slot="head" {schema} />
+
+  <!-- ── Hero ──────────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="hero-bg ph ph--navy">
+      <span class="ph__label">Horseshoe Bend overlook — 270° Colorado River meander</span>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="wrap hero-body">
+      <p class="kicker on-dark">Page, AZ · Glen Canyon NRA</p>
+      <h1>Horseshoe<br>Bend</h1>
+      <p class="hero-sub">A 270° curve of the Colorado River, carved 1,000 feet below the Arizona desert. One of the most photographed views in North America.</p>
+      <div class="hero-btns">
+        <a href="/hike-horseshoe-bend/" class="btn btn--primary">Hike on your own</a>
+        <BookingButton label="Book a tour" variant="ghost-light" />
+      </div>
+      <a href="#essentials" class="scroll-hint" aria-label="Scroll down">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 10l5 5 5-5"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ── Facts strip ───────────────────────────────────────── -->
+  <FactsStrip />
+
+  <!-- ── Intro ─────────────────────────────────────────────── -->
+  <section class="sec intro-sec" id="essentials">
+    <div class="wrap intro-wrap">
+      <div class="intro-text">
+        <div class="eyebrow"><span></span><span class="kicker">The overlook</span></div>
+        <h2>The Colorado River's most iconic bend</h2>
+        <p>Over millions of years, the Colorado River cut nearly 1,000 feet into the Navajo sandstone of the Colorado Plateau, carving a horseshoe-shaped curve so dramatic it defies belief. Today, a 0.6-mile paved trail leads from the parking lot to the rim — one of the most awe-inspiring views in the American West.</p>
+        <p>Located 5 miles south of Page, AZ, Horseshoe Bend sits within Glen Canyon National Recreation Area. The overlook is self-guided, no permit required. The parking lot charges $10 per vehicle, operated by the City of Page.</p>
+        <div class="intro-links">
+          <a href="/hike-horseshoe-bend/" class="link-pill">Trail &amp; hike guide →</a>
+          <a href="/parking-fees/" class="link-pill">Parking fees &amp; hours →</a>
+          <a href="/best-time-to-visit-horseshoe-bend/" class="link-pill">Best time to visit →</a>
+        </div>
+      </div>
+      <div class="intro-img ph ph--navy">
+        <span class="ph__label">Colorado River from the overlook — emerald green water in sandstone canyon</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Essentials grid ───────────────────────────────────── -->
+  <section class="sec ess-sec">
+    <div class="wrap">
+      <div class="eyebrow"><span></span><span class="kicker">Plan your visit</span></div>
+      <h2>Everything you need to know</h2>
+      <div class="ess-grid">
+        <a href="/parking-fees/" class="ess-card">
+          <div class="ess-icon">🅿️</div>
+          <div>
+            <h3>Parking &amp; fees</h3>
+            <p>$10 per vehicle · Open sunrise to sunset · No National Park Pass accepted</p>
+          </div>
+        </a>
+        <a href="/hike-horseshoe-bend/" class="ess-card">
+          <div class="ess-icon">🥾</div>
+          <div>
+            <h3>The trail</h3>
+            <p>0.6 mi paved · ADA accessible · No guardrails at rim · Bring water</p>
+          </div>
+        </a>
+        <a href="/best-time-to-visit-horseshoe-bend/" class="ess-card">
+          <div class="ess-icon">🌅</div>
+          <div>
+            <h3>Best time to visit</h3>
+            <p>Sunrise or late afternoon · Avoid 9 AM–2 PM peak crowds in summer</p>
+          </div>
+        </a>
+        <a href="/directions/" class="ess-card">
+          <div class="ess-icon">📍</div>
+          <div>
+            <h3>Getting here</h3>
+            <p>US-89 Mile Marker 545 · 5 mi south of Page, AZ · 4.5 hrs from Las Vegas</p>
+          </div>
+        </a>
+        <a href="/antelope-canyon/" class="ess-card">
+          <div class="ess-icon">🏜️</div>
+          <div>
+            <h3>Antelope Canyon</h3>
+            <p>10 min away · Guided tours required · Book well in advance</p>
+          </div>
+        </a>
+        <a href="/river-tours/" class="ess-card">
+          <div class="ess-icon">🛶</div>
+          <div>
+            <h3>River &amp; water tours</h3>
+            <p>Float the Colorado · Kayak from Glen Canyon Dam · Lake Powell boat tours</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Tours ─────────────────────────────────────────────── -->
+  <section class="sec tours-sec" id="tours">
+    <div class="wrap">
+      <div class="eyebrow"><span></span><span class="kicker">Guided experiences</span></div>
+      <h2>See the bend on your terms</h2>
+      <p class="sec-sub">Can't make the hike? Want a different perspective? Guided tours from Page give you more of the Grand Circle in less time.</p>
+      <div class="tours-grid">
+        {featuredTours.map((t) => (
+          <TourCard
+            name={t.name}
+            tagLabel={t.tagLabel}
+            price={t.price}
+            description={t.description}
+            meta1={t.duration}
+            meta2={t.seasonality}
+            meta3={t.audience}
+            href={t.href}
+            imgAlt={t.imgAlt}
+            dark={t.type === 'air'}
+          />
+        ))}
+      </div>
+      <div class="tours-cta">
+        <a href="/tours/" class="btn btn--ghost">All tours from Page, AZ →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Hike steps ────────────────────────────────────────── -->
+  <HikeSteps />
+
+  <!-- ── Map + Weather ─────────────────────────────────────── -->
+  <section class="sec map-sec">
+    <div class="wrap map-wrap">
+      <div class="map-col">
+        <div class="eyebrow"><span></span><span class="kicker">Location &amp; conditions</span></div>
+        <h2>Page, AZ live conditions</h2>
+        <p>The desert environment changes fast. Check the current temperature and forecast before you leave — and arrive early to beat the heat.</p>
+        <a href="/directions/" class="btn btn--navy map-btn">Get directions →</a>
+        <div class="map-embed ph ph--navy">
+          <span class="ph__label">Interactive map — Horseshoe Bend Parking, US-89, Page AZ</span>
+        </div>
+      </div>
+      <div class="wx-col">
+        <WeatherWidget />
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Nearby / Grand Circle ─────────────────────────────── -->
+  <section class="sec nearby-sec" id="nearby">
+    <div class="wrap">
+      <div class="eyebrow"><span></span><span class="kicker">Grand Circle</span></div>
+      <h2>More wonders within a day's drive</h2>
+      <p class="sec-sub">Horseshoe Bend sits at the heart of the American Southwest's greatest road trip circuit.</p>
+      <div class="nearby-grid">
+        <NearbyCard
+          name="Antelope Canyon"
+          distance="7 mi · 15 min"
+          description="The most-photographed slot canyon on earth. Guided tours only — book weeks in advance."
+          href="/antelope-canyon/"
+          imgAlt="Light beams in Upper Antelope Canyon"
+        />
+        <NearbyCard
+          name="Lake Powell"
+          distance="4 mi · 10 min"
+          description="475 miles of shoreline backed by red canyon walls. Boat tours, houseboats, kayaking."
+          href="/river-tours/"
+          imgAlt="Lake Powell blue water against red rock cliffs"
+        />
+        <NearbyCard
+          name="Grand Canyon"
+          distance="130 mi · 2.5 hrs"
+          description="The South Rim is a natural extension of any Horseshoe Bend itinerary heading south."
+          href="/nearby/"
+          imgAlt="Grand Canyon South Rim panorama"
+        />
+        <NearbyCard
+          name="Monument Valley"
+          distance="115 mi · 2 hrs"
+          description="The Mittens and Merrick Butte — sacred Navajo land and an American icon."
+          href="/nearby/"
+          imgAlt="Monument Valley sandstone buttes at sunset"
+        />
+      </div>
+      <div class="nearby-cta">
+        <a href="/itineraries/" class="btn btn--ghost">See itineraries for the Grand Circle →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Orange CTA band ───────────────────────────────────── -->
+  <section class="orange-band">
+    <div class="wrap orange-inner">
+      <div>
+        <p class="kicker" style="color:rgba(255,255,255,.7)">Ready to go?</p>
+        <h2>Make it a trip to remember</h2>
+        <p>Pair Horseshoe Bend with Antelope Canyon, a river float, and two days in Page for the full Grand Circle experience.</p>
+      </div>
+      <div class="orange-btns">
+        <BookingButton label="Book tours now" variant="navy" />
+        <a href="/itineraries/" class="btn btn--ghost-light">See 48-hr itinerary</a>
+      </div>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+/* ── Hero ───────────────────────────── */
+.hero {
+  position: relative;
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  color: #fff;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    170deg,
+    rgba(13,32,50,.55) 0%,
+    rgba(13,32,50,.72) 60%,
+    rgba(13,32,50,.88) 100%
+  );
+}
+.hero-body {
+  position: relative;
+  z-index: 2;
+  padding-top: 120px;
+  padding-bottom: 80px;
+}
+.hero h1 {
+  font-size: clamp(60px, 13vw, 130px);
+  line-height: .88;
+  text-transform: uppercase;
+  color: #fff;
+  margin: 16px 0 28px;
+  letter-spacing: -.03em;
+}
+.hero-sub {
+  font-size: clamp(16px, 2vw, 20px);
+  color: rgba(255,255,255,.82);
+  max-width: 52ch;
+  margin: 0 0 36px;
+  line-height: 1.5;
+}
+.hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+.scroll-hint {
+  display: block;
+  margin-top: 60px;
+  color: rgba(255,255,255,.5);
+  animation: bounce 2s ease-in-out infinite;
+  width: fit-content;
+}
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+/* ── Intro ──────────────────────────── */
+.intro-sec { background: var(--paper); }
+.intro-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.intro-text h2 { font-size: clamp(28px, 4vw, 46px); text-transform: uppercase; margin: 16px 0 20px; }
+.intro-text p { font-size: 17px; color: var(--ink-soft); margin: 0 0 18px; line-height: 1.65; }
+.intro-links { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+.link-pill {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--navy);
+  border: 1px solid var(--navy);
+  border-radius: 999px;
+  padding: 8px 16px;
+  transition: background .16s, color .16s;
+}
+.link-pill:hover { background: var(--navy); color: #fff; }
+.intro-img { aspect-ratio: 4/3; border-radius: var(--radius-lg); overflow: hidden; }
+
+/* ── Essentials grid ────────────────── */
+.ess-sec { background: var(--cream); }
+.ess-sec h2 { font-size: clamp(28px, 4vw, 46px); text-transform: uppercase; margin: 16px 0 40px; }
+.ess-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.ess-card {
+  background: #fff;
+  border: 1px solid var(--sand-line);
+  border-radius: var(--radius);
+  padding: 24px;
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  transition: box-shadow .18s, transform .18s;
+}
+.ess-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+.ess-icon { font-size: 28px; flex: none; line-height: 1; }
+.ess-card h3 {
+  font-size: 18px;
+  color: var(--navy);
+  margin: 0 0 8px;
+  text-transform: uppercase;
+  letter-spacing: -.01em;
+}
+.ess-card p { font-size: 14px; color: var(--ink-soft); margin: 0; line-height: 1.5; }
+
+/* ── Tours ──────────────────────────── */
+.tours-sec { background: var(--paper); }
+.tours-sec h2 { font-size: clamp(28px, 4vw, 46px); text-transform: uppercase; margin: 16px 0 12px; }
+.sec-sub { font-size: 17px; color: var(--ink-soft); margin: 0 0 44px; max-width: 60ch; }
+.tours-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.tours-cta { margin-top: 36px; }
+
+/* ── Map + Weather ──────────────────── */
+.map-sec { background: var(--cream); }
+.map-wrap {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 56px;
+  align-items: start;
+}
+.map-col h2 { font-size: clamp(28px, 4vw, 40px); text-transform: uppercase; margin: 16px 0 14px; }
+.map-col p { font-size: 16px; color: var(--ink-soft); margin: 0 0 24px; }
+.map-btn { margin-bottom: 28px; }
+.map-embed { aspect-ratio: 16/10; border-radius: var(--radius-lg); overflow: hidden; }
+.wx-col { position: sticky; top: 100px; }
+
+/* ── Nearby ─────────────────────────── */
+.nearby-sec { background: var(--paper); }
+.nearby-sec h2 { font-size: clamp(28px, 4vw, 46px); text-transform: uppercase; margin: 16px 0 12px; }
+.nearby-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 40px; }
+.nearby-cta { margin-top: 36px; }
+
+/* ── Orange CTA band ────────────────── */
+.orange-band { background: var(--orange); color: #fff; padding: 80px 0; }
+.orange-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+.orange-band h2 { font-size: clamp(28px, 4vw, 44px); text-transform: uppercase; color: #fff; margin: 10px 0 14px; }
+.orange-band p { color: rgba(255,255,255,.85); font-size: 16px; margin: 0; max-width: 52ch; }
+.orange-btns { display: flex; gap: 14px; flex-wrap: wrap; flex: none; }
+
+/* ── Responsive ─────────────────────── */
+@media (max-width: 1024px) {
+  .map-wrap { grid-template-columns: 1fr; }
+  .wx-col { position: static; }
+  .nearby-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 860px) {
+  .intro-wrap { grid-template-columns: 1fr; gap: 40px; }
+  .ess-grid { grid-template-columns: 1fr 1fr; }
+  .tours-grid { grid-template-columns: 1fr; }
+  .orange-inner { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 640px) {
+  .ess-grid { grid-template-columns: 1fr; }
+  .nearby-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 480px) {
+  .nearby-grid { grid-template-columns: 1fr; }
+  .hero-btns { flex-direction: column; }
+}
+</style>

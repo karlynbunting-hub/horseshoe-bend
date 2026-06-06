@@ -1,0 +1,155 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import SchemaLD from '../../components/SchemaLD.astro';
+
+const title = 'Horseshoe Bend FAQ | Your Questions Answered';
+const description = 'Frequently asked questions about Horseshoe Bend: parking fees, trail length, best time to visit, accessibility, pets, photography, and how to get there.';
+const canonical = 'https://horseshoebend.com/faq/';
+
+const categories = [
+  {
+    cat: 'Basics',
+    items: [
+      { q: 'Is Horseshoe Bend free to visit?', a: 'The hike itself is free — no entrance fee. You pay $10 per vehicle to park in the City of Page parking lot. There\'s no charge beyond the parking fee.' },
+      { q: 'Do I need a tour guide or reservation?', a: 'No. Horseshoe Bend is a self-guided hike. You can show up any day during lot hours (sunrise to sunset) without any reservation. Antelope Canyon, which is nearby, does require a guided tour with advance reservations.' },
+      { q: 'Is Horseshoe Bend in Grand Canyon National Park?', a: 'No. Horseshoe Bend is in the Glen Canyon National Recreation Area, managed by the NPS. The trailhead is on City of Page land. It is approximately 5 miles south of Page, AZ on US-89.' },
+      { q: 'Is Horseshoe Bend open year-round?', a: 'Yes. The parking lot and trail are open every day of the year, sunrise to sunset, including holidays.' },
+      { q: 'Are there restrooms?', a: 'Yes, near the parking lot. There are no restrooms on the trail. The lot also sells $1 bottled water.' },
+    ],
+  },
+  {
+    cat: 'Parking & Fees',
+    items: [
+      { q: 'How much does parking cost?', a: '$10 per car, RV, or motorhome. $5 for motorcycles. Commercial vehicles range from $35 to $140 depending on passenger capacity. Fees are per vehicle, not per person.' },
+      { q: 'Does my National Park Pass cover the parking fee?', a: 'No. The fee is collected by the City of Page, not the NPS. Federal park passes do not apply.' },
+      { q: 'Do they accept credit cards?', a: 'Yes, cash and credit/debit are accepted on most days. During major US holidays (Memorial Day, Thanksgiving, Christmas, etc.), the booth may accept cash only.' },
+      { q: 'Can I park somewhere free and walk in?', a: 'There is no practical free parking alternative within walking distance. The highway shoulder is strictly prohibited — violators are ticketed and towed.' },
+      { q: 'What if the lot is full?', a: 'You will be turned away and asked to return later. The lot fills most often between 9 AM and 2 PM in peak season (May–September). Arriving at sunrise avoids the worst congestion.' },
+    ],
+  },
+  {
+    cat: 'The Trail',
+    items: [
+      { q: 'How long is the hike?', a: '0.6 miles one way from the parking lot to the overlook (1.2 miles round trip). Plan 1–2 hours total including time at the rim.' },
+      { q: 'How difficult is the trail?', a: 'Easy to moderate. The trail is fully paved since 2019. It is mostly flat with a gentle incline near the parking lot. The terrain becomes packed sand and rock closer to the rim.' },
+      { q: 'Is it ADA accessible?', a: 'Yes. The paved trail is ADA accessible and stroller-friendly, though some sections may require assistance for wheelchairs.' },
+      { q: 'Are there guardrails at the overlook?', a: 'No guardrails exist along most of the rim. There is one fenced viewing platform at the end of the trail. The drop is approximately 1,000 feet. Stay well back from the edge and supervise children at all times.' },
+      { q: 'Is there shade on the trail?', a: 'Virtually none. The trail is completely exposed. Bring water, sunscreen, and a hat regardless of the season.' },
+    ],
+  },
+  {
+    cat: 'Best Time to Visit',
+    items: [
+      { q: 'What is the best time of day to visit?', a: 'There is no single best time — the view is impressive in all conditions. For photography, mid-morning through early afternoon delivers clean, even light on the river. Late afternoon offers dramatic shadows and the sunset "starburst" effect. See our best time guide for detailed guidance.' },
+      { q: 'What is the best season?', a: 'Spring (March–May) and autumn (September–November) are ideal: mild temperatures and manageable crowds. Summer is extremely hot and crowded. Winter is cold but uncrowded.' },
+      { q: 'Does the Colorado River ever dry up?', a: 'No. The river is regulated by the Glen Canyon Dam 15 miles upstream, which maintains a minimum flow year-round for hydroelectric power.' },
+    ],
+  },
+  {
+    cat: 'Pets & Safety',
+    items: [
+      { q: 'Can I bring my dog?', a: 'Yes. Dogs are welcome on the trail on a leash no longer than 6 feet. Bring water for them. Protect paws from hot sand and rock in summer. Do not leave pets in your car at the parking lot.' },
+      { q: 'Are drones allowed?', a: 'No. Drone use is not permitted at Horseshoe Bend.' },
+      { q: 'Can I camp at Horseshoe Bend?', a: 'No. Camping is not allowed at the overlook or parking lot. The lot closes at sunset.' },
+      { q: 'Do I need a permit for photography or events?', a: 'Commercial photography and organized events (weddings, engagements) require a Special Use Permit from the NPS Glen Canyon NRA. Personal photography needs no permit.' },
+    ],
+  },
+  {
+    cat: 'Getting There',
+    items: [
+      { q: 'How far is Horseshoe Bend from Las Vegas?', a: 'Approximately 4.5–5 hours by car, about 280 miles. Many visitors do it as a day trip from Las Vegas; staying overnight in Page is recommended if combining with Antelope Canyon.' },
+      { q: 'How far is Horseshoe Bend from Antelope Canyon?', a: 'About 4–7 miles depending on which branch of Antelope Canyon you tour — approximately 10–15 minutes by car. Both are easily done in one day.' },
+      { q: 'Is nighttime driving safe in this area?', a: 'Not recommended. US-89 and surrounding highways have no ambient lighting. Deer, elk, feral horses, and free-range cattle frequently cross the road after dark. Plan your drive to arrive and depart before sunset.' },
+    ],
+  },
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: categories.flatMap(({ items }) =>
+    items.map(({ q, a }) => ({
+      '@type': 'Question',
+      name: q,
+      acceptedAnswer: { '@type': 'Answer', text: a },
+    }))
+  ),
+};
+---
+
+<PageLayout {title} {description} {canonical}>
+  <SchemaLD slot="head" {schema} />
+
+  <header class="page-hero">
+    <div class="wrap">
+      <nav class="bc" aria-label="Breadcrumb">
+        <a href="/">Home</a><span>›</span>
+        <span aria-current="page">FAQ</span>
+      </nav>
+      <p class="kicker on-dark">Common questions · Quick answers</p>
+      <h1>Horseshoe Bend FAQ</h1>
+      <p class="sub">The most common questions about visiting Horseshoe Bend — answered from real visitor experience.</p>
+    </div>
+  </header>
+
+  <section class="sec faq-sec">
+    <div class="wrap faq-wrap">
+      <!-- Category nav -->
+      <nav class="cat-nav" aria-label="FAQ categories">
+        {categories.map((c) => (
+          <a href={`#${c.cat.toLowerCase().replace(/\s+&?\s*/g, '-')}`} class="cat-link">{c.cat}</a>
+        ))}
+      </nav>
+
+      <!-- FAQ categories -->
+      <div class="faq-content">
+        {categories.map((c) => (
+          <div class="faq-cat" id={c.cat.toLowerCase().replace(/\s+&?\s*/g, '-')}>
+            <h2>{c.cat}</h2>
+            <div class="faq-list">
+              {c.items.map(({ q, a }) => (
+                <details class="faq-item">
+                  <summary class="faq-q">{q}</summary>
+                  <p class="faq-a">{a}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+.page-hero { background: var(--navy); color: #fff; padding: 80px 0 64px; }
+.bc { font-family: var(--font-mono); font-size: 12px; letter-spacing: .06em; color: #9fb0bf; margin-bottom: 24px; display: flex; gap: 8px; align-items: center; }
+.bc a { color: #9fb0bf; }
+.bc a:hover { color: #fff; }
+.page-hero h1 { font-size: clamp(32px, 6vw, 56px); color: #fff; margin: 12px 0 18px; text-transform: uppercase; }
+.page-hero .sub { font-size: 18px; color: #aebcc8; margin: 0; max-width: 60ch; }
+
+.faq-sec { background: var(--paper); }
+.faq-wrap { display: grid; grid-template-columns: 220px 1fr; gap: 72px; align-items: start; }
+
+.cat-nav { position: sticky; top: 100px; display: flex; flex-direction: column; gap: 4px; }
+.cat-link { font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); padding: 10px 14px; border-radius: 8px; border-left: 3px solid transparent; transition: background .16s, color .16s; }
+.cat-link:hover { background: var(--cream); color: var(--navy); border-left-color: var(--orange); }
+
+.faq-cat { margin-bottom: 60px; }
+.faq-cat:last-child { margin-bottom: 0; }
+.faq-cat h2 { font-size: clamp(24px, 3vw, 32px); text-transform: uppercase; color: var(--navy); margin: 0 0 24px; padding-bottom: 14px; border-bottom: 2px solid var(--orange); }
+.faq-list { display: flex; flex-direction: column; }
+.faq-item { border-bottom: 1px solid var(--sand-line); }
+.faq-item:first-child { border-top: 1px solid var(--sand-line); }
+.faq-q { list-style: none; padding: 20px 0; font-size: 16px; font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; color: var(--navy); }
+.faq-q::-webkit-details-marker { display: none; }
+.faq-q::after { content: '+'; font-family: var(--font-mono); font-size: 20px; color: var(--orange); flex: none; transition: transform .2s; }
+details[open] .faq-q::after { transform: rotate(45deg); }
+.faq-a { margin: 0 0 20px; font-size: 15px; color: var(--ink-soft); line-height: 1.65; max-width: 66ch; }
+
+@media (max-width: 860px) {
+  .faq-wrap { grid-template-columns: 1fr; }
+  .cat-nav { position: static; flex-direction: row; flex-wrap: wrap; margin-bottom: 32px; }
+}
+</style>

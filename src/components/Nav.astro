@@ -1,0 +1,108 @@
+---
+interface Props {
+  transparent?: boolean;
+}
+const { transparent = false } = Astro.props;
+---
+<nav class:list={['nav', { 'nav--transparent': transparent }]} id="nav">
+  <div class="nav-inner">
+    <a href="/" aria-label="Horseshoe Bend home">
+      <img class="logo-img" src="/logo.svg" alt="Horseshoe Bend" width="160" height="46" />
+    </a>
+    <div class="nav-links">
+      <a href="/tours/">Tours</a>
+      <a href="/plan-your-visit/">Plan Your Visit</a>
+      <a href="/nearby/">The Region</a>
+      <a href="/directions/">Getting There</a>
+    </div>
+    <div class="nav-right">
+      <span class="nav-call">(928) 645-8861</span>
+      <a class="btn btn--primary" href="/tours/">Book a Tour</a>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <a href="/tours/">Tours</a>
+  <a href="/plan-your-visit/">Plan Your Visit</a>
+  <a href="/nearby/">The Region</a>
+  <a href="/directions/">Getting There</a>
+  <a href="/tours/">Book a Tour</a>
+</div>
+
+<style>
+.nav {
+  position: sticky; top: 0; z-index: 60;
+  background: rgba(251,248,241,.92); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--sand-line);
+  transition: box-shadow .2s;
+}
+.nav.scrolled { box-shadow: var(--shadow-sm); }
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  height: 74px; max-width: var(--maxw); margin: 0 auto; padding: 0 32px;
+}
+.nav-links { display: flex; align-items: center; gap: 30px; }
+.nav-links a {
+  font-weight: 600; font-size: 15px; color: var(--navy);
+  position: relative; padding: 6px 0;
+}
+.nav-links a::after {
+  content: ""; position: absolute; left: 0; bottom: 0;
+  width: 0; height: 2px; background: var(--orange); transition: width .2s;
+}
+.nav-links a:hover::after { width: 100%; }
+.nav-right { display: flex; align-items: center; gap: 16px; }
+.nav-call { font-family: var(--font-mono); font-size: 13px; color: var(--ink-soft); font-weight: 700; }
+.burger {
+  display: none; background: none; border: 0; cursor: pointer;
+  flex-direction: column; gap: 5px; padding: 8px;
+}
+.burger span { width: 24px; height: 2px; background: var(--navy); display: block; }
+.mobile-menu { display: none; }
+
+@media (max-width: 860px) {
+  .nav-inner { padding: 0 20px; }
+  .nav-call { display: none; }
+}
+@media (max-width: 680px) {
+  .nav-links { display: none; }
+  .burger { display: flex; }
+  .mobile-menu.open {
+    display: block; position: fixed; inset: 74px 0 0;
+    background: var(--paper); z-index: 55; padding: 30px 24px;
+    overflow-y: auto;
+  }
+  .mobile-menu.open a {
+    display: block; font-size: 22px; font-weight: 700; color: var(--navy);
+    padding: 16px 0; border-bottom: 1px solid var(--sand-line);
+    text-transform: uppercase; font-family: var(--font-display);
+  }
+}
+</style>
+
+<script>
+const nav = document.getElementById('nav');
+const burger = document.getElementById('burger');
+const menu = document.getElementById('mobileMenu');
+
+window.addEventListener('scroll', () => {
+  nav?.classList.toggle('scrolled', window.scrollY > 10);
+}, { passive: true });
+
+burger?.addEventListener('click', () => {
+  const isOpen = menu?.classList.toggle('open');
+  burger.setAttribute('aria-expanded', String(isOpen));
+  menu?.setAttribute('aria-hidden', String(!isOpen));
+});
+
+menu?.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    menu.classList.remove('open');
+    burger?.setAttribute('aria-expanded', 'false');
+    menu.setAttribute('aria-hidden', 'true');
+  });
+});
+</script>

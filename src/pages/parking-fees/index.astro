@@ -1,0 +1,396 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import SchemaLD from '../../components/SchemaLD.astro';
+
+const title = 'Horseshoe Bend Parking Fees & Hours 2024 | City of Page, AZ';
+const description = 'Current Horseshoe Bend parking fees: $10 per car/RV, $5 motorcycle, $35–$140 commercial vehicles. Open sunrise to sunset, 365 days. No National Park Pass accepted.';
+const canonical = 'https://horseshoebend.com/parking-fees/';
+
+const faqs = [
+  {
+    q: 'How much does it cost to park at Horseshoe Bend?',
+    a: '$10 per passenger vehicle (car, truck, SUV, RV, motorhome). Motorcycles are $5. Commercial vans with up to 14 passengers are $35; mid-sized tour buses (15–35 passengers) are $70; full-size buses (35+) are $140. Fees are based on vehicle capacity, not how many people are in it.',
+  },
+  {
+    q: 'Does the National Park Pass (America the Beautiful) cover the parking fee?',
+    a: 'No. The Horseshoe Bend parking fee is collected by the City of Page, not the National Park Service. Federal park passes — including the America the Beautiful Annual Pass — are not accepted and do not exempt you from paying.',
+  },
+  {
+    q: 'What are the parking lot hours?',
+    a: 'The lot is open from sunrise to sunset, 365 days a year, including holidays. Fee collectors are on-site during those hours. Arriving before the booth opens (around sunrise) is common for photography — you may enter, but do not count on getting out before the gate opens.',
+  },
+  {
+    q: 'Is the parking lot open on holidays?',
+    a: 'Yes. The lot is open every day of the year including Thanksgiving, Christmas, and New Year\'s Day. During major US holidays (Memorial Day, Labor Day, Thanksgiving, Christmas) the fee station may accept cash only — bring cash to avoid delays.',
+  },
+  {
+    q: 'Can I park along Highway 89 instead?',
+    a: 'No. US-89 is a 65 mph highway and roadside parking is strictly prohibited. Vehicles parked on the shoulder will be ticketed and towed. There is also an emergency ordinance prohibiting drop-offs and pick-ups along the highway corridor.',
+  },
+  {
+    q: 'What if the parking lot is full?',
+    a: 'You will be asked to return when space is available. There is no overflow lot with shuttle service — plan accordingly. The lot is typically fullest between 9 AM and 2 PM in peak season (May–September). Arriving at or just after sunrise avoids the worst congestion.',
+  },
+  {
+    q: 'Is the parking fee mandatory — can I walk in from somewhere else?',
+    a: 'There is no practical free alternative within walking distance. The nearest parking with access points is 5+ miles away. You must use the City of Page lot. The fee is mandatory for all vehicles.',
+  },
+  {
+    q: 'Do payment methods include credit cards?',
+    a: 'Yes — cash and credit/debit cards are accepted on normal operating days. During major holiday periods (Memorial Day, Labor Day, Thanksgiving, Christmas, etc.) the station may accept cash only to minimize wait times. It is always a good idea to have cash on hand.',
+  },
+];
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map(({ q, a }) => ({
+      '@type': 'Question',
+      name: q,
+      acceptedAnswer: { '@type': 'Answer', text: a },
+    })),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ParkingFacility',
+    name: 'Horseshoe Bend Overlook Parking Lot',
+    description: 'City of Page–operated parking for Horseshoe Bend Overlook, Page, AZ 86040',
+    openingHours: 'Mo-Su sunrise-sunset',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'US-89, Mile Marker 545',
+      addressLocality: 'Page',
+      addressRegion: 'AZ',
+      postalCode: '86040',
+      addressCountry: 'US',
+    },
+    priceRange: '$5–$140',
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Parking Fee Schedule',
+      itemListElement: [
+        { '@type': 'Offer', name: 'Motorcycle', price: '5.00', priceCurrency: 'USD' },
+        { '@type': 'Offer', name: 'Passenger vehicle (car, truck, SUV, RV, motorhome)', price: '10.00', priceCurrency: 'USD' },
+        { '@type': 'Offer', name: 'Commercial van (up to 14 passengers)', price: '35.00', priceCurrency: 'USD' },
+        { '@type': 'Offer', name: 'Mid-size tour bus (15–35 passengers)', price: '70.00', priceCurrency: 'USD' },
+        { '@type': 'Offer', name: 'Full-size bus (35+ passengers)', price: '140.00', priceCurrency: 'USD' },
+      ],
+    },
+  },
+];
+---
+
+<PageLayout {title} {description} {canonical}>
+  <SchemaLD slot="head" {schema} />
+
+  <!-- Page header -->
+  <header class="ph-hero">
+    <div class="wrap">
+      <nav class="bc" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">›</span>
+        <span aria-current="page">Parking Fees</span>
+      </nav>
+      <p class="kicker">City of Page, AZ — Official Fee Schedule</p>
+      <h1>Horseshoe Bend Parking Fees &amp; Hours</h1>
+      <p class="sub">Current rates, hours, payment rules, and what to know before you arrive.</p>
+    </div>
+  </header>
+
+  <!-- Fee table -->
+  <section class="sec fees-sec">
+    <div class="wrap">
+      <div class="eyebrow"><span></span><span class="kicker">Fee schedule</span></div>
+      <h2>2024 Parking Fee Schedule</h2>
+      <p class="lede">Fees are set by the City of Page and may change without notice. All fees are <strong>per vehicle</strong>, charged once at entry, based on passenger <em>capacity</em> — not how many people are riding.</p>
+
+      <div class="fee-table-wrap">
+        <table class="fee-table">
+          <thead>
+            <tr>
+              <th>Vehicle type</th>
+              <th>Passenger capacity</th>
+              <th class="price-col">Fee</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="highlight">
+              <td>Passenger vehicle <span class="sub-note">(car, truck, SUV, RV, motorhome)</span></td>
+              <td>Any</td>
+              <td class="price-col"><strong>$10</strong></td>
+            </tr>
+            <tr>
+              <td>Motorcycle</td>
+              <td>1–2</td>
+              <td class="price-col"><strong>$5</strong></td>
+            </tr>
+            <tr>
+              <td>Commercial van</td>
+              <td>Up to 14</td>
+              <td class="price-col"><strong>$35</strong></td>
+            </tr>
+            <tr>
+              <td>Mid-size tour bus</td>
+              <td>15–35</td>
+              <td class="price-col"><strong>$70</strong></td>
+            </tr>
+            <tr>
+              <td>Full-size bus</td>
+              <td>35+</td>
+              <td class="price-col"><strong>$140</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="fee-notes">
+        <div class="note-card">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+          <p><strong>No park passes accepted.</strong> The America the Beautiful / National Parks Annual Pass does NOT cover this fee. This lot is operated by the City of Page, not the NPS.</p>
+        </div>
+        <div class="note-card">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <p><strong>Cash on holidays.</strong> During major US holidays (Memorial Day, Labor Day, Thanksgiving, Christmas), the booth may accept cash only. Bring $10 in cash to avoid delays.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hours & rules -->
+  <section class="sec rules-sec">
+    <div class="wrap">
+      <div class="two-col">
+        <div class="col-block">
+          <div class="eyebrow"><span></span><span class="kicker">Hours</span></div>
+          <h2>Open sunrise to sunset</h2>
+          <p>The parking lot is open every day of the year — 365 days, including Thanksgiving, Christmas, and New Year's Day. Fee collectors are on site during operating hours.</p>
+          <ul class="rule-list">
+            <li><strong>Best time to arrive:</strong> just after sunrise — cooler temperatures, smaller crowds, and the parking fee booth may not yet be staffed.</li>
+            <li><strong>Busiest hours:</strong> 9 AM–2 PM, especially May through September.</li>
+            <li><strong>Full lot policy:</strong> If the lot is full, you'll be turned away and asked to return later. No waiting in line on the highway.</li>
+          </ul>
+        </div>
+        <div class="col-block rules-block">
+          <div class="eyebrow"><span></span><span class="kicker">Rules</span></div>
+          <h2>Mandatory parking rules</h2>
+          <ul class="rule-list">
+            <li><strong>You must use this lot.</strong> No parking on US-89 under any circumstances. The highway is 65 mph and violators are ticketed and towed.</li>
+            <li><strong>No roadside drop-offs or pick-ups.</strong> A City of Page ordinance prohibits stopping along the highway corridor.</li>
+            <li><strong>No camping or overnight stays.</strong> The lot closes at sunset; vehicles remaining after close may be towed.</li>
+            <li><strong>No trail access outside lot hours.</strong> The trail is open during parking lot hours only.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="sec faq-sec">
+    <div class="wrap">
+      <div class="eyebrow"><span></span><span class="kicker">Frequently asked</span></div>
+      <h2>Parking FAQs</h2>
+      <div class="faq-list">
+        {faqs.map(({ q, a }) => (
+          <details class="faq-item">
+            <summary class="faq-q">{q}</summary>
+            <p class="faq-a">{a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA band -->
+  <section class="cta-band">
+    <div class="wrap cta-inner">
+      <div>
+        <p class="kicker on-dark">Plan your visit</p>
+        <h2>Everything else you need to know</h2>
+        <p>Trail length, what to bring, accessibility, and the best time of day to arrive.</p>
+      </div>
+      <div class="cta-btns">
+        <a href="/hike-horseshoe-bend/" class="btn btn--primary">Trail guide</a>
+        <a href="/plan-your-visit/" class="btn btn--ghost-light">Plan your visit</a>
+      </div>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+/* Page header */
+.ph-hero {
+  background: var(--navy);
+  color: #fff;
+  padding: 80px 0 64px;
+}
+.bc {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: .06em;
+  color: #9fb0bf;
+  margin-bottom: 24px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.bc a { color: #9fb0bf; }
+.bc a:hover { color: #fff; }
+.ph-hero h1 {
+  font-size: clamp(36px, 6vw, 58px);
+  color: #fff;
+  margin: 12px 0 20px;
+  text-transform: uppercase;
+}
+.ph-hero .sub {
+  font-size: 18px;
+  color: #aebcc8;
+  margin: 0;
+  max-width: 56ch;
+}
+
+/* Fee section */
+.fees-sec { background: var(--paper); }
+.fees-sec h2 { font-size: clamp(28px, 4vw, 40px); margin: 16px 0 8px; }
+.lede { font-size: 17px; color: var(--ink-soft); margin: 0 0 40px; max-width: 65ch; }
+
+.fee-table-wrap { overflow-x: auto; margin-bottom: 32px; }
+.fee-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 16px;
+}
+.fee-table th {
+  background: var(--navy);
+  color: #fff;
+  text-align: left;
+  padding: 14px 20px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.fee-table td {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--sand-line);
+  vertical-align: middle;
+}
+.fee-table tr:last-child td { border-bottom: none; }
+.fee-table tr.highlight td { background: #fdf3ec; }
+.price-col { text-align: right; font-size: 20px; white-space: nowrap; }
+.fee-table th.price-col { text-align: right; }
+.sub-note { display: block; font-size: 13px; color: var(--ink-mute); font-weight: 400; margin-top: 2px; }
+
+.fee-notes {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.note-card {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  background: #fff;
+  border: 1px solid var(--sand-line);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  flex: 1;
+  min-width: 280px;
+}
+.note-card svg { color: var(--orange); flex: none; margin-top: 2px; }
+.note-card p { margin: 0; font-size: 15px; color: var(--ink-soft); }
+
+/* Rules section */
+.rules-sec { background: var(--cream); }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
+.col-block h2 { font-size: clamp(24px, 3vw, 34px); margin: 16px 0 14px; }
+.col-block p { font-size: 16px; color: var(--ink-soft); margin: 0 0 18px; }
+.rule-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.rule-list li {
+  font-size: 15px;
+  color: var(--ink-soft);
+  padding-left: 20px;
+  position: relative;
+}
+.rule-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--orange);
+  font-weight: 700;
+}
+.rules-block {
+  border-left: 3px solid var(--orange);
+  padding-left: 40px;
+}
+
+/* FAQ section */
+.faq-sec { background: var(--paper); }
+.faq-sec h2 { font-size: clamp(28px, 4vw, 40px); margin: 16px 0 40px; }
+.faq-list { display: flex; flex-direction: column; gap: 0; max-width: 76ch; }
+.faq-item {
+  border-bottom: 1px solid var(--sand-line);
+  padding: 0;
+}
+.faq-item:first-child { border-top: 1px solid var(--sand-line); }
+.faq-q {
+  list-style: none;
+  padding: 22px 0;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  color: var(--navy);
+}
+.faq-q::-webkit-details-marker { display: none; }
+.faq-q::after {
+  content: '+';
+  font-family: var(--font-mono);
+  font-size: 20px;
+  color: var(--orange);
+  flex: none;
+  transition: transform .2s;
+}
+details[open] .faq-q::after { transform: rotate(45deg); }
+.faq-a {
+  margin: 0 0 22px;
+  font-size: 15px;
+  color: var(--ink-soft);
+  line-height: 1.65;
+  max-width: 68ch;
+}
+
+/* CTA band */
+.cta-band { background: var(--navy); color: #fff; padding: 80px 0; }
+.cta-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.cta-band h2 { font-size: clamp(26px, 4vw, 40px); color: #fff; margin: 10px 0 12px; text-transform: uppercase; }
+.cta-band p { color: #aebcc8; margin: 0; font-size: 16px; }
+.cta-btns { display: flex; gap: 14px; flex-wrap: wrap; flex: none; }
+
+@media (max-width: 860px) {
+  .two-col { grid-template-columns: 1fr; gap: 48px; }
+  .rules-block { border-left: none; border-top: 3px solid var(--orange); padding-left: 0; padding-top: 32px; }
+  .cta-inner { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 480px) {
+  .fee-table th, .fee-table td { padding: 12px 14px; }
+  .price-col { font-size: 18px; }
+}
+</style>

@@ -1,0 +1,298 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import SchemaLD from '../../components/SchemaLD.astro';
+import HikeSteps from '../../components/HikeSteps.astro';
+import BookingButton from '../../components/islands/BookingButton.astro';
+
+const title = 'Hike Horseshoe Bend | Trail Guide, Tips & What to Bring';
+const description = 'Everything about hiking Horseshoe Bend on your own: 0.6-mile paved trail, parking fees, what to bring, pet rules, ADA accessibility, safety at the unfenced rim.';
+const canonical = 'https://horseshoebend.com/hike-horseshoe-bend/';
+
+const faqs = [
+  {
+    q: 'Do I need a tour guide to visit Horseshoe Bend?',
+    a: 'No. Horseshoe Bend is a self-guided hike — no guide, no permit, no reservation required. You simply park and walk the trail. Antelope Canyon, which is 10 minutes away, does require a guided tour, but Horseshoe Bend does not.',
+  },
+  {
+    q: 'How long is the hike to Horseshoe Bend?',
+    a: 'The trail from the parking lot to the overlook is 0.6 miles one way (1.2 miles round trip). At a moderate pace, that\'s 20–25 minutes each direction. Plan 1–2 hours total to allow time at the rim.',
+  },
+  {
+    q: 'Is the trail paved and wheelchair accessible?',
+    a: 'Yes, the trail has been fully paved since June 2019. It is ADA accessible and stroller-friendly, though the paved surface transitions to packed sand in places and some uphill sections may require assistance for wheelchairs.',
+  },
+  {
+    q: 'Are there guardrails at the overlook?',
+    a: 'No guardrails exist along most of the overlook rim. There is one fenced viewing platform at the end of the trail. The drop to the Colorado River is approximately 1,000 feet. Keep children close and stay back from the edge.',
+  },
+  {
+    q: 'Can I bring my dog?',
+    a: 'Yes. Dogs are welcome on the trail on a leash no longer than 6 feet. In summer, protect their paws from hot sand and rock. Bring water for them. Do not leave dogs in your car in the parking lot — Page Police will respond and you may be arrested for animal cruelty.',
+  },
+  {
+    q: 'What should I bring?',
+    a: 'Water (at least 1 liter per person; $1 bottled water available at the parking lot), sunscreen, a hat, closed-toe shoes, and layers if visiting in early morning or winter. The trail is completely exposed with no shade.',
+  },
+  {
+    q: 'Is there shade on the trail?',
+    a: 'Virtually none. There are a couple of small covered rest spots along the trail, but they are crowded in peak season. Assume full sun exposure for the entire hike.',
+  },
+  {
+    q: 'Can I visit at night or for astrophotography?',
+    a: 'The parking lot closes at sunset. Night visits are not officially permitted. The trail has no artificial lighting, and the rim edge is completely unfenced. Astrophotography can be done but requires a headlamp and extreme caution. Always check parking lot hours before planning a night visit.',
+  },
+];
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map(({ q, a }) => ({
+      '@type': 'Question',
+      name: q,
+      acceptedAnswer: { '@type': 'Answer', text: a },
+    })),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: 'How to Hike Horseshoe Bend',
+    description: 'Step-by-step guide to the self-guided hike to the Horseshoe Bend overlook.',
+    totalTime: 'PT2H',
+    estimatedCost: { '@type': 'MonetaryAmount', currency: 'USD', value: '10' },
+    step: [
+      { '@type': 'HowToStep', name: 'Park and pay', text: 'Use the City of Page lot off US-89 near mile marker 545. Pay the $10 vehicle fee at the booth.' },
+      { '@type': 'HowToStep', name: 'Follow the paved trail', text: 'The 0.6-mile paved trail begins at the trailhead. It is ADA accessible and stroller-friendly.' },
+      { '@type': 'HowToStep', name: 'Reach the overlook', text: 'After about 20–25 minutes, the trail ends at the rim — 1,000 feet above the Colorado River.' },
+      { '@type': 'HowToStep', name: 'Stay safe at the rim', text: 'No guardrails exist at most of the rim. The fenced platform is at the trail end. Stay back from the edge.' },
+    ],
+  },
+];
+---
+
+<PageLayout {title} {description} {canonical}>
+  <SchemaLD slot="head" {schema} />
+
+  <header class="page-hero">
+    <div class="wrap">
+      <nav class="bc" aria-label="Breadcrumb">
+        <a href="/">Home</a><span>›</span>
+        <span aria-current="page">Hike Horseshoe Bend</span>
+      </nav>
+      <p class="kicker on-dark">Self-guided · 0.6 miles · $10 parking</p>
+      <h1>Hike Horseshoe Bend on Your Own</h1>
+      <p class="sub">No guide required. No reservation needed. Just park, walk 0.6 miles, and stand at the edge of one of the most iconic views in North America.</p>
+      <div class="hero-btns">
+        <a href="/parking-fees/" class="btn btn--primary">Parking fees →</a>
+        <a href="/best-time-to-visit-horseshoe-bend/" class="btn btn--ghost-light">Best time to visit →</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Quick stats bar -->
+  <div class="stats-bar">
+    <div class="wrap stats-inner">
+      <div class="stat-item"><span class="si-val">0.6 mi</span><span class="si-label">One way</span></div>
+      <div class="stat-item"><span class="si-val">1.2 mi</span><span class="si-label">Round trip</span></div>
+      <div class="stat-item"><span class="si-val">20–25 min</span><span class="si-label">Each direction</span></div>
+      <div class="stat-item"><span class="si-val">1,000 ft</span><span class="si-label">Drop to river</span></div>
+      <div class="stat-item"><span class="si-val">$10</span><span class="si-label">Per vehicle parking</span></div>
+      <div class="stat-item"><span class="si-val">Paved</span><span class="si-label">ADA accessible</span></div>
+    </div>
+  </div>
+
+  <!-- Trail overview -->
+  <section class="sec trail-sec">
+    <div class="wrap trail-wrap">
+      <div class="trail-text">
+        <div class="eyebrow"><span></span><span class="kicker">The trail</span></div>
+        <h2>A paved path to an extraordinary view</h2>
+        <p>What was once a grueling half-mile slog through deep sand is now a well-maintained, fully paved trail. Since June 2019, the trail from the parking lot to the Horseshoe Bend overlook has been ADA compliant — accessible with assistance for wheelchairs and strollers.</p>
+        <p>The trail is completely exposed to the sun. There are a couple of small shaded rest spots, but plan for full desert conditions: sunscreen, hat, and water are non-negotiable in any season.</p>
+        <p>At the rim, you'll find a fenced viewing platform at the end of the trail, plus additional vantage points along the unfenced edge. The Colorado River is approximately 1,000 feet below. <strong>There are no guardrails</strong> outside of the small platform. Stay back from the edge and supervise children at all times.</p>
+
+        <div class="trail-details">
+          <div class="td-item"><span class="td-label">Trail length</span><span>0.6 mi (1.0 km) one way · 1.2 mi round trip</span></div>
+          <div class="td-item"><span class="td-label">Difficulty</span><span>Easy to moderate · Paved with some packed sand</span></div>
+          <div class="td-item"><span class="td-label">Time needed</span><span>1–2 hours total (including time at the rim)</span></div>
+          <div class="td-item"><span class="td-label">Elevation gain</span><span>Minimal — mostly flat with gentle incline</span></div>
+          <div class="td-item"><span class="td-label">Surface</span><span>Paved asphalt; some packed sand and rock near rim</span></div>
+          <div class="td-item"><span class="td-label">Shade</span><span>None — completely exposed</span></div>
+          <div class="td-item"><span class="td-label">Restrooms</span><span>Near parking lot only; none on trail</span></div>
+          <div class="td-item"><span class="td-label">Pets</span><span>Dogs allowed on 6-ft leash</span></div>
+        </div>
+      </div>
+      <div class="trail-img ph ph--navy">
+        <span class="ph__label">Horseshoe Bend paved trail — panoramic view of the overlook and canyon</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- HikeSteps component -->
+  <HikeSteps />
+
+  <!-- What to bring -->
+  <section class="sec bring-sec">
+    <div class="wrap">
+      <div class="eyebrow"><span></span><span class="kicker">Be prepared</span></div>
+      <h2>What to bring</h2>
+      <div class="bring-grid">
+        <div class="bring-card essential">
+          <div class="bc-icon">💧</div>
+          <div>
+            <h3>Water <span class="req-tag">Essential</span></h3>
+            <p>Bring at least 1 liter per person. The parking lot sells bottled water for $1. In summer, bring more. No water fountains on the trail.</p>
+          </div>
+        </div>
+        <div class="bring-card essential">
+          <div class="bc-icon">🧴</div>
+          <div>
+            <h3>Sunscreen <span class="req-tag">Essential</span></h3>
+            <p>The trail is completely exposed. Even on a cloudy day, UV radiation at this elevation and latitude is significant. Reapply at the rim.</p>
+          </div>
+        </div>
+        <div class="bring-card essential">
+          <div class="bc-icon">👟</div>
+          <div>
+            <h3>Closed-toe shoes <span class="req-tag">Essential</span></h3>
+            <p>Flip flops and sandals make for an uncomfortable hike on packed sand and hot rock. Sneakers or trail shoes are ideal.</p>
+          </div>
+        </div>
+        <div class="bring-card">
+          <div class="bc-icon">🧢</div>
+          <div>
+            <h3>Hat</h3>
+            <p>No shade on the trail. A wide-brim hat protects from sun exposure during the full hike, not just at the rim.</p>
+          </div>
+        </div>
+        <div class="bring-card">
+          <div class="bc-icon">📷</div>
+          <div>
+            <h3>Camera</h3>
+            <p>Horseshoe Bend is extraordinarily photogenic. Phone cameras are perfectly capable. Wide-angle lenses capture more of the panorama.</p>
+          </div>
+        </div>
+        <div class="bring-card">
+          <div class="bc-icon">🔦</div>
+          <div>
+            <h3>Headlamp (sunrise/sunset)</h3>
+            <p>If you visit at dawn or dusk, you'll be hiking in darkness. The trail has zero artificial lighting. A headlamp is essential.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Accessibility & alternatives -->
+  <section class="sec alt-sec">
+    <div class="wrap alt-wrap">
+      <div>
+        <div class="eyebrow"><span></span><span class="kicker">Can't make the hike?</span></div>
+        <h2>Other ways to experience Horseshoe Bend</h2>
+        <p>The paved trail has made the hike accessible for most visitors. But for those who cannot walk 1.2 miles round trip in desert conditions, alternatives exist.</p>
+        <div class="alt-list">
+          <div class="alt-item">
+            <h3>✈️ Air tours (helicopter or fixed-wing)</h3>
+            <p>Scenic flights from Page Municipal Airport offer the most dramatic overhead view of the bend. No hiking required. Depart and return in 25–45 minutes.</p>
+            <a href="/tours/" class="inline-link">See air tour options →</a>
+          </div>
+          <div class="alt-item">
+            <h3>🛶 River tours</h3>
+            <p>Float the Colorado River at the base of Horseshoe Bend. Accessible for those who can board a raft at the Lees Ferry launch. Calm water, ages 4+.</p>
+            <a href="/river-tours/" class="inline-link">See river tours →</a>
+          </div>
+        </div>
+      </div>
+      <div class="alt-img ph ph--navy">
+        <span class="ph__label">Helicopter tour flying over Horseshoe Bend — aerial view</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="sec faq-sec">
+    <div class="wrap">
+      <div class="eyebrow"><span></span><span class="kicker">Questions</span></div>
+      <h2>Hike FAQs</h2>
+      <div class="faq-list">
+        {faqs.map(({ q, a }) => (
+          <details class="faq-item">
+            <summary class="faq-q">{q}</summary>
+            <p class="faq-a">{a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+.page-hero { background: var(--navy); color: #fff; padding: 80px 0 64px; }
+.bc { font-family: var(--font-mono); font-size: 12px; letter-spacing: .06em; color: #9fb0bf; margin-bottom: 24px; display: flex; gap: 8px; align-items: center; }
+.bc a { color: #9fb0bf; }
+.bc a:hover { color: #fff; }
+.page-hero h1 { font-size: clamp(32px, 6vw, 56px); color: #fff; margin: 12px 0 18px; text-transform: uppercase; }
+.page-hero .sub { font-size: 18px; color: #aebcc8; margin: 0 0 28px; max-width: 60ch; }
+.hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+
+.stats-bar { background: var(--orange); padding: 20px 0; }
+.stats-inner { display: flex; flex-wrap: wrap; gap: 0; }
+.stat-item { flex: 1; min-width: 100px; border-right: 1px solid rgba(255,255,255,.25); padding: 0 20px; text-align: center; }
+.stat-item:last-child { border-right: none; }
+.si-val { display: block; font-weight: 900; font-size: 18px; color: #fff; font-family: var(--font-display); }
+.si-label { display: block; font-family: var(--font-mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.75); margin-top: 2px; }
+
+.trail-sec { background: var(--paper); }
+.trail-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+.trail-text h2 { font-size: clamp(26px, 3.5vw, 38px); text-transform: uppercase; margin: 16px 0 18px; }
+.trail-text p { font-size: 16px; color: var(--ink-soft); margin: 0 0 16px; line-height: 1.65; }
+.trail-details { margin-top: 28px; display: flex; flex-direction: column; gap: 0; border: 1px solid var(--sand-line); border-radius: var(--radius); overflow: hidden; }
+.td-item { display: flex; gap: 0; border-bottom: 1px solid var(--sand-line); }
+.td-item:last-child { border-bottom: none; }
+.td-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-mute); background: var(--cream); padding: 12px 16px; width: 160px; flex: none; border-right: 1px solid var(--sand-line); display: flex; align-items: center; }
+.td-item span:last-child { padding: 12px 16px; font-size: 14px; color: var(--ink); }
+.trail-img { aspect-ratio: 4/3; border-radius: var(--radius-lg); overflow: hidden; position: sticky; top: 100px; }
+
+.bring-sec { background: var(--cream); }
+.bring-sec h2 { font-size: clamp(28px, 4vw, 40px); text-transform: uppercase; margin: 16px 0 36px; }
+.bring-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.bring-card { background: #fff; border-radius: var(--radius); padding: 20px; border: 1px solid var(--sand-line); display: flex; gap: 16px; }
+.bring-card.essential { border-color: var(--orange); background: #fdf8f4; }
+.bc-icon { font-size: 28px; flex: none; }
+.bring-card h3 { font-size: 17px; color: var(--navy); text-transform: uppercase; margin: 0 0 8px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.req-tag { font-family: var(--font-mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; background: var(--orange); color: #fff; padding: 3px 8px; border-radius: 999px; font-weight: 700; }
+.bring-card p { font-size: 14px; color: var(--ink-soft); margin: 0; line-height: 1.55; }
+
+.alt-sec { background: var(--paper); }
+.alt-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.alt-sec h2 { font-size: clamp(26px, 3.5vw, 38px); text-transform: uppercase; margin: 16px 0 16px; }
+.alt-sec p { font-size: 16px; color: var(--ink-soft); margin: 0 0 24px; }
+.alt-list { display: flex; flex-direction: column; gap: 24px; }
+.alt-item h3 { font-size: 19px; color: var(--navy); margin: 0 0 8px; }
+.alt-item p { font-size: 14px; color: var(--ink-soft); margin: 0 0 8px; }
+.inline-link { font-family: var(--font-mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--orange-deep); font-weight: 700; }
+.inline-link:hover { text-decoration: underline; }
+.alt-img { aspect-ratio: 4/3; border-radius: var(--radius-lg); overflow: hidden; }
+
+.faq-sec { background: var(--cream); }
+.faq-sec h2 { font-size: clamp(28px, 4vw, 40px); text-transform: uppercase; margin: 16px 0 36px; }
+.faq-list { display: flex; flex-direction: column; max-width: 76ch; }
+.faq-item { border-bottom: 1px solid var(--sand-line); }
+.faq-item:first-child { border-top: 1px solid var(--sand-line); }
+.faq-q { list-style: none; padding: 22px 0; font-size: 17px; font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; color: var(--navy); }
+.faq-q::-webkit-details-marker { display: none; }
+.faq-q::after { content: '+'; font-family: var(--font-mono); font-size: 20px; color: var(--orange); flex: none; transition: transform .2s; }
+details[open] .faq-q::after { transform: rotate(45deg); }
+.faq-a { margin: 0 0 22px; font-size: 15px; color: var(--ink-soft); line-height: 1.65; max-width: 68ch; }
+
+@media (max-width: 860px) {
+  .trail-wrap, .alt-wrap { grid-template-columns: 1fr; }
+  .trail-img { position: static; }
+  .bring-grid { grid-template-columns: 1fr 1fr; }
+  .stats-inner { justify-content: center; }
+  .stat-item { min-width: 130px; padding: 12px 16px; }
+}
+@media (max-width: 480px) {
+  .bring-grid { grid-template-columns: 1fr; }
+}
+</style>

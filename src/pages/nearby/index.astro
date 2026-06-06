@@ -1,0 +1,86 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import SchemaLD from '../../components/SchemaLD.astro';
+import NearbyCard from '../../components/NearbyCard.astro';
+
+const title = 'Nearby Attractions | Grand Circle from Horseshoe Bend & Page, AZ';
+const description: string = 'Attractions near Horseshoe Bend: Antelope Canyon (4 mi), Lake Powell, Grand Canyon (130 mi), Monument Valley (115 mi), Zion, Bryce Canyon, and the full Grand Circle.';
+const canonical = 'https://horseshoebend.com/nearby/';
+
+const nearbyAttractions = [
+  { name: 'Antelope Canyon', distance: '4–7 mi · 10 min', description: 'The world\'s most photographed slot canyon. Guided Navajo tours required. Book well in advance.', href: '/antelope-canyon/', imgAlt: 'Upper Antelope Canyon light beams' },
+  { name: 'Glen Canyon Dam', distance: '2 mi · 5 min', description: 'One of the largest concrete arch dams in the US. Free tours of the dam and visitor center.', href: '/nearby/', imgAlt: 'Glen Canyon Dam and Lake Powell' },
+  { name: 'Lake Powell', distance: '4 mi · 10 min', description: '475 miles of shoreline. Boat tours, houseboat rentals, kayaking, and the Rainbow Bridge monument.', href: '/river-tours/', imgAlt: 'Lake Powell blue water and red canyon walls' },
+  { name: 'Grand Canyon South Rim', distance: '130 mi · 2.5 hrs', description: 'One of the seven natural wonders of the world. Overnight stay highly recommended.', href: '/nearby/', imgAlt: 'Grand Canyon South Rim panorama at sunset' },
+  { name: 'Monument Valley', distance: '115 mi · 2 hrs', description: 'The iconic Mittens and Merrick Butte. Navajo Nation Tribal Park with guided jeep tours.', href: '/nearby/', imgAlt: 'Monument Valley sandstone buttes' },
+  { name: 'Zion National Park', distance: '175 mi · 2.5 hrs', description: 'The Narrows, Angels Landing, and Zion Canyon. Shuttle system required in peak season.', href: '/nearby/', imgAlt: 'Zion Canyon from Angels Landing' },
+  { name: 'Bryce Canyon National Park', distance: '180 mi · 3 hrs', description: 'Thousands of crimson hoodoos below the Paunsaugunt Plateau. Breathtaking at sunrise.', href: '/nearby/', imgAlt: 'Bryce Canyon hoodoos at sunrise' },
+  { name: 'The Wave', distance: '75 mi · 1.5 hrs', description: 'Famous Navajo sandstone formation requiring a permit lottery. Plan many months in advance.', href: '/nearby/', imgAlt: 'The Wave sandstone formation in Arizona' },
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: title,
+  description,
+  url: canonical,
+};
+---
+
+<PageLayout {title} {description} {canonical}>
+  <SchemaLD slot="head" {schema} />
+
+  <header class="page-hero">
+    <div class="wrap">
+      <nav class="bc" aria-label="Breadcrumb">
+        <a href="/">Home</a><span>›</span>
+        <span aria-current="page">Nearby</span>
+      </nav>
+      <p class="kicker on-dark">Grand Circle · American Southwest</p>
+      <h1>Nearby Attractions</h1>
+      <p class="sub">Horseshoe Bend is the perfect anchor for a Grand Circle road trip. Here's what's within a day's drive.</p>
+    </div>
+  </header>
+
+  <section class="sec nearby-sec">
+    <div class="wrap">
+      <div class="eyebrow"><span></span><span class="kicker">Within reach</span></div>
+      <h2>The Grand Circle from Page, AZ</h2>
+      <div class="nearby-grid">
+        {nearbyAttractions.map((a) => (
+          <NearbyCard name={a.name} distance={a.distance} description={a.description} href={a.href} imgAlt={a.imgAlt} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="wrap cta-inner">
+      <div>
+        <p class="kicker on-dark">Make it a road trip</p>
+        <h2>Grand Circle itineraries</h2>
+        <p>See our day-by-day plans for 24 hours, 48 hours, and the full Grand Circle loop.</p>
+      </div>
+      <a href="/itineraries/" class="btn btn--primary">See itineraries →</a>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+.page-hero { background: var(--navy); color: #fff; padding: 80px 0 64px; }
+.bc { font-family: var(--font-mono); font-size: 12px; letter-spacing: .06em; color: #9fb0bf; margin-bottom: 24px; display: flex; gap: 8px; align-items: center; }
+.bc a { color: #9fb0bf; }
+.bc a:hover { color: #fff; }
+.page-hero h1 { font-size: clamp(32px, 6vw, 56px); color: #fff; margin: 12px 0 18px; text-transform: uppercase; }
+.page-hero .sub { font-size: 18px; color: #aebcc8; margin: 0; max-width: 60ch; }
+.nearby-sec { background: var(--paper); }
+.nearby-sec h2 { font-size: clamp(28px, 4vw, 42px); text-transform: uppercase; margin: 16px 0 40px; }
+.nearby-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.cta-band { background: var(--navy-deep); color: #fff; padding: 80px 0; }
+.cta-inner { display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+.cta-band h2 { font-size: clamp(26px, 4vw, 40px); color: #fff; margin: 10px 0 12px; text-transform: uppercase; }
+.cta-band p { color: #aebcc8; margin: 0; font-size: 16px; }
+@media (max-width: 1024px) { .nearby-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 860px) { .cta-inner { flex-direction: column; align-items: flex-start; } }
+@media (max-width: 480px) { .nearby-grid { grid-template-columns: 1fr; } }
+</style>

@@ -1,0 +1,38 @@
+---
+interface Props {
+  name: string;
+  distance: string;
+  description: string;
+  href?: string;
+  imgAlt?: string;
+}
+const { name, distance, description, href = '#', imgAlt = '' } = Astro.props;
+---
+<a class="near" href={href}>
+  <div class="ph ph--navy near-bg">
+    {imgAlt && <span class="ph__label">{imgAlt}</span>}
+  </div>
+  <div class="cap">
+    <div class="dist">{distance}</div>
+    <h3>{name}</h3>
+    <p>{description}</p>
+  </div>
+</a>
+
+<style>
+.near {
+  position: relative; border-radius: var(--radius-lg); overflow: hidden;
+  aspect-ratio: 4/5; display: flex; align-items: flex-end; color: #fff;
+  isolation: isolate; transition: transform .22s;
+}
+.near:hover { transform: translateY(-4px); }
+.near-bg { position: absolute; inset: 0; z-index: -2; }
+.near::after {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(180deg, transparent 30%, rgba(13,32,50,.88));
+}
+.cap { padding: 24px; }
+.dist { font-family: var(--font-mono); font-size: 12px; color: var(--orange-bright); letter-spacing: .06em; }
+h3 { font-size: 24px; text-transform: uppercase; margin-top: 6px; }
+p { font-size: 14px; color: #dbe2e9; margin: 6px 0 0; }
+</style>

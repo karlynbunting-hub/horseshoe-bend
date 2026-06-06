@@ -1,0 +1,102 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+
+const title = 'Privacy Policy | HorseshoeBend.com';
+const description = 'Privacy policy for HorseshoeBend.com — how we collect, use, and protect visitor information.';
+const canonical = 'https://horseshoebend.com/privacy-policy/';
+const lastUpdated = '2024-01-01';
+---
+
+<PageLayout {title} {description} {canonical}>
+  <header class="page-hero">
+    <div class="wrap">
+      <nav class="bc" aria-label="Breadcrumb">
+        <a href="/">Home</a><span>›</span>
+        <span aria-current="page">Privacy Policy</span>
+      </nav>
+      <h1>Privacy Policy</h1>
+      <p class="meta">Last updated: {lastUpdated}</p>
+    </div>
+  </header>
+
+  <section class="sec prose-sec">
+    <div class="wrap prose-wrap">
+      <h2>Overview</h2>
+      <p>HorseshoeBend.com ("we," "our," or "the site") is an informational website about visiting Horseshoe Bend in Page, Arizona. This policy explains what data we collect, how we use it, and your rights.</p>
+
+      <h2>Information we collect</h2>
+      <h3>Analytics (Google Analytics 4)</h3>
+      <p>We use Google Analytics 4 (GA4) to understand how visitors use this site. GA4 collects:</p>
+      <ul>
+        <li>Pages visited and time spent on each page</li>
+        <li>Referring website or search engine</li>
+        <li>Device type, browser, and operating system</li>
+        <li>General geographic region (country/city — not precise location)</li>
+      </ul>
+      <p>This data is aggregated and anonymized. We do not receive your name, email, or any personally identifying information through GA4. Google's data processing is governed by <a href="https://policies.google.com/privacy" rel="noopener noreferrer" target="_blank">Google's Privacy Policy</a>.</p>
+
+      <h3>Tour booking (FareHarbor)</h3>
+      <p>When you click a "Book now" button, you are transferred to FareHarbor's booking platform. Any personal information you provide during booking (name, email, payment details) is collected and processed by FareHarbor, not by this site. See <a href="https://fareharbor.com/privacy/" rel="noopener noreferrer" target="_blank">FareHarbor's privacy policy</a> for details.</p>
+
+      <h3>Weather data</h3>
+      <p>The live weather widget on this site fetches data from the National Weather Service API (api.weather.gov). No personal data is transmitted. The NWS gridpoint is cached in your browser's localStorage for performance; this data stays on your device only.</p>
+
+      <h3>No cookies from us</h3>
+      <p>We do not set any first-party cookies. GA4 uses Google's cookies. FareHarbor sets its own cookies when you visit their booking pages. We do not use advertising cookies or tracking pixels.</p>
+
+      <h2>How we use information</h2>
+      <p>Analytics data is used only to improve the content and usability of this website — for example, to understand which information visitors find most useful or which pages load too slowly. We do not sell data, share it with advertisers, or use it for any purpose other than site improvement.</p>
+
+      <h2>Third-party services</h2>
+      <table class="tp-table">
+        <thead>
+          <tr><th>Service</th><th>Purpose</th><th>Data collected</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Google Analytics 4</td><td>Site analytics</td><td>Anonymized usage data</td></tr>
+          <tr><td>FareHarbor</td><td>Tour booking</td><td>Booking and payment info (on their site)</td></tr>
+          <tr><td>Google Fonts</td><td>Typography</td><td>IP address (font request)</td></tr>
+          <tr><td>NWS API</td><td>Weather widget</td><td>None</td></tr>
+          <tr><td>Cloudflare Pages</td><td>Site hosting/CDN</td><td>IP address (standard CDN logs)</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Your rights</h2>
+      <p>If you are in the EU, UK, or California, you have rights regarding your personal data. Since this site collects minimal data and does not store personally identifying information directly, most requests will be addressed by contacting the third-party services listed above. For questions about how this site uses GA4 data, contact us at the address below.</p>
+
+      <h2>Children's privacy</h2>
+      <p>This site does not knowingly collect any information from children under 13. If you believe a child has provided us with personal information, please contact us.</p>
+
+      <h2>Changes to this policy</h2>
+      <p>We may update this policy from time to time. The "last updated" date at the top of this page will reflect any changes. Continued use of the site after changes constitutes acceptance of the updated policy.</p>
+
+      <h2>Contact</h2>
+      <p>For privacy-related questions, contact: <a href="mailto:privacy@horseshoebend.com">privacy@horseshoebend.com</a></p>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+.page-hero { background: var(--navy); color: #fff; padding: 80px 0 56px; }
+.bc { font-family: var(--font-mono); font-size: 12px; letter-spacing: .06em; color: #9fb0bf; margin-bottom: 24px; display: flex; gap: 8px; align-items: center; }
+.bc a { color: #9fb0bf; }
+.bc a:hover { color: #fff; }
+.page-hero h1 { font-size: clamp(28px, 5vw, 48px); color: #fff; margin: 0 0 12px; text-transform: uppercase; }
+.page-hero .meta { font-family: var(--font-mono); font-size: 12px; color: #7f90a0; letter-spacing: .08em; }
+
+.prose-sec { background: var(--paper); }
+.prose-wrap { max-width: 72ch; }
+.prose-wrap h2 { font-size: clamp(22px, 3vw, 30px); text-transform: uppercase; color: var(--navy); margin: 48px 0 16px; padding-bottom: 10px; border-bottom: 2px solid var(--orange); }
+.prose-wrap h2:first-child { margin-top: 0; }
+.prose-wrap h3 { font-size: 18px; color: var(--navy); margin: 28px 0 10px; }
+.prose-wrap p { font-size: 15px; color: var(--ink-soft); margin: 0 0 16px; line-height: 1.7; }
+.prose-wrap ul { margin: 0 0 16px; padding-left: 20px; }
+.prose-wrap li { font-size: 15px; color: var(--ink-soft); margin-bottom: 6px; line-height: 1.6; }
+.prose-wrap a { color: var(--orange-deep); font-weight: 600; }
+.prose-wrap a:hover { text-decoration: underline; }
+
+.tp-table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; font-size: 14px; }
+.tp-table th { background: var(--navy); color: #fff; text-align: left; padding: 10px 14px; font-family: var(--font-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+.tp-table td { padding: 12px 14px; border-bottom: 1px solid var(--sand-line); color: var(--ink-soft); vertical-align: top; }
+.tp-table tr:last-child td { border-bottom: none; }
+</style>

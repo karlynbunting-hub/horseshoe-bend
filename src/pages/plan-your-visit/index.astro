@@ -1,0 +1,199 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import SchemaLD from '../../components/SchemaLD.astro';
+
+const title = 'Plan Your Visit to Horseshoe Bend | Hours, Fees & What to Expect';
+const description = 'Everything you need to plan a visit to Horseshoe Bend: parking fees summary, trail details, accessibility, what to bring, best times, and nearby Antelope Canyon.';
+const canonical = 'https://horseshoebend.com/plan-your-visit/';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: title,
+  description,
+  url: canonical,
+};
+---
+
+<PageLayout {title} {description} {canonical}>
+  <SchemaLD slot="head" {schema} />
+
+  <header class="page-hero">
+    <div class="wrap">
+      <nav class="bc" aria-label="Breadcrumb">
+        <a href="/">Home</a><span>›</span>
+        <span aria-current="page">Plan Your Visit</span>
+      </nav>
+      <p class="kicker on-dark">Essentials before you go</p>
+      <h1>Plan Your Visit</h1>
+      <p class="sub">Everything you need to know before you arrive at Horseshoe Bend — in one place.</p>
+    </div>
+  </header>
+
+  <!-- Quick essentials -->
+  <section class="sec ess-sec">
+    <div class="wrap">
+      <div class="eyebrow"><span></span><span class="kicker">At a glance</span></div>
+      <h2>The essentials</h2>
+      <div class="ess-grid">
+        <div class="ess-card">
+          <h3>📍 Location</h3>
+          <p>US-89, Mile Marker 545<br>5 miles south of Page, AZ 86040</p>
+          <a href="/directions/" class="plink">Get directions →</a>
+        </div>
+        <div class="ess-card">
+          <h3>🕐 Hours</h3>
+          <p>Sunrise to sunset, every day of the year. The parking lot is gated at sunset.</p>
+          <a href="/best-time-to-visit-horseshoe-bend/" class="plink">Best time to visit →</a>
+        </div>
+        <div class="ess-card">
+          <h3>💵 Fees</h3>
+          <p>$10 per car/RV · $5 motorcycle<br>$35–$140 commercial vehicles<br>No park passes accepted.</p>
+          <a href="/parking-fees/" class="plink">Full fee table →</a>
+        </div>
+        <div class="ess-card">
+          <h3>🥾 The trail</h3>
+          <p>0.6 miles one way · Paved · ADA accessible · No guardrails at the rim</p>
+          <a href="/hike-horseshoe-bend/" class="plink">Trail guide →</a>
+        </div>
+        <div class="ess-card">
+          <h3>📞 Contact</h3>
+          <p>City of Page: (928) 645-4310<br>General info: (928) 645-8861</p>
+        </div>
+        <div class="ess-card">
+          <h3>🚻 Facilities</h3>
+          <p>Restrooms at the parking lot. No restrooms on the trail. $1 bottled water sold at the lot.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fee summary table (links to /parking-fees/ as canonical) -->
+  <section class="sec fees-sec">
+    <div class="wrap">
+      <div class="eyebrow"><span></span><span class="kicker">Parking fees</span></div>
+      <h2>Parking fee summary</h2>
+      <p class="lede">Fees are paid to the City of Page. National Park Passes are not accepted. For the full fee schedule and rules, see the <a href="/parking-fees/" class="body-link">parking fees page</a>.</p>
+      <div class="fee-table-wrap">
+        <table class="fee-table">
+          <thead>
+            <tr><th>Vehicle</th><th class="rc">Fee</th></tr>
+          </thead>
+          <tbody>
+            <tr class="hl"><td>Car, truck, SUV, RV, motorhome</td><td class="rc"><strong>$10</strong></td></tr>
+            <tr><td>Motorcycle</td><td class="rc"><strong>$5</strong></td></tr>
+            <tr><td>Commercial van (up to 14 passengers)</td><td class="rc"><strong>$35</strong></td></tr>
+            <tr><td>Mid-size bus (15–35 passengers)</td><td class="rc"><strong>$70</strong></td></tr>
+            <tr><td>Full-size bus (35+ passengers)</td><td class="rc"><strong>$140</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="fee-note">Cash and credit/debit accepted. Cash only on major holidays. <a href="/parking-fees/" class="body-link">See full details →</a></p>
+    </div>
+  </section>
+
+  <!-- What to bring -->
+  <section class="sec wtb-sec">
+    <div class="wrap">
+      <div class="eyebrow"><span></span><span class="kicker">Pack list</span></div>
+      <h2>What to bring</h2>
+      <div class="pack-cols">
+        <div class="pack-col">
+          <h3>Essential</h3>
+          <ul>
+            <li>💧 Water — at least 1 liter per person</li>
+            <li>🧴 Sunscreen — completely exposed trail</li>
+            <li>👟 Closed-toe shoes</li>
+            <li>🧢 Hat or sun visor</li>
+          </ul>
+        </div>
+        <div class="pack-col">
+          <h3>Recommended</h3>
+          <ul>
+            <li>📷 Camera or charged phone</li>
+            <li>🔦 Headlamp for sunrise/sunset visits</li>
+            <li>🎒 Small backpack for water and snacks</li>
+            <li>🧥 Light jacket in morning/evening or winter</li>
+          </ul>
+        </div>
+        <div class="pack-col">
+          <h3>For dogs</h3>
+          <ul>
+            <li>🐕 Dogs allowed on 6-ft leash</li>
+            <li>💧 Bring water for your pet</li>
+            <li>🐾 Paw protection in summer (hot sand)</li>
+            <li>🚫 Do not leave pets in car</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Nearby -->
+  <section class="sec nearby-sec">
+    <div class="wrap">
+      <div class="eyebrow"><span></span><span class="kicker">Nearby</span></div>
+      <h2>While you're in Page</h2>
+      <div class="nearby-links">
+        <a href="/antelope-canyon/" class="nlink"><span>🏜️</span><div><strong>Antelope Canyon</strong><p>4 miles · Guided tour required</p></div></a>
+        <a href="/river-tours/" class="nlink"><span>🛶</span><div><strong>River &amp; boat tours</strong><p>Float the Colorado, kayak, or cruise Lake Powell</p></div></a>
+        <a href="/itineraries/" class="nlink"><span>🗺️</span><div><strong>Itineraries</strong><p>24 and 48-hour trip plans</p></div></a>
+        <a href="/nearby/" class="nlink"><span>🌎</span><div><strong>Grand Circle attractions</strong><p>Grand Canyon, Zion, Monument Valley</p></div></a>
+      </div>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+.page-hero { background: var(--navy); color: #fff; padding: 80px 0 64px; }
+.bc { font-family: var(--font-mono); font-size: 12px; letter-spacing: .06em; color: #9fb0bf; margin-bottom: 24px; display: flex; gap: 8px; align-items: center; }
+.bc a { color: #9fb0bf; }
+.bc a:hover { color: #fff; }
+.page-hero h1 { font-size: clamp(34px, 6vw, 56px); color: #fff; margin: 12px 0 18px; text-transform: uppercase; }
+.page-hero .sub { font-size: 18px; color: #aebcc8; margin: 0; max-width: 60ch; }
+
+.ess-sec { background: var(--paper); }
+.ess-sec h2 { font-size: clamp(28px, 4vw, 40px); text-transform: uppercase; margin: 16px 0 36px; }
+.ess-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.ess-card { background: var(--cream); border-radius: var(--radius); padding: 24px; border: 1px solid var(--sand-line); }
+.ess-card h3 { font-size: 18px; color: var(--navy); margin: 0 0 10px; }
+.ess-card p { font-size: 14px; color: var(--ink-soft); margin: 0 0 12px; line-height: 1.5; }
+.plink { font-family: var(--font-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--orange-deep); font-weight: 700; }
+
+.fees-sec { background: var(--cream); }
+.fees-sec h2 { font-size: clamp(26px, 3.5vw, 36px); text-transform: uppercase; margin: 16px 0 10px; }
+.lede { font-size: 16px; color: var(--ink-soft); margin: 0 0 28px; }
+.body-link { color: var(--orange-deep); font-weight: 700; }
+.fee-table-wrap { overflow-x: auto; }
+.fee-table { width: 100%; max-width: 600px; border-collapse: collapse; font-size: 15px; }
+.fee-table th { background: var(--navy); color: #fff; text-align: left; padding: 12px 16px; font-family: var(--font-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; }
+.fee-table td { padding: 14px 16px; border-bottom: 1px solid var(--sand-line); }
+.fee-table tr.hl td { background: #fdf3ec; }
+.rc { text-align: right; font-size: 18px; }
+.fee-note { font-size: 14px; color: var(--ink-mute); margin-top: 14px; }
+
+.wtb-sec { background: var(--paper); }
+.wtb-sec h2 { font-size: clamp(26px, 3.5vw, 36px); text-transform: uppercase; margin: 16px 0 32px; }
+.pack-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.pack-col h3 { font-size: 16px; color: var(--navy); text-transform: uppercase; font-family: var(--font-mono); letter-spacing: .1em; margin: 0 0 16px; }
+.pack-col ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.pack-col li { font-size: 15px; color: var(--ink-soft); }
+
+.nearby-sec { background: var(--cream); }
+.nearby-sec h2 { font-size: clamp(26px, 3.5vw, 36px); text-transform: uppercase; margin: 16px 0 32px; }
+.nearby-links { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.nlink { display: flex; gap: 14px; align-items: flex-start; background: #fff; border-radius: var(--radius); padding: 20px; border: 1px solid var(--sand-line); transition: box-shadow .18s; }
+.nlink:hover { box-shadow: var(--shadow-md); }
+.nlink span { font-size: 26px; flex: none; }
+.nlink strong { display: block; font-size: 15px; color: var(--navy); margin-bottom: 4px; }
+.nlink p { font-size: 13px; color: var(--ink-mute); margin: 0; }
+
+@media (max-width: 860px) {
+  .ess-grid { grid-template-columns: 1fr 1fr; }
+  .pack-cols { grid-template-columns: 1fr; }
+  .nearby-links { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 480px) {
+  .ess-grid, .nearby-links { grid-template-columns: 1fr; }
+}
+</style>

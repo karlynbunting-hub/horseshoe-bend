@@ -1,0 +1,56 @@
+---
+---
+<div class="facts">
+  <div class="facts-inner">
+    <div class="fact">
+      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+        <rect x="2" y="6" width="20" height="13" rx="2"/><path d="M2 10h20M6 15h4"/>
+      </svg>
+      <div><div class="v">$10</div><div class="l">Per vehicle · parking</div></div>
+    </div>
+    <div class="fact">
+      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+        <path d="M3 18l5-9 4 6 3-4 6 7"/>
+      </svg>
+      <div><div class="v">0.6 mi</div><div class="l">Each way to the rim</div></div>
+    </div>
+    <div class="fact">
+      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+        <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+      </svg>
+      <div><div class="v">6a–6p</div><div class="l">Lot open · seasonal</div></div>
+    </div>
+    <div class="fact">
+      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+        <path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.3"/>
+      </svg>
+      <div><div class="v">10 min</div><div class="l">South of Page on US-89</div></div>
+    </div>
+  </div>
+</div>
+
+<style>
+.facts { background: var(--navy); color: #fff; }
+.facts-inner {
+  max-width: var(--maxw); margin: 0 auto; padding: 0 32px;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+}
+.fact {
+  padding: 26px; border-right: 1px solid rgba(255,255,255,.12);
+  display: flex; gap: 16px; align-items: flex-start;
+}
+.fact:last-child { border-right: 0; }
+.ic { width: 34px; height: 34px; flex: none; color: var(--orange-bright); }
+.v { font-family: var(--font-display); font-weight: 900; font-size: 26px; line-height: 1; }
+.l { font-family: var(--font-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: #9fb0bf; margin-top: 7px; }
+
+@media (max-width: 860px) {
+  .facts-inner { padding: 0 20px; grid-template-columns: 1fr 1fr; }
+  .fact:nth-child(2) { border-right: 0; }
+}
+@media (max-width: 480px) {
+  .facts-inner { grid-template-columns: 1fr; }
+  .fact { border-right: 0; border-bottom: 1px solid rgba(255,255,255,.12); }
+  .fact:last-child { border-bottom: 0; }
+}
+</style>

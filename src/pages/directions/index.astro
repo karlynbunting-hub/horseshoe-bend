@@ -1,0 +1,249 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import SchemaLD from '../../components/SchemaLD.astro';
+
+const title = 'Directions to Horseshoe Bend | Page, AZ — US-89 Mile Marker 545';
+const description = 'How to get to Horseshoe Bend: GPS address, drive times from Las Vegas (4.5 hrs), Phoenix (4.5 hrs), Flagstaff (2.5 hrs), and Grand Canyon. US-89 south of Page, AZ.';
+const canonical = 'https://horseshoebend.com/directions/';
+
+const driveTimes = [
+  { from: 'Las Vegas, NV', time: '4.5–5 hours', miles: '~280 miles', via: 'I-15 N to US-89 S', notes: 'Most popular starting point. Scenic drive through Virgin River Gorge and Utah.' },
+  { from: 'Phoenix, AZ', time: '4.5–5 hours', miles: '~270 miles', via: 'US-89 N through Flagstaff', notes: 'Pass through Flagstaff, Wupatki/Sunset Crater NM, and the Little Colorado River overlook.' },
+  { from: 'Flagstaff, AZ', time: '2.5–3 hours', miles: '~130 miles', via: 'US-89 N', notes: 'Straight shot north on US-89. Watch for elk and cattle at night.' },
+  { from: 'Grand Canyon South Rim', time: '2.5–3.5 hours', miles: '~120 miles', via: 'US-89 N from Cameron', notes: 'Stop at Little Colorado River Overlook on the way. Add time for photos.' },
+  { from: 'Salt Lake City, UT', time: '5–6 hours', miles: '~340 miles', via: 'US-89 S or I-15 S to US-89', notes: 'Beautiful drive through Bryce Canyon and Zion corridor if you take the scenic route.' },
+  { from: 'Sedona, AZ', time: '3–3.5 hours', miles: '~155 miles', via: 'US-89A to US-89 N', notes: 'Scenic Oak Creek Canyon road. Stop at Cameron Trading Post for breakfast.' },
+];
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'TouristAttraction',
+    name: 'Horseshoe Bend Overlook Parking',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'US-89, Mile Marker 545',
+      addressLocality: 'Page',
+      addressRegion: 'AZ',
+      postalCode: '86040',
+      addressCountry: 'US',
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: 36.8791,
+      longitude: -111.51,
+    },
+    url: 'https://horseshoebend.com/directions/',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://horseshoebend.com/' },
+      { '@type': 'ListItem', position: 2, name: 'Directions', item: canonical },
+    ],
+  },
+];
+---
+
+<PageLayout {title} {description} {canonical}>
+  <SchemaLD slot="head" {schema} />
+
+  <header class="page-hero">
+    <div class="wrap">
+      <nav class="bc" aria-label="Breadcrumb">
+        <a href="/">Home</a><span>›</span>
+        <span aria-current="page">Directions</span>
+      </nav>
+      <p class="kicker on-dark">Page, Arizona · US-89 Mile Marker 545</p>
+      <h1>Directions to Horseshoe Bend</h1>
+      <p class="sub">From Las Vegas, Phoenix, Flagstaff, or Grand Canyon — everything you need to find the parking lot.</p>
+    </div>
+  </header>
+
+  <!-- GPS address + map -->
+  <section class="sec address-sec">
+    <div class="wrap address-wrap">
+      <div class="addr-block">
+        <div class="eyebrow"><span></span><span class="kicker">GPS &amp; address</span></div>
+        <h2>Find the parking lot</h2>
+        <div class="addr-card">
+          <div class="addr-line"><span class="al">Google Maps search</span><strong>Horseshoe Bend Parking Lot, Page, AZ</strong></div>
+          <div class="addr-line"><span class="al">Street address</span><strong>US-89, Mile Marker 545, Page, AZ 86040</strong></div>
+          <div class="addr-line"><span class="al">Coordinates</span><strong>36.8791° N, 111.5100° W</strong></div>
+          <div class="addr-line"><span class="al">From downtown Page</span><strong>5 miles south on US-89</strong></div>
+        </div>
+        <p class="addr-note">Look for the dedicated exit lane on the west side of US-89, between mile markers 544 and 545. The parking lot is well-signed. <strong>Do not attempt to park on the highway shoulder</strong> — violators are ticketed and towed.</p>
+        <a href="https://maps.google.com/?q=Horseshoe+Bend+Parking+Lot+Page+AZ" class="btn btn--navy" target="_blank" rel="noopener">Open in Google Maps ↗</a>
+      </div>
+      <div class="map-ph ph ph--navy">
+        <span class="ph__label">Map: Horseshoe Bend Parking Lot, US-89 Mile Marker 545, Page AZ 86040</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Drive times -->
+  <section class="sec drive-sec">
+    <div class="wrap">
+      <div class="eyebrow"><span></span><span class="kicker">Drive times</span></div>
+      <h2>How far is Horseshoe Bend from…</h2>
+      <div class="drive-grid">
+        {driveTimes.map((d) => (
+          <div class="drive-card">
+            <div class="dc-top">
+              <h3>{d.from}</h3>
+              <div class="dc-time">{d.time}</div>
+            </div>
+            <div class="dc-meta">
+              <span><b>Distance</b> {d.miles}</span>
+              <span><b>Route</b> {d.via}</span>
+            </div>
+            <p>{d.notes}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Tips for the drive -->
+  <section class="sec tips-sec">
+    <div class="wrap tips-wrap">
+      <div class="eyebrow"><span></span><span class="kicker">Road trip tips</span></div>
+      <h2>Before you drive</h2>
+      <div class="tips-grid">
+        <div class="tip-card">
+          <div class="tip-num">01</div>
+          <h3>Download maps offline</h3>
+          <p>Cell reception is spotty for long stretches of US-89. Download your Google Maps or Apple Maps route for offline use before leaving your hotel.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-num">02</div>
+          <h3>Avoid driving at night</h3>
+          <p>US-89 through rural Arizona and Utah has no ambient lighting. Deer, elk, feral horses, and free-range cattle often cross the road at night. Plan your drive to arrive and depart before dark.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-num">03</div>
+          <h3>Arizona time zone</h3>
+          <p>Arizona does not observe Daylight Saving Time — it stays on Mountain Standard Time (MST) year-round. When California and Nevada "spring forward," Arizona does not. Plan accordingly if you're driving from Nevada or Utah.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-num">04</div>
+          <h3>Fill up before Page</h3>
+          <p>Gas stations become sparse north of Flagstaff and west of Page. Fill your tank in Kanab, UT or Williams, AZ before heading into the more remote stretches of highway.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Flying in -->
+  <section class="sec fly-sec">
+    <div class="wrap fly-wrap">
+      <div>
+        <div class="eyebrow"><span></span><span class="kicker">Flying in</span></div>
+        <h2>Page Municipal Airport (PGA)</h2>
+        <p>Page has its own small regional airport served by Contour Airlines with direct flights from Phoenix (PHX) and Las Vegas (LAS). Fares start around $29 each way.</p>
+        <p>The only car rental at the airport is AVIS. Reserve well in advance — availability is limited. A rental car is essential for exploring Horseshoe Bend, Antelope Canyon, and the surrounding area independently.</p>
+        <p>For those who prefer not to rent a car, day tour operators in Las Vegas offer all-inclusive tours that include a scenic flight over Lake Mead and the Grand Canyon, with stops at Horseshoe Bend and Antelope Canyon.</p>
+      </div>
+      <div class="fly-stats">
+        <div class="fly-stat">
+          <span class="fs-val">PGA</span>
+          <span class="fs-label">Page Municipal Airport IATA code</span>
+        </div>
+        <div class="fly-stat">
+          <span class="fs-val">~$29</span>
+          <span class="fs-label">One-way fares from PHX / LAS (Contour Airlines)</span>
+        </div>
+        <div class="fly-stat">
+          <span class="fs-val">AVIS</span>
+          <span class="fs-label">Only car rental at PGA airport — book early</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band">
+    <div class="wrap cta-inner">
+      <div>
+        <p class="kicker on-dark">Once you arrive</p>
+        <h2>What to know at the parking lot</h2>
+        <p>Hours, fees, rules, and what to bring for the trail.</p>
+      </div>
+      <div class="cta-btns">
+        <a href="/parking-fees/" class="btn btn--primary">Parking fees →</a>
+        <a href="/hike-horseshoe-bend/" class="btn btn--ghost-light">Trail guide →</a>
+      </div>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+.page-hero { background: var(--navy); color: #fff; padding: 80px 0 64px; }
+.bc { font-family: var(--font-mono); font-size: 12px; letter-spacing: .06em; color: #9fb0bf; margin-bottom: 24px; display: flex; gap: 8px; align-items: center; }
+.bc a { color: #9fb0bf; }
+.bc a:hover { color: #fff; }
+.page-hero h1 { font-size: clamp(34px, 6vw, 58px); color: #fff; margin: 12px 0 18px; text-transform: uppercase; }
+.page-hero .sub { font-size: 18px; color: #aebcc8; margin: 0; max-width: 60ch; }
+
+/* Address section */
+.address-sec { background: var(--paper); }
+.address-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+.addr-block h2 { font-size: clamp(26px, 3.5vw, 38px); text-transform: uppercase; margin: 16px 0 28px; }
+.addr-card { background: var(--cream); border-radius: var(--radius); padding: 24px; margin-bottom: 20px; }
+.addr-line { display: flex; flex-direction: column; padding: 12px 0; border-bottom: 1px solid var(--sand-line); }
+.addr-line:last-child { border-bottom: none; }
+.al { font-family: var(--font-mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-mute); margin-bottom: 3px; }
+.addr-note { font-size: 14px; color: var(--ink-soft); margin: 0 0 24px; line-height: 1.6; }
+.map-ph { aspect-ratio: 4/3; border-radius: var(--radius-lg); overflow: hidden; }
+
+/* Drive times */
+.drive-sec { background: var(--cream); }
+.drive-sec h2 { font-size: clamp(28px, 4vw, 42px); text-transform: uppercase; margin: 16px 0 40px; }
+.drive-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.drive-card { background: #fff; border-radius: var(--radius); padding: 24px; border: 1px solid var(--sand-line); }
+.dc-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; gap: 12px; }
+.drive-card h3 { font-size: 18px; color: var(--navy); text-transform: uppercase; margin: 0; }
+.dc-time { font-family: var(--font-display); font-weight: 900; font-size: 22px; color: var(--orange); white-space: nowrap; flex: none; }
+.dc-meta { display: flex; flex-direction: column; gap: 4px; margin-bottom: 12px; font-size: 13px; color: var(--ink-mute); font-family: var(--font-mono); }
+.dc-meta b { color: var(--navy); margin-right: 6px; }
+.drive-card p { font-size: 14px; color: var(--ink-soft); margin: 0; line-height: 1.55; }
+
+/* Tips */
+.tips-sec { background: var(--paper); }
+.tips-sec h2 { font-size: clamp(28px, 4vw, 40px); text-transform: uppercase; margin: 16px 0 40px; }
+.tips-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.tip-card { position: relative; padding-top: 24px; }
+.tip-num { font-family: var(--font-mono); font-size: 13px; font-weight: 700; color: var(--orange-bright); margin-bottom: 10px; }
+.tip-card h3 { font-size: 19px; color: var(--navy); text-transform: uppercase; margin: 0 0 10px; }
+.tip-card p { font-size: 14px; color: var(--ink-soft); margin: 0; line-height: 1.6; }
+
+/* Flying section */
+.fly-sec { background: var(--navy); color: #fff; padding: 80px 0; }
+.fly-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.fly-sec h2 { font-size: clamp(26px, 4vw, 40px); text-transform: uppercase; color: #fff; margin: 16px 0 16px; }
+.fly-sec p { font-size: 16px; color: #aebcc8; margin: 0 0 14px; line-height: 1.65; }
+.fly-stats { display: flex; flex-direction: column; gap: 24px; }
+.fly-stat { background: rgba(255,255,255,.06); border-radius: var(--radius); padding: 22px 24px; }
+.fs-val { display: block; font-family: var(--font-display); font-weight: 900; font-size: 32px; color: var(--orange-bright); line-height: 1; margin-bottom: 6px; }
+.fs-label { font-size: 14px; color: #8fa0af; }
+
+/* CTA */
+.cta-band { background: var(--navy-deep); color: #fff; padding: 80px 0; }
+.cta-inner { display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+.cta-band h2 { font-size: clamp(26px, 4vw, 40px); color: #fff; margin: 10px 0 12px; text-transform: uppercase; }
+.cta-band p { color: #aebcc8; margin: 0; font-size: 16px; }
+.cta-btns { display: flex; gap: 14px; flex-wrap: wrap; flex: none; }
+
+@media (max-width: 860px) {
+  .address-wrap { grid-template-columns: 1fr; }
+  .drive-grid { grid-template-columns: 1fr 1fr; }
+  .tips-grid { grid-template-columns: 1fr 1fr; }
+  .fly-wrap { grid-template-columns: 1fr; }
+  .cta-inner { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 480px) {
+  .drive-grid { grid-template-columns: 1fr; }
+  .tips-grid { grid-template-columns: 1fr; }
+}
+</style>

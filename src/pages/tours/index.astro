@@ -1,0 +1,137 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import SchemaLD from '../../components/SchemaLD.astro';
+import TourCard from '../../components/TourCard.astro';
+import BookingButton from '../../components/islands/BookingButton.astro';
+import { tours } from '../../data/tours';
+
+const title = 'Tours from Page, AZ | Air, Antelope Canyon, River & Cathedral';
+const description: string = 'Book guided tours from Page, AZ: helicopter and scenic flights over Horseshoe Bend, Antelope Canyon combo tours, river kayak and raft trips, and Cathedral Slot Canyon.';
+const canonical = 'https://horseshoebend.com/tours/';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Guided Tours from Page, AZ',
+  url: canonical,
+  numberOfItems: tours.length + 1,
+};
+---
+
+<PageLayout {title} {description} {canonical}>
+  <SchemaLD slot="head" {schema} />
+
+  <header class="page-hero">
+    <div class="wrap">
+      <nav class="bc" aria-label="Breadcrumb">
+        <a href="/">Home</a><span>›</span>
+        <span aria-current="page">Tours</span>
+      </nav>
+      <p class="kicker on-dark">Book from Page, AZ · FareHarbor secure checkout</p>
+      <h1>Guided Tours from Page, AZ</h1>
+      <p class="sub">Fly over the bend, walk through a slot canyon, or float the Colorado River. All tours depart from or near Page, AZ and can be combined in a single day.</p>
+    </div>
+  </header>
+
+  <!-- Featured tours grid -->
+  <section class="sec tours-sec">
+    <div class="wrap">
+      <div class="eyebrow"><span></span><span class="kicker">All tours</span></div>
+      <h2>Find your experience</h2>
+      <div class="tours-grid">
+        {tours.map((t) => (
+          <TourCard
+            name={t.name}
+            tagLabel={t.tagLabel}
+            price={t.price}
+            description={t.description}
+            meta1={t.duration}
+            meta2={t.seasonality}
+            meta3={t.audience}
+            href={t.href}
+            imgAlt={t.imgAlt}
+            dark={t.type === 'air'}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Cathedral Slot Canyon section + anchor -->
+  <section class="sec cathedral-sec" id="cathedral-slot-canyon">
+    <div class="wrap cathedral-wrap">
+      <div>
+        <div class="eyebrow"><span></span><span class="kicker">Hidden gem</span></div>
+        <h2>Cathedral Slot Canyon Tour</h2>
+        <p>When Upper and Lower Antelope Canyon are sold out — or when you want something less crowded and equally spectacular — Cathedral Slot Canyon is the answer.</p>
+        <p>Cathedral Canyon features the same swirling Navajo sandstone walls as Antelope Canyon, plus unique exterior rock formations you won't find anywhere else. With far fewer visitors, you'll spend more time in the canyon and less time waiting for photo opportunities.</p>
+        <ul class="cat-features">
+          <li>Intimate guided tour — smaller groups than major Antelope Canyon operators</li>
+          <li>Similar sandstone colors and light effects to Upper Antelope</li>
+          <li>Unique formations including the iconic "Cathedral" chamber</li>
+          <li>Available when Antelope Canyon tours are sold out</li>
+          <li>10–15 minutes from Horseshoe Bend</li>
+        </ul>
+        <div class="cat-btns">
+          <BookingButton label="Book Cathedral Canyon tour" variant="primary" />
+        </div>
+      </div>
+      <div class="cat-img ph ph--navy">
+        <span class="ph__label">Cathedral Slot Canyon — swirling sandstone walls in Page, AZ</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking info -->
+  <section class="sec booking-sec">
+    <div class="wrap">
+      <div class="eyebrow"><span></span><span class="kicker">Booking info</span></div>
+      <h2>Before you book</h2>
+      <div class="info-grid">
+        <div class="ic"><h3>Book early</h3><p>Peak season (March–October) fills weeks in advance. Book the moment your dates are confirmed.</p></div>
+        <div class="ic"><h3>Secure checkout</h3><p>All bookings processed securely through FareHarbor. Major credit cards accepted.</p></div>
+        <div class="ic"><h3>Cancellation policy</h3><p>Most tours offer free cancellation 24–48 hours before departure. Check your confirmation for specifics.</p></div>
+        <div class="ic"><h3>Need help?</h3><p>Questions about which tour is right for you? Call us at (928) 645-8861 during business hours.</p></div>
+      </div>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+.page-hero { background: var(--navy); color: #fff; padding: 80px 0 64px; }
+.bc { font-family: var(--font-mono); font-size: 12px; letter-spacing: .06em; color: #9fb0bf; margin-bottom: 24px; display: flex; gap: 8px; align-items: center; }
+.bc a { color: #9fb0bf; }
+.bc a:hover { color: #fff; }
+.page-hero h1 { font-size: clamp(32px, 6vw, 56px); color: #fff; margin: 12px 0 18px; text-transform: uppercase; }
+.page-hero .sub { font-size: 18px; color: #aebcc8; margin: 0; max-width: 60ch; }
+
+.tours-sec { background: var(--paper); }
+.tours-sec h2 { font-size: clamp(28px, 4vw, 42px); text-transform: uppercase; margin: 16px 0 40px; }
+.tours-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
+.cathedral-sec { background: var(--cream); }
+.cathedral-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.cathedral-sec h2 { font-size: clamp(28px, 4vw, 42px); text-transform: uppercase; margin: 16px 0 18px; }
+.cathedral-sec p { font-size: 16px; color: var(--ink-soft); margin: 0 0 16px; line-height: 1.65; }
+.cat-features { margin: 0 0 28px; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.cat-features li { font-size: 15px; color: var(--ink-soft); padding-left: 22px; position: relative; }
+.cat-features li::before { content: '✓'; position: absolute; left: 0; color: var(--orange); font-weight: 700; }
+.cat-btns { display: flex; gap: 14px; }
+.cat-img { aspect-ratio: 4/3; border-radius: var(--radius-lg); overflow: hidden; }
+
+.booking-sec { background: var(--paper); }
+.booking-sec h2 { font-size: clamp(28px, 4vw, 40px); text-transform: uppercase; margin: 16px 0 40px; }
+.info-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.ic { background: var(--cream); border-radius: var(--radius); padding: 22px; border: 1px solid var(--sand-line); }
+.ic h3 { font-size: 17px; color: var(--navy); text-transform: uppercase; margin: 0 0 10px; }
+.ic p { font-size: 14px; color: var(--ink-soft); margin: 0; }
+
+@media (max-width: 1024px) {
+  .info-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 860px) {
+  .tours-grid { grid-template-columns: 1fr; }
+  .cathedral-wrap { grid-template-columns: 1fr; }
+  .info-grid { grid-template-columns: 1fr; }
+}
+</style>

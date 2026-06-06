@@ -1,0 +1,35 @@
+---
+interface Props {
+  label?: string;
+  variant?: 'primary' | 'navy' | 'ghost' | 'ghost-light';
+  scheduleUuid?: string;
+}
+const {
+  label = 'Book a Tour',
+  variant = 'primary',
+  scheduleUuid = '12a444fc-2b10-434a-96ac-cec5050ac680',
+} = Astro.props;
+
+const href = `https://fareharbor.com/embeds/book/antelopecanyonaz/?ref=valerie&schedule-uuid=${scheduleUuid}&full-items=yes&flow=1234128`;
+---
+<a
+  class={`btn btn--${variant} fh-booking`}
+  href={href}
+  data-fh-lightbox="true"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  {label}
+</a>
+
+<script>
+// Load FareHarbor lightbox API once
+if (!document.getElementById('fh-embed-script')) {
+  const s = document.createElement('script');
+  s.id = 'fh-embed-script';
+  s.src = 'https://fareharbor.com/embeds/api/v1/?autolightboxes';
+  s.dataset.fhRef = 'antelopecanyonaz';
+  s.async = true;
+  document.head.appendChild(s);
+}
+</script>

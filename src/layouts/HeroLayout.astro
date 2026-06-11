@@ -26,8 +26,15 @@ const {
 <PageLayout {...baseProps}>
   <slot name="head" slot="head" />
   <header class="hero">
-    <div class="ph ph--navy hero-bg">
-      <span class="ph__label">{heroLabel}</span>
+    <div class="hero-bg">
+      <img
+        src="/images/hero-horseshoe-bend.webp"
+        alt="Horseshoe Bend, Page Arizona — aerial view of the Colorado River curving through red rock canyon"
+        width="1630"
+        height="860"
+        fetchpriority="high"
+        decoding="async"
+      />
     </div>
     <div class="hero-inner">
       {breadcrumb && (
@@ -62,7 +69,8 @@ const {
   position: relative; min-height: 60vh; display: flex; align-items: flex-end;
   color: #fff; isolation: isolate;
 }
-.hero-bg { position: absolute; inset: 0; z-index: -2; align-items: flex-start; justify-content: flex-end; }
+.hero-bg { position: absolute; inset: 0; z-index: -2; overflow: hidden; }
+.hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; display: block; }
 .hero::after {
   content: ""; position: absolute; inset: 0; z-index: -1;
   background: linear-gradient(180deg, rgba(13,32,50,.25) 0%, rgba(13,32,50,.05) 38%, rgba(13,32,50,.82) 100%);

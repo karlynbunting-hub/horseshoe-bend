@@ -1,0 +1,224 @@
+---
+// Interactive Horseshoe Bend parking lot map — North at top
+---
+
+<div class="pmap-outer">
+  <svg
+    class="pmap-svg"
+    viewBox="0 0 620 400"
+    xmlns="http://www.w3.org/2000/svg"
+    role="img"
+    aria-label="Interactive map of Horseshoe Bend parking lot showing lanes 1–7, RV parking, commercial and bus parking, toll booth, restrooms, and trail head access"
+  >
+
+    <!-- Background -->
+    <rect width="620" height="400" fill="#fbf8f1"/>
+
+    <!-- ── Road surfaces (entrance & exit stubs, North side) ── -->
+    <rect x="78" y="0" width="104" height="72" fill="#ccc5b3"/>
+    <line x1="130" y1="4" x2="130" y2="70" stroke="#fbf8f1" stroke-width="1.5" stroke-dasharray="7,5"/>
+    <rect x="296" y="0" width="76" height="72" fill="#ccc5b3"/>
+
+    <!-- ── Main lot fill ── -->
+    <path d="M 30,72 L 30,355 Q 30,370 47,370 L 573,370 Q 590,370 590,355 L 590,72 Z" fill="#d8d2c7"/>
+
+    <!-- ── Lot outer boundary ── -->
+    <line x1="30" y1="72" x2="78" y2="72" stroke="#0d2032" stroke-width="2.5"/>
+    <line x1="182" y1="72" x2="296" y2="72" stroke="#0d2032" stroke-width="2.5"/>
+    <line x1="372" y1="72" x2="590" y2="72" stroke="#0d2032" stroke-width="2.5"/>
+    <path d="M 590,72 L 590,355 Q 590,370 573,370 L 47,370 Q 30,370 30,355 L 30,72"
+      fill="none" stroke="#0d2032" stroke-width="2.5" stroke-linejoin="round"/>
+    <line x1="78"  y1="0"  x2="78"  y2="72" stroke="#0d2032" stroke-width="2.5"/>
+    <line x1="182" y1="0"  x2="182" y2="72" stroke="#0d2032" stroke-width="2.5"/>
+    <line x1="296" y1="0"  x2="296" y2="72" stroke="#0d2032" stroke-width="2.5"/>
+    <line x1="372" y1="0"  x2="372" y2="72" stroke="#0d2032" stroke-width="2.5"/>
+
+    <!-- ── Internal perimeter drive lane ── -->
+    <path d="
+      M 52,80 L 78,80
+      M 182,80 L 296,80
+      M 372,80 L 568,80 L 568,352 Q 568,358 562,358
+      L 58,358 Q 52,358 52,352 L 52,80
+    " fill="none" stroke="#bfb9ae" stroke-width="1.2"/>
+
+    <!-- ── Toll booth ── -->
+    <rect x="30" y="90" width="22" height="42" rx="3" fill="#0d2032"/>
+    <rect x="34" y="95" width="5" height="7" rx="1" fill="#e8642a"/>
+    <rect x="42" y="95" width="5" height="7" rx="1" fill="#e8642a"/>
+    <line x1="52" y1="107" x2="104" y2="107" stroke="#e8642a" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="52" cy="107" r="3" fill="#e8642a"/>
+
+    <!-- ── RV Parking area ── -->
+    <rect x="80" y="82" width="148" height="78" rx="14" fill="#cfc9bb" stroke="#0d2032" stroke-width="1.5"/>
+    <rect x="95" y="94" width="118" height="54" rx="9" fill="none" stroke="#a5a098" stroke-width="1.2" stroke-dasharray="5,4"/>
+
+    <!-- ── Restrooms ── -->
+    <rect x="388" y="82" width="112" height="46" rx="7" fill="#e6f4ef" stroke="#0d2032" stroke-width="1.5"/>
+    <circle cx="408" cy="105" r="9" fill="#3a8b62"/>
+    <text x="408" y="109" font-size="8" fill="#fff" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700">WC</text>
+
+    <!-- ── Parking lane medians (1–7) ── -->
+    <rect x="78"  y="168" width="24" height="162" rx="12" fill="#b5aea4" stroke="#0d2032" stroke-width="1"/>
+    <rect x="126" y="168" width="24" height="162" rx="12" fill="#b5aea4" stroke="#0d2032" stroke-width="1"/>
+    <rect x="174" y="168" width="24" height="162" rx="12" fill="#b5aea4" stroke="#0d2032" stroke-width="1"/>
+    <rect x="222" y="168" width="24" height="162" rx="12" fill="#b5aea4" stroke="#0d2032" stroke-width="1"/>
+    <rect x="270" y="168" width="24" height="162" rx="12" fill="#b5aea4" stroke="#0d2032" stroke-width="1"/>
+    <rect x="318" y="168" width="24" height="162" rx="12" fill="#b5aea4" stroke="#0d2032" stroke-width="1"/>
+    <rect x="366" y="168" width="24" height="162" rx="12" fill="#b5aea4" stroke="#0d2032" stroke-width="1"/>
+
+    <!-- ── Commercial parking ── -->
+    <rect x="410" y="150" width="68" height="180" rx="7" fill="#cac4b8" stroke="#0d2032" stroke-width="1.5"/>
+
+    <!-- ── Bus parking ── -->
+    <rect x="492" y="150" width="68" height="180" rx="7" fill="#cac4b8" stroke="#0d2032" stroke-width="1.5"/>
+
+    <!-- ── Orange highlight labels ── -->
+    <rect x="415" y="218" width="58" height="16" rx="3" fill="#e8642a"/>
+    <text x="444" y="229.5" font-size="7" font-weight="700" fill="#fff" text-anchor="middle"
+      font-family="'IBM Plex Mono','Courier New',monospace" letter-spacing=".5">COMMERCIAL</text>
+
+    <rect x="497" y="218" width="58" height="16" rx="3" fill="#e8642a"/>
+    <text x="526" y="229.5" font-size="7" font-weight="700" fill="#fff" text-anchor="middle"
+      font-family="'IBM Plex Mono','Courier New',monospace" letter-spacing=".5">BUS PARKING</text>
+
+    <!-- ── Text labels ── -->
+    <text x="130" y="30" font-size="9" font-weight="700" fill="#0d2032" text-anchor="middle"
+      font-family="'IBM Plex Mono','Courier New',monospace" letter-spacing="2">ENTRANCE</text>
+    <polygon points="130,54 124,46 136,46" fill="#0d2032"/>
+
+    <text x="334" y="30" font-size="9" font-weight="700" fill="#0d2032" text-anchor="middle"
+      font-family="'IBM Plex Mono','Courier New',monospace" letter-spacing="2">EXIT</text>
+    <polygon points="334,44 328,52 340,52" fill="#0d2032"/>
+
+    <text transform="translate(19,113) rotate(-90)" font-size="7" font-weight="700" fill="#fff"
+      text-anchor="middle" font-family="'IBM Plex Mono','Courier New',monospace" letter-spacing=".5">TOLL BOOTH</text>
+
+    <text x="154" y="124" font-size="9" font-weight="700" fill="#0d2032" text-anchor="middle"
+      font-family="'IBM Plex Mono','Courier New',monospace" letter-spacing=".5">RV PARKING</text>
+
+    <text x="444" y="102" font-size="9" font-weight="700" fill="#0d2032" text-anchor="middle"
+      font-family="'IBM Plex Mono','Courier New',monospace" letter-spacing=".5">RESTROOMS</text>
+
+    <text x="90"  y="346" font-size="11" font-weight="700" fill="#0d2032" text-anchor="middle" font-family="'IBM Plex Mono','Courier New',monospace">1</text>
+    <text x="138" y="346" font-size="11" font-weight="700" fill="#0d2032" text-anchor="middle" font-family="'IBM Plex Mono','Courier New',monospace">2</text>
+    <text x="186" y="346" font-size="11" font-weight="700" fill="#0d2032" text-anchor="middle" font-family="'IBM Plex Mono','Courier New',monospace">3</text>
+    <text x="234" y="346" font-size="11" font-weight="700" fill="#0d2032" text-anchor="middle" font-family="'IBM Plex Mono','Courier New',monospace">4</text>
+    <text x="282" y="346" font-size="11" font-weight="700" fill="#0d2032" text-anchor="middle" font-family="'IBM Plex Mono','Courier New',monospace">5</text>
+    <text x="330" y="346" font-size="11" font-weight="700" fill="#0d2032" text-anchor="middle" font-family="'IBM Plex Mono','Courier New',monospace">6</text>
+    <text x="378" y="346" font-size="11" font-weight="700" fill="#0d2032" text-anchor="middle" font-family="'IBM Plex Mono','Courier New',monospace">7</text>
+
+    <text transform="translate(444,248) rotate(-90)" font-size="8" font-weight="700" fill="#0d2032" text-anchor="middle"
+      font-family="'IBM Plex Mono','Courier New',monospace" letter-spacing="1">COMMERCIAL</text>
+    <text transform="translate(526,252) rotate(-90)" font-size="8" font-weight="700" fill="#0d2032" text-anchor="middle"
+      font-family="'IBM Plex Mono','Courier New',monospace" letter-spacing="1">BUS PARKING</text>
+
+    <text x="220" y="384" font-size="9" font-weight="700" fill="#0d2032" text-anchor="middle"
+      font-family="'IBM Plex Mono','Courier New',monospace" letter-spacing="2">TRAIL HEAD ↓</text>
+
+    <!-- ── Compass rose ── -->
+    <g transform="translate(588, 32)">
+      <circle r="23" fill="#0d2032" opacity="0.92"/>
+      <path d="M0,-17 L5,-7 L0,-10 L-5,-7Z" fill="#e8642a"/>
+      <path d="M0,17 L5,7 L0,10 L-5,7Z"    fill="rgba(255,255,255,0.45)"/>
+      <path d="M17,0 L7,5 L10,0 L7,-5Z"    fill="rgba(255,255,255,0.45)"/>
+      <path d="M-17,0 L-7,-5 L-10,0 L-7,5Z" fill="rgba(255,255,255,0.45)"/>
+      <circle r="2.5" fill="#e8642a"/>
+      <text y="-20" font-size="8" font-weight="700" fill="#e8642a" text-anchor="middle"
+        font-family="'IBM Plex Mono','Courier New',monospace">N</text>
+      <text y="27"  font-size="6" fill="rgba(255,255,255,0.65)" text-anchor="middle">S</text>
+      <text x="24"  y="3"  font-size="6" fill="rgba(255,255,255,0.65)" text-anchor="middle">E</text>
+      <text x="-24" y="3"  font-size="6" fill="rgba(255,255,255,0.65)" text-anchor="middle">W</text>
+    </g>
+
+    <!-- ── Interactive hover zones ── -->
+    <rect class="pm-zone" data-tip="Toll Booth · $10 per vehicle" tabindex="0"
+      x="27" y="82" width="32" height="58" rx="3"/>
+    <rect class="pm-zone" data-tip="RV Parking · Oversized vehicles" tabindex="0"
+      x="80" y="82" width="148" height="78" rx="14"/>
+    <rect class="pm-zone" data-tip="Restrooms · Public facilities" tabindex="0"
+      x="388" y="82" width="112" height="46" rx="7"/>
+    <rect class="pm-zone" data-tip="Lane 1 · Standard parking" tabindex="0"
+      x="52" y="158" width="74" height="192"/>
+    <rect class="pm-zone" data-tip="Lane 2 · Standard parking" tabindex="0"
+      x="102" y="158" width="72" height="192"/>
+    <rect class="pm-zone" data-tip="Lane 3 · Standard parking" tabindex="0"
+      x="150" y="158" width="72" height="192"/>
+    <rect class="pm-zone" data-tip="Lane 4 · Standard parking" tabindex="0"
+      x="198" y="158" width="72" height="192"/>
+    <rect class="pm-zone" data-tip="Lane 5 · Standard parking" tabindex="0"
+      x="246" y="158" width="72" height="192"/>
+    <rect class="pm-zone" data-tip="Lane 6 · Standard parking" tabindex="0"
+      x="294" y="158" width="72" height="192"/>
+    <rect class="pm-zone" data-tip="Lane 7 · Standard parking" tabindex="0"
+      x="342" y="158" width="72" height="192"/>
+    <rect class="pm-zone" data-tip="Commercial Parking · Tour operators" tabindex="0"
+      x="410" y="150" width="68" height="180" rx="7"/>
+    <rect class="pm-zone" data-tip="Bus Parking · Large vehicles only" tabindex="0"
+      x="492" y="150" width="68" height="180" rx="7"/>
+
+  </svg>
+
+  <div class="pmap-tip" id="pmapTip" aria-live="polite"></div>
+</div>
+
+<style>
+.pmap-outer {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 2px 20px rgba(13,32,50,.10);
+}
+.pmap-svg { width: 100%; height: auto; display: block; }
+.pm-zone {
+  fill: transparent;
+  cursor: pointer;
+  transition: fill 0.14s;
+}
+.pm-zone:hover,
+.pm-zone:focus { fill: rgba(232,100,42,0.18); outline: none; }
+.pmap-tip {
+  position: fixed;
+  background: #0d2032;
+  color: #fff;
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .05em;
+  padding: 8px 14px 8px 11px;
+  border-radius: 8px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.13s;
+  white-space: nowrap;
+  z-index: 200;
+  border-left: 3px solid #e8642a;
+  transform: translateY(-50%);
+}
+</style>
+
+<script>
+{
+  const tip = document.getElementById('pmapTip');
+  if (tip) {
+    document.querySelectorAll('.pm-zone').forEach(zone => {
+      zone.addEventListener('mouseenter', () => {
+        tip.textContent = zone.getAttribute('data-tip') ?? '';
+        tip.style.opacity = '1';
+      });
+      zone.addEventListener('mousemove', (e: MouseEvent) => {
+        tip.style.left = (e.clientX + 18) + 'px';
+        tip.style.top  = e.clientY + 'px';
+      });
+      zone.addEventListener('mouseleave', () => { tip.style.opacity = '0'; });
+      zone.addEventListener('focus', () => {
+        tip.textContent = zone.getAttribute('data-tip') ?? '';
+        tip.style.opacity = '1';
+        const r = zone.getBoundingClientRect();
+        tip.style.left = (r.right + 10) + 'px';
+        tip.style.top  = (r.top + r.height / 2) + 'px';
+      });
+      zone.addEventListener('blur', () => { tip.style.opacity = '0'; });
+    });
+  }
+}
+</script>

@@ -1,6 +1,7 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
 import SchemaLD from '../../components/SchemaLD.astro';
+import ParkingMap from '../../components/ParkingMap.astro';
 
 const title = 'Directions to Horseshoe Bend | Page, AZ — US-89 Mile Marker 545';
 const description = 'How to get to Horseshoe Bend: GPS address, drive times from Las Vegas (4.5 hrs), Phoenix (4.5 hrs), Flagstaff (2.5 hrs), and Grand Canyon. US-89 south of Page, AZ.';
@@ -65,7 +66,6 @@ const schema = [
   <section class="sec address-sec">
     <div class="wrap address-wrap">
       <div class="addr-block">
-        <div class="eyebrow"><span></span><span class="kicker">GPS &amp; address</span></div>
         <h2>Find the parking lot</h2>
         <div class="addr-card">
           <div class="addr-line"><span class="al">Google Maps search</span><strong>Horseshoe Bend Parking Lot, Page, AZ</strong></div>
@@ -76,8 +76,8 @@ const schema = [
         <p class="addr-note">Look for the dedicated exit lane on the west side of US-89, between mile markers 544 and 545. The parking lot is well-signed. <strong>Do not attempt to park on the highway shoulder</strong> — violators are ticketed and towed.</p>
         <a href="https://maps.google.com/?q=Horseshoe+Bend+Parking+Lot+Page+AZ" class="btn btn--navy" target="_blank" rel="noopener">Open in Google Maps ↗</a>
       </div>
-      <div class="map-ph ph ph--navy">
-        <span class="ph__label">Map: Horseshoe Bend Parking Lot, US-89 Mile Marker 545, Page AZ 86040</span>
+      <div class="map-ph">
+        <ParkingMap />
       </div>
     </div>
   </section>
@@ -85,7 +85,6 @@ const schema = [
   <!-- Drive times -->
   <section class="sec drive-sec">
     <div class="wrap">
-      <div class="eyebrow"><span></span><span class="kicker">Drive times</span></div>
       <h2>How far is Horseshoe Bend from…</h2>
       <div class="drive-grid">
         {driveTimes.map((d) => (
@@ -108,7 +107,6 @@ const schema = [
   <!-- Tips for the drive -->
   <section class="sec tips-sec">
     <div class="wrap tips-wrap">
-      <div class="eyebrow"><span></span><span class="kicker">Road trip tips</span></div>
       <h2>Before you drive</h2>
       <div class="tips-grid">
         <div class="tip-card">
@@ -139,7 +137,6 @@ const schema = [
   <section class="sec fly-sec">
     <div class="wrap fly-wrap">
       <div>
-        <div class="eyebrow"><span></span><span class="kicker">Flying in</span></div>
         <h2>Page Municipal Airport (PGA)</h2>
         <p>Page has its own small regional airport served by Contour Airlines with direct flights from Phoenix (PHX) and Las Vegas (LAS). Fares start around $29 each way.</p>
         <p>The only car rental at the airport is AVIS. Reserve well in advance — availability is limited. A rental car is essential for exploring Horseshoe Bend, Antelope Canyon, and the surrounding area independently.</p>

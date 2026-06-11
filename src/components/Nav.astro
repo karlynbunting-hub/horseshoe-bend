@@ -7,7 +7,7 @@ const { transparent = false } = Astro.props;
 <nav class:list={['nav', { 'nav--transparent': transparent }]} id="nav">
   <div class="nav-inner">
     <a href="/" aria-label="Horseshoe Bend home">
-      <img class="logo-img" src="/logo.svg" alt="Horseshoe Bend" width="160" height="46" />
+      <img class="logo-img" src="/images/logo-horizontal.webp" alt="Horseshoe Bend" width="1825" height="604" />
     </a>
     <div class="nav-links">
       <a href="/tours/">Tours</a>
@@ -16,8 +16,7 @@ const { transparent = false } = Astro.props;
       <a href="/directions/">Getting There</a>
     </div>
     <div class="nav-right">
-      <span class="nav-call">(928) 645-8861</span>
-      <a class="btn btn--primary" href="/tours/">Book a Tour</a>
+<a class="btn btn--primary" href="/tours/">Book a Tour</a>
       <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -42,7 +41,7 @@ const { transparent = false } = Astro.props;
 .nav.scrolled { box-shadow: var(--shadow-sm); }
 .nav-inner {
   display: flex; align-items: center; justify-content: space-between; gap: 24px;
-  height: 74px; max-width: var(--maxw); margin: 0 auto; padding: 0 32px;
+  height: 96px; max-width: var(--maxw); margin: 0 auto; padding: 0 32px;
 }
 .nav-links { display: flex; align-items: center; gap: 30px; }
 .nav-links a {
@@ -71,7 +70,7 @@ const { transparent = false } = Astro.props;
   .nav-links { display: none; }
   .burger { display: flex; }
   .mobile-menu.open {
-    display: block; position: fixed; inset: 74px 0 0;
+    display: block; position: fixed; inset: 96px 0 0;
     background: var(--paper); z-index: 55; padding: 30px 24px;
     overflow-y: auto;
   }

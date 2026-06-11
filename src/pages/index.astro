@@ -7,6 +7,7 @@ import HikeSteps from '../components/HikeSteps.astro';
 import NearbyCard from '../components/NearbyCard.astro';
 import WeatherWidget from '../components/islands/WeatherWidget.astro';
 import BookingButton from '../components/islands/BookingButton.astro';
+import ParkingMap from '../components/ParkingMap.astro';
 import { featuredTours } from '../data/tours';
 
 const title = 'Horseshoe Bend | Colorado River Overlook, Page, AZ';
@@ -47,8 +48,15 @@ const schema = {
 
   <!-- ── Hero ──────────────────────────────────────────────── -->
   <section class="hero">
-    <div class="hero-bg ph ph--navy">
-      <span class="ph__label">Horseshoe Bend overlook — 270° Colorado River meander</span>
+    <div class="hero-bg">
+      <img
+        src="/images/hero-horseshoe-bend.webp"
+        alt="Aerial view of Horseshoe Bend — the Colorado River curving through red rock canyon near Page, Arizona"
+        width="1630"
+        height="860"
+        fetchpriority="high"
+        decoding="async"
+      />
     </div>
     <div class="hero-overlay"></div>
     <div class="wrap hero-body">
@@ -72,7 +80,6 @@ const schema = {
   <section class="sec intro-sec" id="essentials">
     <div class="wrap intro-wrap">
       <div class="intro-text">
-        <div class="eyebrow"><span></span><span class="kicker">The overlook</span></div>
         <h2>The Colorado River's most iconic bend</h2>
         <p>Over millions of years, the Colorado River cut nearly 1,000 feet into the Navajo sandstone of the Colorado Plateau, carving a horseshoe-shaped curve so dramatic it defies belief. Today, a 0.6-mile paved trail leads from the parking lot to the rim — one of the most awe-inspiring views in the American West.</p>
         <p>Located 5 miles south of Page, AZ, Horseshoe Bend sits within Glen Canyon National Recreation Area. The overlook is self-guided, no permit required. The parking lot charges $10 per vehicle, operated by the City of Page.</p>
@@ -82,8 +89,15 @@ const schema = {
           <a href="/best-time-to-visit-horseshoe-bend/" class="link-pill">Best time to visit →</a>
         </div>
       </div>
-      <div class="intro-img ph ph--navy">
-        <span class="ph__label">Colorado River from the overlook — emerald green water in sandstone canyon</span>
+      <div class="intro-img">
+        <img
+          src="/images/horseshoe-bend-overlook.webp"
+          alt="Colorado River from the Horseshoe Bend overlook — emerald green water curving through red sandstone canyon"
+          width="960"
+          height="667"
+          loading="lazy"
+          decoding="async"
+        />
       </div>
     </div>
   </section>
@@ -91,7 +105,6 @@ const schema = {
   <!-- ── Essentials grid ───────────────────────────────────── -->
   <section class="sec ess-sec">
     <div class="wrap">
-      <div class="eyebrow"><span></span><span class="kicker">Plan your visit</span></div>
       <h2>Everything you need to know</h2>
       <div class="ess-grid">
         <a href="/parking-fees/" class="ess-card">
@@ -143,7 +156,6 @@ const schema = {
   <!-- ── Tours ─────────────────────────────────────────────── -->
   <section class="sec tours-sec" id="tours">
     <div class="wrap">
-      <div class="eyebrow"><span></span><span class="kicker">Guided experiences</span></div>
       <h2>See the bend on your terms</h2>
       <p class="sec-sub">Can't make the hike? Want a different perspective? Guided tours from Page give you more of the Grand Circle in less time.</p>
       <div class="tours-grid">
@@ -175,12 +187,11 @@ const schema = {
   <section class="sec map-sec">
     <div class="wrap map-wrap">
       <div class="map-col">
-        <div class="eyebrow"><span></span><span class="kicker">Location &amp; conditions</span></div>
         <h2>Page, AZ live conditions</h2>
         <p>The desert environment changes fast. Check the current temperature and forecast before you leave — and arrive early to beat the heat.</p>
         <a href="/directions/" class="btn btn--navy map-btn">Get directions →</a>
-        <div class="map-embed ph ph--navy">
-          <span class="ph__label">Interactive map — Horseshoe Bend Parking, US-89, Page AZ</span>
+        <div class="map-embed">
+          <ParkingMap />
         </div>
       </div>
       <div class="wx-col">
@@ -192,7 +203,6 @@ const schema = {
   <!-- ── Nearby / Grand Circle ─────────────────────────────── -->
   <section class="sec nearby-sec" id="nearby">
     <div class="wrap">
-      <div class="eyebrow"><span></span><span class="kicker">Grand Circle</span></div>
       <h2>More wonders within a day's drive</h2>
       <p class="sec-sub">Horseshoe Bend sits at the heart of the American Southwest's greatest road trip circuit.</p>
       <div class="nearby-grid">
@@ -261,6 +271,14 @@ const schema = {
   position: absolute;
   inset: 0;
   z-index: 0;
+  overflow: hidden;
+}
+.hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+  display: block;
 }
 .hero-overlay {
   position: absolute;
@@ -268,9 +286,9 @@ const schema = {
   z-index: 1;
   background: linear-gradient(
     170deg,
-    rgba(13,32,50,.55) 0%,
-    rgba(13,32,50,.72) 60%,
-    rgba(13,32,50,.88) 100%
+    rgba(13,32,50,.15) 0%,
+    rgba(13,32,50,.32) 60%,
+    rgba(13,32,50,.48) 100%
   );
 }
 .hero-body {
@@ -331,6 +349,7 @@ const schema = {
 }
 .link-pill:hover { background: var(--navy); color: #fff; }
 .intro-img { aspect-ratio: 4/3; border-radius: var(--radius-lg); overflow: hidden; }
+.intro-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 /* ── Essentials grid ────────────────── */
 .ess-sec { background: var(--cream); }
@@ -379,7 +398,7 @@ const schema = {
 .map-col h2 { font-size: clamp(28px, 4vw, 40px); text-transform: uppercase; margin: 16px 0 14px; }
 .map-col p { font-size: 16px; color: var(--ink-soft); margin: 0 0 24px; }
 .map-btn { margin-bottom: 28px; }
-.map-embed { aspect-ratio: 16/10; border-radius: var(--radius-lg); overflow: hidden; }
+.map-embed { aspect-ratio: 16/10; }
 .wx-col { position: sticky; top: 100px; }
 
 /* ── Nearby ─────────────────────────── */

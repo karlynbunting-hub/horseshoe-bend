@@ -136,7 +136,7 @@ section.sec { padding: 96px 0; }
 .ph__label::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--orange); flex: none; }
 
 /* ---- Logo ---- */
-.logo-img { height: 46px; width: auto; }
+.logo-img { height: 76px; width: auto; }
 
 /* ---- Shared footer ---- */
 .site-foot { background: var(--navy-deep); color: #cdd6df; }

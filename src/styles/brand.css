@@ -139,7 +139,7 @@ section.sec { padding: 96px 0; }
 .logo-img { height: 76px; width: auto; }
 
 /* ---- Shared footer ---- */
-.site-foot { background: var(--navy-deep); color: #cdd6df; }
+.site-foot { background: var(--navy-700); color: #cdd6df; }
 .site-foot a:hover { color: #fff; }
 .site-foot .wrap { padding-top: 66px; padding-bottom: 40px; }
 .foot-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 40px; }

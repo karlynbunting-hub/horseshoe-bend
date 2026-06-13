@@ -9,18 +9,23 @@ interface Props {
   meta3: string;
   href: string;
   ctaLabel?: string;
+  ctaHref?: string;
+  ctaTarget?: string;
+  imgSrc?: string;
   imgAlt?: string;
   dark?: boolean;
 }
 const {
   name, tagLabel, price, description, meta1, meta2, meta3,
-  href, ctaLabel = 'View tours', imgAlt = '', dark = false,
+  href, ctaLabel = 'Check Availability Now', ctaHref, ctaTarget,
+  imgSrc = '', imgAlt = '', dark = false,
 } = Astro.props;
 ---
 <div class="tour-card">
-  <div class:list={['pic', 'ph', dark ? 'ph--navy' : '']}>
+  <div class:list={['pic', ...(!imgSrc ? ['ph', dark ? 'ph--navy' : ''] : [])]}>
+    {imgSrc && <img src={imgSrc} alt={imgAlt} width="800" height="533" />}
     <span class="pill tag" style="background:rgba(13,32,50,.7);color:#fff;border:0">{tagLabel}</span>
-    {imgAlt && <span class="ph__label">{imgAlt}</span>}
+    {!imgSrc && imgAlt && <span class="ph__label">{imgAlt}</span>}
     <span class="price">{price}</span>
   </div>
   <div class="body">
@@ -31,7 +36,7 @@ const {
       <span><b>{meta2.split(' ')[0]}</b> {meta2.split(' ').slice(1).join(' ')}</span>
       <span><b>{meta3.split(' ')[0]}</b> {meta3.split(' ').slice(1).join(' ')}</span>
     </div>
-    <a class="btn btn--navy go" href={href}>{ctaLabel}</a>
+    <a class="btn btn--navy go" href={ctaHref ?? href} target={ctaTarget} rel={ctaTarget === '_blank' ? 'noopener' : undefined}>{ctaLabel}</a>
   </div>
 </div>
 
@@ -44,6 +49,7 @@ const {
 }
 .tour-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
 .pic { aspect-ratio: 3/2; position: relative; }
+.pic img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
 .pic .pill { position: absolute; top: 14px; left: 14px; z-index: 1; }
 .price {
   position: absolute; bottom: 14px; right: 14px; z-index: 1;
@@ -59,5 +65,5 @@ h3 { font-size: 23px; color: var(--navy); text-transform: uppercase; }
   color: var(--ink-mute); margin-bottom: 20px; flex-wrap: wrap;
 }
 .meta b { color: var(--navy); }
-.go { margin-top: auto; }
+.go { margin-top: auto; text-align: center; }
 </style>

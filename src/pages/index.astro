@@ -169,7 +169,11 @@ const schema = {
             meta2={t.seasonality}
             meta3={t.audience}
             href={t.href}
+            imgSrc={t.imgSrc}
             imgAlt={t.imgAlt}
+            ctaLabel={t.ctaLabel}
+            ctaHref={t.ctaHref}
+            ctaTarget={t.ctaTarget}
             dark={t.type === 'air'}
           />
         ))}
@@ -211,28 +215,32 @@ const schema = {
           distance="7 mi · 15 min"
           description="The most-photographed slot canyon on earth. Guided tours only — book weeks in advance."
           href="/antelope-canyon/"
-          imgAlt="Light beams in Upper Antelope Canyon"
+          imgSrc="/images/nearby-antelope-canyon.webp"
+          imgAlt="Glowing orange and pink walls inside Antelope Canyon"
         />
         <NearbyCard
           name="Lake Powell"
           distance="4 mi · 10 min"
           description="475 miles of shoreline backed by red canyon walls. Boat tours, houseboats, kayaking."
           href="/river-tours/"
-          imgAlt="Lake Powell blue water against red rock cliffs"
+          imgSrc="/images/nearby-lake-powell.webp"
+          imgAlt="Aerial view of Lake Powell blue water amid red rock desert"
         />
         <NearbyCard
           name="Grand Canyon"
           distance="130 mi · 2.5 hrs"
           description="The South Rim is a natural extension of any Horseshoe Bend itinerary heading south."
           href="/nearby/"
-          imgAlt="Grand Canyon South Rim panorama"
+          imgSrc="/images/nearby-grand-canyon.webp"
+          imgAlt="Visitors at Mather Point overlook at Grand Canyon South Rim"
         />
         <NearbyCard
           name="Monument Valley"
           distance="115 mi · 2 hrs"
           description="The Mittens and Merrick Butte — sacred Navajo land and an American icon."
           href="/nearby/"
-          imgAlt="Monument Valley sandstone buttes at sunset"
+          imgSrc="/images/nearby-monument-valley.webp"
+          imgAlt="Monument Valley Mittens buttes at sunset with fiery orange sky"
         />
       </div>
       <div class="nearby-cta">

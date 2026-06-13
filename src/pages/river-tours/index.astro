@@ -94,8 +94,8 @@ const schema = {
 
   <!-- Hero -->
   <header class="river-hero">
-    <div class="rh-bg ph ph--navy">
-      <span class="ph__label">Colorado River below Horseshoe Bend — emerald water in Glen Canyon</span>
+    <div class="rh-bg">
+      <img src="/images/hero-river-tours.webp" alt="Colorado River through Glen Canyon" width="1630" height="860" />
     </div>
     <div class="rh-overlay"></div>
     <div class="wrap rh-body">
@@ -217,7 +217,8 @@ const schema = {
 /* Hero */
 .river-hero { position: relative; min-height: 80vh; display: flex; align-items: center; overflow: hidden; color: #fff; }
 .rh-bg { position: absolute; inset: 0; z-index: 0; }
-.rh-overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(160deg, rgba(13,32,50,.4) 0%, rgba(13,32,50,.8) 100%); }
+.rh-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center 45%; display: block; }
+.rh-overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(to right, rgba(13,32,50,.72) 0%, rgba(13,32,50,.38) 55%, rgba(13,32,50,.12) 100%); }
 .rh-body { position: relative; z-index: 2; padding-top: 110px; padding-bottom: 72px; }
 .bc { font-family: var(--font-mono); font-size: 12px; letter-spacing: .06em; color: #9fb0bf; margin-bottom: 24px; display: flex; gap: 8px; align-items: center; }
 .bc a { color: #9fb0bf; }

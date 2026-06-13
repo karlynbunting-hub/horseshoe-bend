@@ -4,13 +4,14 @@ interface Props {
   distance: string;
   description: string;
   href?: string;
+  imgSrc?: string;
   imgAlt?: string;
 }
-const { name, distance, description, href = '#', imgAlt = '' } = Astro.props;
+const { name, distance, description, href = '#', imgSrc = '', imgAlt = '' } = Astro.props;
 ---
 <a class="near" href={href}>
-  <div class="ph ph--navy near-bg">
-    {imgAlt && <span class="ph__label">{imgAlt}</span>}
+  <div class:list={['near-bg', ...(!imgSrc ? ['ph', 'ph--navy'] : [])]}>
+    {imgSrc && <img src={imgSrc} alt={imgAlt} width="480" height="600" />}
   </div>
   <div class="cap">
     <div class="dist">{distance}</div>
@@ -27,6 +28,7 @@ const { name, distance, description, href = '#', imgAlt = '' } = Astro.props;
 }
 .near:hover { transform: translateY(-4px); }
 .near-bg { position: absolute; inset: 0; z-index: -2; }
+.near-bg img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .near::after {
   content: ""; position: absolute; inset: 0; z-index: -1;
   background: linear-gradient(180deg, transparent 30%, rgba(13,32,50,.88));

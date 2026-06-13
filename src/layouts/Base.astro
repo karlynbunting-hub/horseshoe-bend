@@ -60,5 +60,95 @@ const canonicalUrl = canonical ?? new URL(Astro.url.pathname, 'https://horseshoe
 </head>
 <body>
   <slot />
+
+  <!-- FareHarbor booking modal -->
+  <div id="fh-overlay" role="dialog" aria-modal="true" aria-label="Book a tour">
+    <div class="fh-sheet">
+      <button id="fh-close" aria-label="Close booking">&times;</button>
+      <iframe id="fh-iframe" src="" title="Book a tour" allowpaymentrequest></iframe>
+    </div>
+  </div>
 </body>
 </html>
+
+<style is:global>
+#fh-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: rgba(13, 32, 50, 0.78);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  padding: 24px 16px;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+#fh-overlay.open { display: flex; align-items: flex-start; justify-content: center; }
+.fh-sheet {
+  position: relative;
+  width: min(820px, 100%);
+  margin: auto;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 24px 80px rgba(0,0,0,.4);
+}
+#fh-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0,0,0,.55);
+  color: #fff;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#fh-close:hover { background: rgba(0,0,0,.8); }
+#fh-iframe {
+  display: block;
+  width: 100%;
+  height: 82vh;
+  border: none;
+}
+</style>
+
+<script>
+  const overlay = document.getElementById('fh-overlay');
+  const iframe  = document.getElementById('fh-iframe') as HTMLIFrameElement | null;
+  const closeBtn = document.getElementById('fh-close');
+
+  function openModal(url: string) {
+    if (!overlay || !iframe) return;
+    iframe.src = url;
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    if (!overlay || !iframe) return;
+    overlay.classList.remove('open');
+    iframe.src = '';
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('click', (e) => {
+    const link = (e.target as Element).closest('a[href*="fareharbor.com/embeds/book"]') as HTMLAnchorElement | null;
+    if (!link) return;
+    if (link.target === '_blank') return; // let browser open in new tab
+    e.preventDefault();
+    openModal(link.href);
+  });
+
+  closeBtn?.addEventListener('click', closeModal);
+  overlay?.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+</script>

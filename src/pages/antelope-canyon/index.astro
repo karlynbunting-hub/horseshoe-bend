@@ -9,15 +9,15 @@ const canonical = 'https://horseshoebend.com/antelope-canyon/';
 
 const moreCanyons = [
   {
-    name: 'Antelope Canyon X',
-    aka: 'Two-canyon hike',
-    type: 'Hiking tour',
-    difficulty: 'Easy–Moderate',
-    length: '1.5 hrs · $47/person',
-    notes: 'A Navajo-guided hike through two connected slot canyons with railroad tie stairs — no ropes or ladders. A hidden gem on the Navajo Nation with far fewer crowds than Upper or Lower.',
-    bestFor: 'Hikers, families, those who want a less-crowded slot canyon experience',
-    bookingUrl: 'https://fareharbor.com/embeds/book/antelopecanyon-x/items/84987/calendar/?ref=antelopecanyonaz',
-    bookingLabel: 'Book Antelope Canyon X',
+    name: 'Secret Antelope Canyon',
+    aka: 'Deer Spring Tours',
+    type: 'Secret canyon',
+    difficulty: 'Easy',
+    length: '2 hrs · $114/person',
+    notes: 'A private Navajo-guided tour through Secret Antelope Canyon — swirling sandstone corridors and magical light beams without the crowds. Far quieter than Upper or Lower Antelope Canyon.',
+    bestFor: 'Those seeking a more intimate, crowd-free slot canyon experience',
+    bookingUrl: 'https://fareharbor.com/embeds/book/deerspringcanyontours/',
+    bookingLabel: 'Book Secret Antelope Canyon',
   },
   {
     name: 'Antelope Ridge Via Ferrata',
@@ -63,13 +63,15 @@ const canyons = [
     bestFor: 'Those comfortable with ladders and confined spaces; better for independent photography',
   },
   {
-    name: 'Cathedral Slot Canyon',
-    aka: 'Cathedral Canyon',
-    type: 'Hidden gem',
-    difficulty: 'Moderate',
-    length: 'Full slot canyon + exterior formations',
-    notes: 'Less-known alternative to Upper and Lower. Features similar swirling sandstone plus unique exterior rock formations. Far fewer crowds — great option when other tours are sold out.',
-    bestFor: 'Adventure seekers, those who missed Upper/Lower bookings, photography enthusiasts',
+    name: 'Antelope Canyon X',
+    aka: 'Two-canyon hike',
+    type: 'Hiking tour',
+    difficulty: 'Easy–Moderate',
+    length: '1.5 hrs · $47/person',
+    notes: 'A Navajo-guided hike through two connected slot canyons with railroad tie stairs — no ropes or ladders. A hidden gem on the Navajo Nation with far fewer crowds than Upper or Lower.',
+    bestFor: 'Hikers, families, those who want a less-crowded slot canyon experience',
+    bookingUrl: 'https://fareharbor.com/embeds/book/antelopecanyon-x/items/84987/calendar/?ref=antelopecanyonaz',
+    bookingLabel: 'Book Antelope Canyon X',
   },
 ];
 
@@ -138,7 +140,10 @@ const schema = {
                 <div class="cm-item"><span>Length</span><strong>{c.length}</strong></div>
               </div>
               <p class="cc-best"><strong>Best for:</strong> {c.bestFor}</p>
-              <BookingButton label={`Book ${c.name}`} variant="navy" />
+              {c.bookingUrl
+                ? <a class="btn btn--navy" href={c.bookingUrl}>Check Availability Now</a>
+                : <BookingButton label={`Book ${c.name}`} variant="navy" />
+              }
             </div>
           </div>
         ))}

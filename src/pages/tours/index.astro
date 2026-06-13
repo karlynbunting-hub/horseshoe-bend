@@ -5,8 +5,8 @@ import TourCard from '../../components/TourCard.astro';
 import BookingButton from '../../components/islands/BookingButton.astro';
 import { tours } from '../../data/tours';
 
-const title = 'Tours from Page, AZ | Air, Antelope Canyon, River & Cathedral';
-const description: string = 'Book guided tours from Page, AZ: helicopter and scenic flights over Horseshoe Bend, Antelope Canyon combo tours, river kayak and raft trips, and Cathedral Slot Canyon.';
+const title = 'Tours from Page, AZ | Antelope Canyon, River, Heli & Scenic Flights';
+const description: string = 'Book guided tours from Page, AZ: helicopter and scenic flights over Horseshoe Bend, Antelope Canyon combo tours, Secret Canyon, and Colorado River rafting and kayak trips.';
 const canonical = 'https://horseshoebend.com/tours/';
 
 const schema = {
@@ -60,30 +60,6 @@ const schema = {
     </div>
   </section>
 
-  <!-- Cathedral Slot Canyon section + anchor -->
-  <section class="sec cathedral-sec" id="cathedral-slot-canyon">
-    <div class="wrap cathedral-wrap">
-      <div>
-        <h2>Cathedral Slot Canyon Tour</h2>
-        <p>When Upper and Lower Antelope Canyon are sold out — or when you want something less crowded and equally spectacular — Cathedral Slot Canyon is the answer.</p>
-        <p>Cathedral Canyon features the same swirling Navajo sandstone walls as Antelope Canyon, plus unique exterior rock formations you won't find anywhere else. With far fewer visitors, you'll spend more time in the canyon and less time waiting for photo opportunities.</p>
-        <ul class="cat-features">
-          <li>Intimate guided tour — smaller groups than major Antelope Canyon operators</li>
-          <li>Similar sandstone colors and light effects to Upper Antelope</li>
-          <li>Unique formations including the iconic "Cathedral" chamber</li>
-          <li>Available when Antelope Canyon tours are sold out</li>
-          <li>10–15 minutes from Horseshoe Bend</li>
-        </ul>
-        <div class="cat-btns">
-          <BookingButton label="Book Cathedral Canyon tour" variant="primary" />
-        </div>
-      </div>
-      <div class="cat-img ph ph--navy">
-        <span class="ph__label">Cathedral Slot Canyon — swirling sandstone walls in Page, AZ</span>
-      </div>
-    </div>
-  </section>
-
   <!-- Booking info -->
   <section class="sec booking-sec">
     <div class="wrap">
@@ -110,15 +86,6 @@ const schema = {
 .tours-sec h2 { font-size: clamp(28px, 4vw, 42px); text-transform: uppercase; margin: 16px 0 40px; }
 .tours-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 
-.cathedral-sec { background: var(--cream); }
-.cathedral-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-.cathedral-sec h2 { font-size: clamp(28px, 4vw, 42px); text-transform: uppercase; margin: 16px 0 18px; }
-.cathedral-sec p { font-size: 16px; color: var(--ink-soft); margin: 0 0 16px; line-height: 1.65; }
-.cat-features { margin: 0 0 28px; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; }
-.cat-features li { font-size: 15px; color: var(--ink-soft); padding-left: 22px; position: relative; }
-.cat-features li::before { content: '✓'; position: absolute; left: 0; color: var(--orange); font-weight: 700; }
-.cat-btns { display: flex; gap: 14px; }
-.cat-img { aspect-ratio: 4/3; border-radius: var(--radius-lg); overflow: hidden; }
 
 .booking-sec { background: var(--paper); }
 .booking-sec h2 { font-size: clamp(28px, 4vw, 40px); text-transform: uppercase; margin: 16px 0 40px; }
@@ -132,7 +99,7 @@ const schema = {
 }
 @media (max-width: 860px) {
   .tours-grid { grid-template-columns: 1fr; }
-  .cathedral-wrap { grid-template-columns: 1fr; }
+
   .info-grid { grid-template-columns: 1fr; }
 }
 </style>

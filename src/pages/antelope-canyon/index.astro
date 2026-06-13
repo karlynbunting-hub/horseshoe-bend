@@ -7,6 +7,42 @@ const title = 'Antelope Canyon Tours from Page, AZ | Upper, Lower & Cathedral';
 const description = 'Book guided tours of Upper and Lower Antelope Canyon, plus Cathedral Slot Canyon — 4 miles from Horseshoe Bend. Navajo-guided tours required. Book well in advance.';
 const canonical = 'https://horseshoebend.com/antelope-canyon/';
 
+const moreCanyons = [
+  {
+    name: 'Antelope Canyon X',
+    aka: 'Two-canyon hike',
+    type: 'Hiking tour',
+    difficulty: 'Easy–Moderate',
+    length: '1.5 hrs · $47/person',
+    notes: 'A Navajo-guided hike through two connected slot canyons with railroad tie stairs — no ropes or ladders. A hidden gem on the Navajo Nation with far fewer crowds than Upper or Lower.',
+    bestFor: 'Hikers, families, those who want a less-crowded slot canyon experience',
+    bookingUrl: 'https://fareharbor.com/embeds/book/antelopecanyon-x/items/84987/calendar/?ref=antelopecanyonaz',
+    bookingLabel: 'Book Antelope Canyon X',
+  },
+  {
+    name: 'Antelope Ridge Via Ferrata',
+    aka: 'Iron path climbing',
+    type: 'Adventure',
+    difficulty: 'Beginner-friendly',
+    length: '2–2.5 hrs · all gear incl.',
+    notes: 'Rappel and climb sheer canyon walls on a guided iron-path route — no experience needed. All safety equipment provided. A unique vertical perspective on the Page canyon landscape.',
+    bestFor: 'Adventure seekers, those looking for something beyond a walking tour',
+    bookingUrl: 'https://fareharbor.com/embeds/book/trailrunnerjeeptours/items/543959/?full-items=yes&flow=587757',
+    bookingLabel: 'Book Via Ferrata',
+  },
+  {
+    name: 'Mystical Antelope Canyon',
+    aka: 'Camp Tour Antelope',
+    type: 'Guided tour',
+    difficulty: 'Easy',
+    length: 'Guided · permit incl.',
+    notes: 'A Navajo-guided slot canyon tour through a lesser-visited section of the Antelope Canyon formation — intimate group sizes, swirling sandstone walls, and fewer crowds than the main branches.',
+    bestFor: 'Those who missed Upper/Lower bookings and want an authentic, quieter experience',
+    bookingUrl: 'https://fareharbor.com/embeds/book/camptourantelope/items/133741/?asn=fhdn&asn-ref=antelopecanyonaz&ref=antelopecanyonaz&bookable-only=yes&full-items=yes&marketplace=yes&flow=no&branding=no',
+    bookingLabel: 'Book Mystical Antelope Canyon',
+  },
+];
+
 const canyons = [
   {
     name: 'Upper Antelope Canyon',
@@ -103,6 +139,28 @@ const schema = {
               </div>
               <p class="cc-best"><strong>Best for:</strong> {c.bestFor}</p>
               <BookingButton label={`Book ${c.name}`} variant="navy" />
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="canyons-grid" style="margin-top:24px;">
+        {moreCanyons.map((c) => (
+          <div class="canyon-card">
+            <div class="cc-img ph ph--navy">
+              <span class="cc-tag">{c.type}</span>
+              <span class="ph__label">{c.name} — slot canyon experience near Page, AZ</span>
+            </div>
+            <div class="cc-body">
+              <p class="kicker">{c.aka}</p>
+              <h3>{c.name}</h3>
+              <p class="cc-desc">{c.notes}</p>
+              <div class="cc-meta">
+                <div class="cm-item"><span>Difficulty</span><strong>{c.difficulty}</strong></div>
+                <div class="cm-item"><span>Details</span><strong>{c.length}</strong></div>
+              </div>
+              <p class="cc-best"><strong>Best for:</strong> {c.bestFor}</p>
+              <a class="btn btn--navy" href={c.bookingUrl}>Check Availability Now</a>
             </div>
           </div>
         ))}

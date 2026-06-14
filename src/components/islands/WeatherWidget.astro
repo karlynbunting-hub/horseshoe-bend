@@ -32,7 +32,6 @@
     <div class="sun-days" id="wx-sun-days">
       {[0,1,2,3].map(() => (
         <div class="sun-day">
-          <div class="sdd">—</div>
           <div class="sr-lbl">Open</div>
           <div class="sr">—:——</div>
           <div class="ss-lbl">Close</div>
@@ -107,9 +106,8 @@
       cards.push({ label, rise: sun?.rise ?? '—', set: sun?.set ?? '—' });
     }
 
-    daysEl.innerHTML = cards.map(({ label, rise, set }) => `
+    daysEl.innerHTML = cards.map(({ rise, set }) => `
       <div class="sun-day">
-        <div class="sdd">${label}</div>
         <div class="sr-lbl">Open</div>
         <div class="sr">${rise}</div>
         <div class="ss-lbl">Close</div>
@@ -241,8 +239,7 @@
 .sun-row { border-top: 1px solid rgba(255,255,255,.14); padding-top: 16px; margin-top: 16px; margin-bottom: 16px; }
 .sun-hdr { color: var(--orange-bright); font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; display: block; margin-bottom: 10px; }
 .sun-days { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
-.sun-day { background: rgba(255,255,255,.07); border-radius: 11px; padding: 11px 6px; text-align: center; }
-.sdd { font-family: var(--font-mono); font-size: 11px; color: #9fb0bf; letter-spacing: .04em; margin-bottom: 8px; }
+.sun-day { background: rgba(255,255,255,.07); border-radius: 11px; padding: 13px 6px; text-align: center; }
 .sr-lbl { font-family: var(--font-mono); font-size: 9px; letter-spacing: .06em; text-transform: uppercase; color: var(--orange-bright); }
 .sr { font-family: var(--font-mono); font-weight: 700; font-size: 12px; color: #fff; font-variant-numeric: tabular-nums; margin-bottom: 6px; }
 .ss-lbl { font-family: var(--font-mono); font-size: 9px; letter-spacing: .06em; text-transform: uppercase; color: #6a7f91; }

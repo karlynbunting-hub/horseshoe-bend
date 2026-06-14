@@ -16,8 +16,9 @@ const moreCanyons = [
     length: '2 hrs · $114/person',
     notes: 'A private Navajo-guided tour through Secret Antelope Canyon — swirling sandstone corridors and magical light beams without the crowds. Far quieter than Upper or Lower Antelope Canyon.',
     bestFor: 'Those seeking a more intimate, crowd-free slot canyon experience',
-    bookingUrl: 'https://fareharbor.com/embeds/book/deerspringcanyontours/',
-    bookingLabel: 'Book Secret Antelope Canyon',
+    imgSrc: '/images/canyon-secret.webp',
+    bookingUrl: 'https://fareharbor.com/embeds/book/deerspringcanyontours/items/627741/?asn=fhdn&asn-ref=antelopecanyonaz&ref=antelopecanyonaz&bookable-only=yes&full-items=yes&marketplace=yes&flow=no&branding=no',
+    bookingLabel: 'Check Availability Now',
   },
   {
     name: 'Antelope Ridge Via Ferrata',
@@ -27,8 +28,9 @@ const moreCanyons = [
     length: '2–2.5 hrs · all gear incl.',
     notes: 'Rappel and climb sheer canyon walls on a guided iron-path route — no experience needed. All safety equipment provided. A unique vertical perspective on the slot canyon landscape.',
     bestFor: 'Adventure seekers, those looking for something beyond a walking tour',
-    bookingUrl: 'https://fareharbor.com/embeds/book/trailrunnerjeeptours/items/543959/?full-items=yes&flow=587757',
-    bookingLabel: 'Book Via Ferrata',
+    imgSrc: '/images/canyon-via-ferrata.webp',
+    bookingUrl: 'https://fareharbor.com/embeds/book/trailrunnerjeeptours/items/543959/?asn=fhdn&asn-ref=antelopecanyonaz&ref=antelopecanyonaz&bookable-only=yes&full-items=yes&marketplace=yes&flow=no',
+    bookingLabel: 'Check Availability Now',
   },
   {
     name: 'Mystical Antelope Canyon',
@@ -38,8 +40,9 @@ const moreCanyons = [
     length: 'Guided · permit incl.',
     notes: 'A Navajo-guided slot canyon tour through a lesser-visited section of the Antelope Canyon formation — intimate group sizes, swirling sandstone walls, and fewer crowds than the main branches.',
     bestFor: 'Those who missed Upper/Lower bookings and want an authentic, quieter experience',
+    imgSrc: '/images/canyon-mystical.webp',
     bookingUrl: 'https://fareharbor.com/embeds/book/camptourantelope/items/133741/?asn=fhdn&asn-ref=antelopecanyonaz&ref=antelopecanyonaz&bookable-only=yes&full-items=yes&marketplace=yes&flow=no&branding=no',
-    bookingLabel: 'Book Mystical Antelope Canyon',
+    bookingLabel: 'Check Availability Now',
   },
 ];
 
@@ -52,6 +55,9 @@ const canyons = [
     length: '100 yards, flat',
     notes: 'The canyon most people have seen in photos — swirling sandstone chambers, light beams. The easiest to tour. Requires tour from one of three Page-based outfitters.',
     bestFor: 'Families, first-timers, photographers chasing light beams (midday May–July)',
+    imgSrc: '/images/canyon-upper.webp',
+    bookingUrl: 'https://fareharbor.com/embeds/book/antelopeslotcanyon/items/336645/?schedule-uuid=2c06ee2f-2d7f-426a-bae1-1bc9583cefc2&asn=antelopecanyonaz&full-items=yes&flow=627482',
+    bookingLabel: 'Book Upper Antelope Canyon',
   },
   {
     name: 'Lower Antelope Canyon',
@@ -61,6 +67,10 @@ const canyons = [
     length: '~¼ mile, ladders required',
     notes: 'Slightly more adventurous with metal staircases and tighter passages. Often less crowded than Upper. Tour with Ken\'s Tours or Dixie Ellis at the Tribal Park Entrance Gate.',
     bestFor: 'Those comfortable with ladders and confined spaces; better for independent photography',
+    imgSrc: '/images/canyon-lower.webp',
+    bookingUrl: 'https://book.nativeamericantours.com/?iframe=true&tid=dixies&oid=1&pid=1&aid=124',
+    bookingLabel: 'Book Lower Antelope Canyon',
+    bookingTarget: '_blank',
   },
   {
     name: 'Antelope Canyon X',
@@ -70,8 +80,9 @@ const canyons = [
     length: '1.5 hrs · $47/person',
     notes: 'A Navajo-guided hike through two connected slot canyons with railroad tie stairs — no ropes or ladders. A hidden gem on the Navajo Nation with far fewer crowds than Upper or Lower.',
     bestFor: 'Hikers, families, those who want a less-crowded slot canyon experience',
-    bookingUrl: 'https://fareharbor.com/embeds/book/antelopecanyon-x/items/84987/calendar/?ref=antelopecanyonaz',
-    bookingLabel: 'Book Antelope Canyon X',
+    imgSrc: '/images/canyon-x.webp',
+    bookingUrl: 'https://fareharbor.com/embeds/book/antelopecanyon-x/items/84987/?asn=fhdn&asn-ref=antelopecanyonaz&ref=antelopecanyonaz&bookable-only=yes&full-items=yes&marketplace=yes&flow=no',
+    bookingLabel: 'Check Availability Now',
   },
 ];
 
@@ -127,9 +138,12 @@ const schema = {
       <div class="canyons-grid">
         {canyons.map((c) => (
           <div class="canyon-card">
-            <div class="cc-img ph ph--navy">
+            <div class:list={['cc-img', ...(!c.imgSrc ? ['ph','ph--navy'] : [])]}>
               <span class="cc-tag">{c.type}</span>
-              <span class="ph__label">{c.name} — slot canyon sandstone walls</span>
+              {c.imgSrc
+                ? <img src={c.imgSrc} alt={`${c.name} — slot canyon sandstone walls`} width="800" height="533" />
+                : <span class="ph__label">{c.name} — slot canyon sandstone walls</span>
+              }
             </div>
             <div class="cc-body">
               <p class="kicker">{c.aka}</p>
@@ -141,7 +155,7 @@ const schema = {
               </div>
               <p class="cc-best"><strong>Best for:</strong> {c.bestFor}</p>
               {c.bookingUrl
-                ? <a class="btn btn--navy" href={c.bookingUrl}>Check Availability Now</a>
+                ? <a class="btn btn--navy" href={c.bookingUrl} target={c.bookingTarget}>{c.bookingLabel ?? 'Check Availability Now'}</a>
                 : <BookingButton label={`Book ${c.name}`} variant="navy" />
               }
             </div>
@@ -152,9 +166,12 @@ const schema = {
       <div class="canyons-grid" style="margin-top:24px;">
         {moreCanyons.map((c) => (
           <div class="canyon-card">
-            <div class="cc-img ph ph--navy">
+            <div class:list={['cc-img', ...(!c.imgSrc ? ['ph','ph--navy'] : [])]}>
               <span class="cc-tag">{c.type}</span>
-              <span class="ph__label">{c.name} — slot canyon experience near Page, AZ</span>
+              {c.imgSrc
+                ? <img src={c.imgSrc} alt={`${c.name} — slot canyon experience near Page, AZ`} width="800" height="533" />
+                : <span class="ph__label">{c.name} — slot canyon experience near Page, AZ</span>
+              }
             </div>
             <div class="cc-body">
               <p class="kicker">{c.aka}</p>
@@ -165,7 +182,7 @@ const schema = {
                 <div class="cm-item"><span>Details</span><strong>{c.length}</strong></div>
               </div>
               <p class="cc-best"><strong>Best for:</strong> {c.bestFor}</p>
-              <a class="btn btn--navy" href={c.bookingUrl}>Check Availability Now</a>
+              <a class="btn btn--navy" href={c.bookingUrl}>{c.bookingLabel}</a>
             </div>
           </div>
         ))}
@@ -241,7 +258,8 @@ const schema = {
 .canyons-sec h2 { font-size: clamp(28px, 4vw, 42px); text-transform: uppercase; margin: 16px 0 40px; }
 .canyons-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .canyon-card { background: #fff; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--sand-line); display: flex; flex-direction: column; }
-.cc-img { aspect-ratio: 3/2; position: relative; }
+.cc-img { aspect-ratio: 3/2; position: relative; overflow: hidden; }
+.cc-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
 .cc-tag { position: absolute; top: 14px; left: 14px; font-family: var(--font-mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; background: var(--orange); color: #fff; padding: 5px 10px; border-radius: 999px; z-index: 1; font-weight: 700; }
 .cc-body { padding: 24px; display: flex; flex-direction: column; flex: 1; }
 .cc-body .kicker { margin-bottom: 4px; }

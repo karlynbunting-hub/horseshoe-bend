@@ -27,6 +27,21 @@
       </div>
     ))}
   </div>
+  <div class="sun-row">
+    <b class="sun-hdr">Entrance gate</b>
+    <div class="sun-cols">
+      <div class="sun-item">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        <span class="sun-lbl">Sunrise Open</span>
+        <div class="sun-t" id="wx-sunrise">—:——</div>
+      </div>
+      <div class="sun-item">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M17 18a5 5 0 0 0-10 0"/><line x1="12" y1="2" x2="12" y2="9"/><line x1="4.22" y1="10.22" x2="5.64" y2="11.64"/><line x1="1" y1="18" x2="3" y2="18"/><line x1="21" y1="18" x2="23" y2="18"/><line x1="18.36" y1="11.64" x2="19.78" y2="10.22"/><line x1="23" y1="22" x2="1" y2="22"/><polyline points="8 6 12 2 16 6"/></svg>
+        <span class="sun-lbl">Sunset Close</span>
+        <div class="sun-t" id="wx-sunset">—:——</div>
+      </div>
+    </div>
+  </div>
   <div class="best">
     <b>Best time to visit</b>
     Arrive before 9 AM or after 5 PM. Sunrise and sunset deliver the best light on the Colorado River.
@@ -42,12 +57,50 @@
   const CACHE_KEY = 'hb_wx_grid_v1';
   const CACHE_TTL = 86_400_000; // 24 h
 
+  // ── Sunrise / Sunset (NOAA solar equation) ────────────────────────
+  const sunFmt = new Intl.DateTimeFormat('en-US', { timeZone: TZ, hour: 'numeric', minute: '2-digit', hour12: true });
+  let lastSunDate = '';
+
+  function calcSunTimes() {
+    const mstNow = new Date(Date.now() - 7 * 3600000); // MST = UTC-7
+    const dateStr = `${mstNow.getUTCFullYear()}-${mstNow.getUTCMonth()}-${mstNow.getUTCDate()}`;
+    if (dateStr === lastSunDate) return;
+    lastSunDate = dateStr;
+
+    const yr = mstNow.getUTCFullYear(), mo = mstNow.getUTCMonth() + 1, dy = mstNow.getUTCDate();
+    const a = Math.floor((14 - mo) / 12), y = yr + 4800 - a, m = mo + 12 * a - 3;
+    const jdn = dy + Math.floor((153 * m + 2) / 5) + 365 * y + Math.floor(y / 4) - Math.floor(y / 100) + Math.floor(y / 400) - 32045;
+    const n = jdn - 0.5 - 2451545.0; // days from J2000 (midnight UTC)
+
+    const Jstar = n - LON / 360;
+    const Jx = Math.round(Jstar) + 0.0009 - LON / 360;
+    const M = ((357.5291 + 0.98560028 * Jx) % 360 + 360) % 360;
+    const Mrad = M * Math.PI / 180;
+    const C = 1.9148 * Math.sin(Mrad) + 0.02 * Math.sin(2 * Mrad) + 0.0003 * Math.sin(3 * Mrad);
+    const lam = ((M + C + 180 + 102.9372) % 360 + 360) % 360;
+    const lamRad = lam * Math.PI / 180;
+    const Jtransit = 2451545 + Jx + 0.0053 * Math.sin(Mrad) - 0.0069 * Math.sin(2 * lamRad);
+    const dec = Math.asin(Math.sin(lamRad) * Math.sin(23.4397 * Math.PI / 180));
+    const latRad = LAT * Math.PI / 180;
+    const cosH = (Math.sin(-0.8333 * Math.PI / 180) - Math.sin(latRad) * Math.sin(dec)) / (Math.cos(latRad) * Math.cos(dec));
+    if (cosH < -1 || cosH > 1) return;
+    const omega = Math.acos(cosH) / (2 * Math.PI);
+
+    const toDate = (jd: number) => new Date((jd - 2440587.5) * 86400000);
+    const riseEl = document.getElementById('wx-sunrise');
+    const setEl  = document.getElementById('wx-sunset');
+    if (riseEl) riseEl.textContent = sunFmt.format(toDate(Jtransit - omega));
+    if (setEl)  setEl.textContent  = sunFmt.format(toDate(Jtransit + omega));
+  }
+  calcSunTimes();
+
   // ── Clock ──────────────────────────────────────────────────────────
   const timeFmt = new Intl.DateTimeFormat('en-US', { timeZone: TZ, hour: 'numeric', minute: '2-digit', hour12: true });
   const secFmt  = new Intl.DateTimeFormat('en-US', { timeZone: TZ, second: '2-digit' });
   const dayFmt  = new Intl.DateTimeFormat('en-US', { timeZone: TZ, weekday: 'short' });
 
   function tick() {
+    calcSunTimes(); // no-op if date hasn't changed
     const now = new Date();
     const parts = timeFmt.formatToParts(now);
     const h = parts.find(p => p.type === 'hour')?.value ?? '—';
@@ -161,6 +214,13 @@
 .wx-day .ic { font-size: 22px; margin: 8px 0; }
 .wx-day .hi { font-weight: 800; font-size: 16px; }
 .wx-day .lo { font-size: 11px; color: #9fb0bf; }
+.sun-row { border-top: 1px solid rgba(255,255,255,.14); padding-top: 16px; margin-bottom: 16px; }
+.sun-hdr { color: var(--orange-bright); font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; display: block; margin-bottom: 10px; }
+.sun-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.sun-item { background: rgba(255,255,255,.07); border-radius: 11px; padding: 12px 14px; display: flex; flex-direction: column; gap: 4px; }
+.sun-item svg { color: var(--orange-bright); }
+.sun-lbl { font-family: var(--font-mono); font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: #9fb0bf; }
+.sun-t { font-family: var(--font-mono); font-weight: 700; font-size: 17px; color: #fff; font-variant-numeric: tabular-nums; line-height: 1; }
 .best { margin-top: auto; font-size: 14px; color: #d8e0e8; border-top: 1px solid rgba(255,255,255,.14); padding-top: 16px; }
 .best b { color: var(--orange-bright); font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; display: block; margin-bottom: 4px; }
 </style>

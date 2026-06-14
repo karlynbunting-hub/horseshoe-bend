@@ -23,8 +23,11 @@ const tours = [
     duration: 'Half day (~5–6 hrs)',
     minAge: 'Ages 4+',
     season: 'Year-round',
-    price: 'from $96/person',
+    price: 'from $113/person',
     operator: 'Wilderness River Adventures',
+    imgSrc: '/images/river-float-trip.webp',
+    imgAlt: 'Group of visitors on a pontoon raft floating the Colorado River through red canyon walls',
+    ctaHref: 'https://fareharbor.com/embeds/book/wrahorseshoebend-aramark/items/655797/?asn=fhdn&asn-ref=antelopecanyonaz&ref=antelopecanyonaz&bookable-only=yes&full-items=yes&marketplace=yes&flow=no&branding=no',
   },
   {
     id: 'kayak',
@@ -41,8 +44,11 @@ const tours = [
     duration: 'Half day or full day',
     minAge: 'Ages 5+',
     season: 'Year-round',
-    price: 'from $95/person',
+    price: 'from $80/person',
     operator: 'Kayak Horseshoe Bend / Lees Ferry Anglers',
+    imgSrc: '/images/river-kayak-hsb.webp',
+    imgAlt: 'Kayaker on a green kayak on the Colorado River with dramatic red sandstone cliffs behind',
+    ctaHref: 'https://fareharbor.com/embeds/book/kayakthecolorado/items/703224/?asn=fhdn&asn-ref=antelopecanyonaz&ref=antelopecanyonaz&bookable-only=yes&full-items=yes&marketplace=yes&flow=no&branding=no',
   },
   {
     id: 'lake-powell',
@@ -59,8 +65,12 @@ const tours = [
     duration: '2.5–3 hrs',
     minAge: 'All ages',
     season: 'April–October',
-    price: 'from $59/person',
+    price: 'from $50/person',
     operator: 'Antelope Canyon Boat Tours',
+    imgSrc: '/images/river-antelope-boat.webp',
+    imgAlt: 'Tour boat cruising through towering pink sandstone walls of Antelope Canyon on Lake Powell',
+    ctaHref: 'https://antelopepointlakepowell.com/boat-rentals-tours/boat-tours/',
+    ctaTarget: '_blank',
   },
 ];
 
@@ -137,9 +147,12 @@ const schema = {
       <div class="river-tours">
         {tours.map((t) => (
           <div class="rtour">
-            <div class="rtour-img ph ph--navy">
+            <div class:list={['rtour-img', ...(!t.imgSrc ? ['ph', 'ph--navy'] : [])]}>
               <span class="rtag">{t.tag}</span>
-              <span class="ph__label">{t.name}</span>
+              {t.imgSrc
+                ? <img src={t.imgSrc} alt={t.imgAlt} width="840" height="560" />
+                : <span class="ph__label">{t.name}</span>
+              }
             </div>
             <div class="rtour-body">
               <h3>{t.name}</h3>
@@ -155,7 +168,7 @@ const schema = {
               </div>
               <div class="rtour-footer">
                 <span class="rtour-price">{t.price}</span>
-                <BookingButton label="Check availability" variant="primary" />
+                <a class="btn btn--primary" href={t.ctaHref} target={t.ctaTarget} rel={t.ctaTarget === '_blank' ? 'noopener noreferrer' : undefined}>Check availability</a>
               </div>
             </div>
           </div>
@@ -243,7 +256,8 @@ const schema = {
 .tours-sec h2 { font-size: clamp(28px, 4vw, 44px); text-transform: uppercase; margin: 16px 0 44px; }
 .river-tours { display: flex; flex-direction: column; gap: 48px; }
 .rtour { display: grid; grid-template-columns: 420px 1fr; gap: 0; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--sand-line); background: #fff; }
-.rtour-img { position: relative; min-height: 320px; }
+.rtour-img { position: relative; min-height: 320px; overflow: hidden; }
+.rtour-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
 .rtag { position: absolute; top: 16px; left: 16px; font-family: var(--font-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; background: var(--orange); color: #fff; padding: 6px 12px; border-radius: 999px; font-weight: 700; z-index: 1; }
 .rtour-body { padding: 36px; }
 .rtour-body h3 { font-size: 26px; color: var(--navy); text-transform: uppercase; margin: 0 0 14px; }

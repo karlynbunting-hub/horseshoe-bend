@@ -1,0 +1,144 @@
+---
+interface Props {
+  imgSrc?: string;
+  imgAlt?: string;
+}
+const {
+  imgSrc = '/images/canyon-upper.webp',
+  imgAlt = 'Visitors walking through the glowing orange sandstone corridors of Antelope Canyon',
+} = Astro.props;
+---
+<section class="ac-ban">
+  <div class="ac-inner">
+    <div class="ac-content">
+      <p class="ac-kicker">4 miles from Horseshoe Bend · Page, AZ</p>
+      <h2 class="ac-title">Best Antelope Canyon Tours</h2>
+      <p class="ac-desc">The world's most-photographed slot canyon is 10 minutes from the parking lot. Navajo guides lead you through towering corridors of orange and crimson sandstone — light beams pour from above, swirling walls rise 120 feet, and no two visits look the same.</p>
+      <ul class="ac-feats">
+        <li>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          Upper · Lower · Canyon X · Secret Antelope Canyon
+        </li>
+        <li>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          From $80 per person · All ages welcome · Permit included
+        </li>
+        <li>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          Navajo Nation · Books out weeks in advance — reserve early
+        </li>
+      </ul>
+      <a href="/antelope-canyon/" class="ac-btn">Explore Antelope Canyon Tours →</a>
+    </div>
+    <div class="ac-img-wrap">
+      <div class="ac-fade"></div>
+      <img src={imgSrc} alt={imgAlt} width="800" height="533" />
+    </div>
+  </div>
+</section>
+
+<style>
+.ac-ban {
+  background: var(--navy-deep);
+  overflow: hidden;
+}
+.ac-inner {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  min-height: 400px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.ac-content {
+  padding: 64px 56px 64px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+.ac-kicker {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--orange-bright);
+  margin: 0;
+}
+.ac-title {
+  font-size: clamp(28px, 3.5vw, 44px);
+  color: #fff;
+  text-transform: uppercase;
+  line-height: 1.05;
+  margin: 0;
+}
+.ac-desc {
+  font-size: 16px;
+  color: #aebcc8;
+  line-height: 1.65;
+  margin: 0;
+  max-width: 52ch;
+}
+.ac-feats {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.ac-feats li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #d8e0e8;
+}
+.ac-feats svg {
+  color: var(--orange-bright);
+  flex: none;
+}
+.ac-btn {
+  display: inline-block;
+  background: var(--orange);
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 15px;
+  text-decoration: none;
+  padding: 14px 28px;
+  border-radius: 8px;
+  letter-spacing: .02em;
+  align-self: flex-start;
+  transition: background .2s, transform .15s;
+}
+.ac-btn:hover { background: var(--orange-bright); transform: translateY(-2px); }
+.ac-img-wrap {
+  position: relative;
+  overflow: hidden;
+}
+.ac-img-wrap img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+.ac-fade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, var(--navy-deep) 0%, transparent 35%);
+  z-index: 1;
+}
+@media (max-width: 900px) {
+  .ac-inner { grid-template-columns: 1fr; }
+  .ac-img-wrap { aspect-ratio: 16/7; position: relative; }
+  .ac-content { padding: 48px 24px 32px; }
+  .ac-fade { background: linear-gradient(0deg, var(--navy-deep) 0%, transparent 40%); }
+}
+@media (max-width: 480px) {
+  .ac-content { padding: 40px 20px 28px; }
+  .ac-img-wrap { aspect-ratio: 4/3; }
+}
+</style>

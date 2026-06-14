@@ -3,6 +3,7 @@ import PageLayout from '../../layouts/PageLayout.astro';
 import SchemaLD from '../../components/SchemaLD.astro';
 import TourCard from '../../components/TourCard.astro';
 import BookingButton from '../../components/islands/BookingButton.astro';
+import AntelopeBanner from '../../components/AntelopeBanner.astro';
 import { tours } from '../../data/tours';
 
 const title = 'Tours from Page, AZ | Antelope Canyon, River, Heli & Scenic Flights';
@@ -59,6 +60,9 @@ const schema = {
       </div>
     </div>
   </section>
+
+  <!-- Antelope Canyon banner -->
+  <AntelopeBanner />
 
   <!-- Booking info -->
   <section class="sec booking-sec">

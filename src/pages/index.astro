@@ -8,6 +8,7 @@ import NearbyCard from '../components/NearbyCard.astro';
 import WeatherWidget from '../components/islands/WeatherWidget.astro';
 import BookingButton from '../components/islands/BookingButton.astro';
 import ParkingMap from '../components/ParkingMap.astro';
+import AntelopeBanner from '../components/AntelopeBanner.astro';
 import { featuredTours } from '../data/tours';
 
 const title = 'Horseshoe Bend | Colorado River Overlook, Page, AZ';
@@ -183,6 +184,9 @@ const schema = {
       </div>
     </div>
   </section>
+
+  <!-- ── Antelope Canyon banner ──────────────────────────── -->
+  <AntelopeBanner />
 
   <!-- ── Hike steps ────────────────────────────────────────── -->
   <HikeSteps />

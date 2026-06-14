@@ -8,14 +8,14 @@ const description: string = 'Attractions near Horseshoe Bend: Antelope Canyon (4
 const canonical = 'https://horseshoebend.com/nearby/';
 
 const nearbyAttractions = [
-  { name: 'Antelope Canyon', distance: '4–7 mi · 10 min', description: 'The world\'s most photographed slot canyon. Guided Navajo tours required. Book well in advance.', href: '/antelope-canyon/', imgAlt: 'Upper Antelope Canyon light beams' },
-  { name: 'Glen Canyon Dam', distance: '2 mi · 5 min', description: 'One of the largest concrete arch dams in the US. Free tours of the dam and visitor center.', href: '/nearby/', imgAlt: 'Glen Canyon Dam and Lake Powell' },
-  { name: 'Lake Powell', distance: '4 mi · 10 min', description: '475 miles of shoreline. Boat tours, houseboat rentals, kayaking, and the Rainbow Bridge monument.', href: '/river-tours/', imgAlt: 'Lake Powell blue water and red canyon walls' },
-  { name: 'Grand Canyon South Rim', distance: '130 mi · 2.5 hrs', description: 'One of the seven natural wonders of the world. Overnight stay highly recommended.', href: '/nearby/', imgAlt: 'Grand Canyon South Rim panorama at sunset' },
-  { name: 'Monument Valley', distance: '115 mi · 2 hrs', description: 'The iconic Mittens and Merrick Butte. Navajo Nation Tribal Park with guided jeep tours.', href: '/nearby/', imgAlt: 'Monument Valley sandstone buttes' },
-  { name: 'Zion National Park', distance: '175 mi · 2.5 hrs', description: 'The Narrows, Angels Landing, and Zion Canyon. Shuttle system required in peak season.', href: '/nearby/', imgAlt: 'Zion Canyon from Angels Landing' },
-  { name: 'Bryce Canyon National Park', distance: '180 mi · 3 hrs', description: 'Thousands of crimson hoodoos below the Paunsaugunt Plateau. Breathtaking at sunrise.', href: '/nearby/', imgAlt: 'Bryce Canyon hoodoos at sunrise' },
-  { name: 'The Wave', distance: '75 mi · 1.5 hrs', description: 'Famous Navajo sandstone formation requiring a permit lottery. Plan many months in advance.', href: '/nearby/', imgAlt: 'The Wave sandstone formation in Arizona' },
+  { name: 'Antelope Canyon', distance: '4–7 mi · 10 min', description: 'The world\'s most photographed slot canyon. Guided Navajo tours required. Book well in advance.', href: 'https://antelopecanyon.az/', target: '_blank', imgSrc: '/images/nearby-antelope-canyon.webp', imgAlt: 'Visitors walking through Upper Antelope Canyon\'s glowing orange sandstone corridors' },
+  { name: 'Glen Canyon Dam', distance: '2 mi · 5 min', description: 'One of the largest concrete arch dams in the US. Free tours of the dam and visitor center.', href: 'https://www.usbr.gov/uc/rm/crsp/gc/', target: '_blank', imgSrc: '/images/nearby-glen-canyon-dam.webp', imgAlt: 'Glen Canyon Dam concrete arch spanning the red canyon walls above the Colorado River' },
+  { name: 'Lake Powell', distance: '4 mi · 10 min', description: '475 miles of shoreline. Boat tours, houseboat rentals, kayaking, and the Rainbow Bridge monument.', href: 'https://www.lakepowell.com/', target: '_blank', imgSrc: '/images/nearby-lake-powell.webp', imgAlt: 'Aerial view of Lake Powell\'s blue waters winding through red canyon landscape' },
+  { name: 'Grand Canyon South Rim', distance: '130 mi · 2.5 hrs', description: 'One of the seven natural wonders of the world. Overnight stay highly recommended.', href: 'https://grandcanyon.com/', target: '_blank', imgSrc: '/images/nearby-grand-canyon.webp', imgAlt: 'Visitors gathered at Grand Canyon South Rim overlook at sunrise' },
+  { name: 'Monument Valley', distance: '115 mi · 2 hrs', description: 'The iconic Mittens and Merrick Butte. Navajo Nation Tribal Park with guided jeep tours.', href: 'https://navajonationparks.org/navajo-tribal-parks/monument-valley/', target: '_blank', imgSrc: '/images/nearby-monument-valley.webp', imgAlt: 'Monument Valley sandstone buttes glowing red at sunset' },
+  { name: 'Zion National Park', distance: '175 mi · 2.5 hrs', description: 'The Narrows, Angels Landing, and Zion Canyon. Shuttle system required in peak season.', href: 'https://www.nps.gov/zion/index.htm', target: '_blank', imgSrc: '/images/nearby-zion.webp', imgAlt: 'Hiker sitting at Angels Landing overlook above Zion Canyon' },
+  { name: 'Bryce Canyon National Park', distance: '180 mi · 3 hrs', description: 'Thousands of crimson hoodoos below the Paunsaugunt Plateau. Breathtaking at sunrise.', href: 'https://www.nps.gov/brca/index.htm', target: '_blank', imgSrc: '/images/nearby-bryce-canyon.webp', imgAlt: 'Bryce Canyon amphitheater of crimson and white hoodoos under blue sky' },
+  { name: 'The Wave', distance: '75 mi · 1.5 hrs', description: 'Famous Navajo sandstone formation requiring a permit lottery. Plan many months in advance.', href: 'https://thewaveaz.com/', target: '_blank', imgSrc: '/images/nearby-the-wave.webp', imgAlt: 'The Wave sandstone formation\'s sweeping layered curves in Arizona' },
 ];
 
 const schema = {
@@ -47,7 +47,7 @@ const schema = {
       <h2>The Grand Circle from Page, AZ</h2>
       <div class="nearby-grid">
         {nearbyAttractions.map((a) => (
-          <NearbyCard name={a.name} distance={a.distance} description={a.description} href={a.href} imgAlt={a.imgAlt} />
+          <NearbyCard name={a.name} distance={a.distance} description={a.description} href={a.href} target={a.target} imgSrc={a.imgSrc} imgAlt={a.imgAlt} />
         ))}
       </div>
     </div>

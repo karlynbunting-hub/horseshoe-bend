@@ -4,12 +4,13 @@ interface Props {
   distance: string;
   description: string;
   href?: string;
+  target?: string;
   imgSrc?: string;
   imgAlt?: string;
 }
-const { name, distance, description, href = '#', imgSrc = '', imgAlt = '' } = Astro.props;
+const { name, distance, description, href = '#', target, imgSrc = '', imgAlt = '' } = Astro.props;
 ---
-<a class="near" href={href}>
+<a class="near" href={href} target={target} rel={target === '_blank' ? 'noopener noreferrer' : undefined}>
   <div class:list={['near-bg', ...(!imgSrc ? ['ph', 'ph--navy'] : [])]}>
     {imgSrc && <img src={imgSrc} alt={imgAlt} width="480" height="600" />}
   </div>

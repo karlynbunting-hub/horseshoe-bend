@@ -134,8 +134,16 @@
     if (timeEl) timeEl.textContent = `${h}:${m} ${ampm}`;
     if (secsEl) secsEl.textContent = `:${s}`;
   }
-  tick();
-  setInterval(tick, 1000);
+  // The clock + weather start lazily when the widget nears the viewport
+  // (it sits below the fold), keeping this work off the initial load path.
+  let started = false;
+  function startWidget() {
+    if (started) return;
+    started = true;
+    tick();
+    setInterval(tick, 1000);
+    loadWeather();
+  }
 
   // ── NWS Weather ───────────────────────────────────────────────────
   const WX_ICONS: Record<string, string> = {
@@ -174,7 +182,7 @@
     return data;
   }
 
-  (async () => {
+  async function loadWeather() {
     try {
       const { forecastUrl, forecastHourlyUrl } = await getGridpoint();
 
@@ -212,7 +220,20 @@
       const condEl = document.getElementById('wx-cond');
       if (condEl) condEl.textContent = 'Sunny · ~75°F avg';
     }
-  })();
+  }
+
+  // Defer startup until the widget is about to scroll into view.
+  const wxRoot = document.getElementById('weather-widget');
+  if (wxRoot && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries, obs) => {
+      if (entries.some(e => e.isIntersecting)) { obs.disconnect(); startWidget(); }
+    }, { rootMargin: '200px' });
+    io.observe(wxRoot);
+  } else if (document.readyState === 'complete') {
+    startWidget();
+  } else {
+    window.addEventListener('load', startWidget);
+  }
 })();
 </script>
 

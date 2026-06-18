@@ -1,0 +1,25 @@
+---
+interface Props {
+  /** ISO date, e.g. "2026-06-18" */
+  datetime: string;
+}
+const { datetime } = Astro.props;
+const display = new Date(`${datetime}T00:00:00`).toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+<p class="updated"><time datetime={datetime}>Last updated: {display}</time></p>
+
+<style>
+.updated {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #8294a4;
+  margin: 16px 0 0;
+}
+.updated time { color: inherit; }
+</style>

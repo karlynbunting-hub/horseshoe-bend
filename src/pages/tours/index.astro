@@ -1,5 +1,6 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
+import UpdatedStamp from '../../components/UpdatedStamp.astro';
 import SchemaLD from '../../components/SchemaLD.astro';
 import TourCard from '../../components/TourCard.astro';
 import BookingButton from '../../components/islands/BookingButton.astro';
@@ -22,7 +23,7 @@ const itemList = {
 const schema = graph([itemList, organization, website]);
 ---
 
-<PageLayout {title} {description} {canonical}>
+<PageLayout {title} {description} {canonical} updated="2026-06-18" published="2026-06-01">
   <SchemaLD slot="head" {schema} />
 
   <header class="page-hero">
@@ -34,6 +35,7 @@ const schema = graph([itemList, organization, website]);
       <p class="kicker on-dark">Book from Page, AZ · FareHarbor secure checkout</p>
       <h1>Guided Tours from Page, AZ</h1>
       <p class="sub">Fly over the bend, walk through a slot canyon, or float the Colorado River. All tours depart from or near Page, AZ and can be combined in a single day.</p>
+      <UpdatedStamp datetime="2026-06-18" />
     </div>
   </header>
 

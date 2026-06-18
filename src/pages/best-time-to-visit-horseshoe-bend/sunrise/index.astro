@@ -1,5 +1,6 @@
 ---
 import PageLayout from '../../../layouts/PageLayout.astro';
+import UpdatedStamp from '../../../components/UpdatedStamp.astro';
 import SchemaLD from '../../../components/SchemaLD.astro';
 
 const title = 'Horseshoe Bend Sunrise | Best Tips for Early Morning Visits';
@@ -38,7 +39,7 @@ const schema = [
 ];
 ---
 
-<PageLayout {title} {description} {canonical}>
+<PageLayout {title} {description} {canonical} updated="2026-06-18" published="2026-06-01">
   <SchemaLD slot="head" {schema} />
 
   <header class="page-hero page-hero--dawn">
@@ -51,6 +52,7 @@ const schema = [
       <p class="kicker on-dark">Dawn · Early morning · Photography</p>
       <h1>Horseshoe Bend at Sunrise</h1>
       <p class="sub">Cooler air, quiet trails, and a sky that shifts from soft dawn hues to full gold. Here's what you actually need to know to time it right.</p>
+      <UpdatedStamp datetime="2026-06-18" />
     </div>
   </header>
 

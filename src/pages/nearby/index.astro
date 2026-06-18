@@ -1,5 +1,6 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
+import UpdatedStamp from '../../components/UpdatedStamp.astro';
 import SchemaLD from '../../components/SchemaLD.astro';
 import NearbyCard from '../../components/NearbyCard.astro';
 
@@ -27,7 +28,7 @@ const schema = {
 };
 ---
 
-<PageLayout {title} {description} {canonical}>
+<PageLayout {title} {description} {canonical} updated="2026-06-18" published="2026-06-01">
   <SchemaLD slot="head" {schema} />
 
   <header class="page-hero">
@@ -39,6 +40,7 @@ const schema = {
       <p class="kicker on-dark">Grand Circle · American Southwest</p>
       <h1>Nearby Attractions</h1>
       <p class="sub">Horseshoe Bend is the perfect anchor for a Grand Circle road trip. Here's what's within a day's drive.</p>
+      <UpdatedStamp datetime="2026-06-18" />
     </div>
   </header>
 

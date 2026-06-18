@@ -1,5 +1,6 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
+import UpdatedStamp from '../../components/UpdatedStamp.astro';
 import SchemaLD from '../../components/SchemaLD.astro';
 import BookingButton from '../../components/islands/BookingButton.astro';
 
@@ -105,7 +106,7 @@ const schema = {
 };
 ---
 
-<PageLayout {title} {description} {canonical}>
+<PageLayout {title} {description} {canonical} updated="2026-06-18" published="2026-06-01">
   <SchemaLD slot="head" {schema} />
 
   <header class="page-hero">
@@ -117,6 +118,7 @@ const schema = {
       <p class="kicker on-dark">4 miles from Horseshoe Bend · Navajo Nation</p>
       <h1>Antelope Canyon Tours</h1>
       <p class="sub">The world's most photographed slot canyon — a 10-minute drive from Horseshoe Bend. A guided tour is required. Book weeks in advance in peak season.</p>
+      <UpdatedStamp datetime="2026-06-18" />
       <div class="hero-btns">
         <a class="btn btn--primary" href="https://fareharbor.com/embeds/book/antelopecanyonaz/?full-items=yes&flow=1657932">Book Antelope Canyon tour</a>
       </div>

@@ -1,5 +1,6 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
+import UpdatedStamp from '../../components/UpdatedStamp.astro';
 import SchemaLD from '../../components/SchemaLD.astro';
 
 const title = 'Horseshoe Bend Parking Fees & Hours 2024 | City of Page, AZ';
@@ -81,7 +82,7 @@ const schema = [
 ];
 ---
 
-<PageLayout {title} {description} {canonical}>
+<PageLayout {title} {description} {canonical} updated="2026-06-18" published="2026-06-01">
   <SchemaLD slot="head" {schema} />
 
   <!-- Page header -->
@@ -95,6 +96,7 @@ const schema = [
       <p class="kicker">City of Page, AZ — Official Fee Schedule</p>
       <h1>Horseshoe Bend Parking Fees &amp; Hours</h1>
       <p class="sub">Current rates, hours, payment rules, and what to know before you arrive.</p>
+      <UpdatedStamp datetime="2026-06-18" />
     </div>
   </header>
 

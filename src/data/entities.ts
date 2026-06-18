@@ -95,3 +95,29 @@ export function graph(nodes: Array<Record<string, unknown>>) {
     '@graph': nodes,
   };
 }
+
+// Content freshness defaults. Bump UPDATED when pages get a real review.
+export const PUBLISHED = '2026-06-01';
+export const UPDATED = '2026-06-18';
+
+/** A WebPage node carrying freshness dates + author/publisher provenance. */
+export function webPage(opts: {
+  url: string;
+  name: string;
+  description?: string;
+  datePublished?: string;
+  dateModified?: string;
+}) {
+  return {
+    '@type': 'WebPage',
+    '@id': `${opts.url}#webpage`,
+    url: opts.url,
+    name: opts.name,
+    ...(opts.description ? { description: opts.description } : {}),
+    datePublished: opts.datePublished ?? PUBLISHED,
+    dateModified: opts.dateModified ?? UPDATED,
+    isPartOf: { '@id': WEBSITE_ID },
+    publisher: { '@id': ORG_ID },
+    author: { '@id': PERSON_ID },
+  };
+}

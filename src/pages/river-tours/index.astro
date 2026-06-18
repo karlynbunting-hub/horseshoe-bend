@@ -1,5 +1,6 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
+import UpdatedStamp from '../../components/UpdatedStamp.astro';
 import SchemaLD from '../../components/SchemaLD.astro';
 import BookingButton from '../../components/islands/BookingButton.astro';
 
@@ -99,7 +100,7 @@ const schema = {
 };
 ---
 
-<PageLayout {title} {description} {canonical}>
+<PageLayout {title} {description} {canonical} updated="2026-06-18" published="2026-06-01">
   <SchemaLD slot="head" {schema} />
 
   <!-- Hero -->
@@ -115,6 +116,7 @@ const schema = {
       </nav>
       <p class="kicker on-dark">Colorado River · Lake Powell · Glen Canyon</p>
       <h1>See the Bend from the Water</h1>
+      <UpdatedStamp datetime="2026-06-18" />
       <p class="rh-sub">Guided raft trips, kayak adventures, and Lake Powell boat tours that put you on the very river you looked down at from the overlook.</p>
       <div class="rh-btns">
         <BookingButton label="Book water tours" variant="primary" />

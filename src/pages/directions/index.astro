@@ -1,5 +1,6 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
+import UpdatedStamp from '../../components/UpdatedStamp.astro';
 import SchemaLD from '../../components/SchemaLD.astro';
 import ParkingMap from '../../components/ParkingMap.astro';
 
@@ -47,7 +48,7 @@ const schema = [
 ];
 ---
 
-<PageLayout {title} {description} {canonical}>
+<PageLayout {title} {description} {canonical} updated="2026-06-18" published="2026-06-01">
   <SchemaLD slot="head" {schema} />
 
   <header class="page-hero">
@@ -59,6 +60,7 @@ const schema = [
       <p class="kicker on-dark">Page, Arizona · US-89 Mile Marker 545</p>
       <h1>Directions to Horseshoe Bend</h1>
       <p class="sub">From Las Vegas, Phoenix, Flagstaff, or Grand Canyon — everything you need to find the parking lot.</p>
+      <UpdatedStamp datetime="2026-06-18" />
     </div>
   </header>
 

@@ -1,5 +1,6 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
+import UpdatedStamp from '../../components/UpdatedStamp.astro';
 import SchemaLD from '../../components/SchemaLD.astro';
 
 const title = 'Plan Your Visit to Horseshoe Bend | Hours, Fees & What to Expect';
@@ -15,7 +16,7 @@ const schema = {
 };
 ---
 
-<PageLayout {title} {description} {canonical}>
+<PageLayout {title} {description} {canonical} updated="2026-06-18" published="2026-06-01">
   <SchemaLD slot="head" {schema} />
 
   <header class="page-hero">
@@ -27,6 +28,7 @@ const schema = {
       <p class="kicker on-dark">Essentials before you go</p>
       <h1>Plan Your Visit</h1>
       <p class="sub">Everything you need to know before you arrive at Horseshoe Bend — in one place.</p>
+      <UpdatedStamp datetime="2026-06-18" />
     </div>
   </header>
 

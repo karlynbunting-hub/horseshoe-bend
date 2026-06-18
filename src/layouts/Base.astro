@@ -1,11 +1,16 @@
 ---
 import '../styles/brand.css';
+import { webPage } from '../data/entities';
 
 interface Props {
   title: string;
   description?: string;
   canonical?: string;
   ogImage?: string;
+  /** ISO date (YYYY-MM-DD); when set, emits WebPage freshness schema */
+  updated?: string;
+  /** ISO date (YYYY-MM-DD) the page was first published */
+  published?: string;
 }
 
 const {
@@ -13,12 +18,22 @@ const {
   description = 'Horseshoe Bend — Plan your visit to Page, Arizona. Entrance fees, parking, guided tours, Antelope Canyon combos, and river adventures.',
   canonical,
   ogImage = '/images/og-default.webp',
+  updated,
+  published,
 } = Astro.props;
 
 const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
 const canonicalUrl = canonical ?? new URL(Astro.url.pathname, 'https://horseshoebend.com').href;
 // OG/Twitter scrapers require an absolute image URL
 const ogImageUrl = new URL(ogImage, 'https://horseshoebend.com').href;
+
+// Freshness: a self-contained WebPage node with datePublished/dateModified
+const freshnessSchema = updated
+  ? {
+      '@context': 'https://schema.org',
+      ...webPage({ url: canonicalUrl, name: title, description, datePublished: published, dateModified: updated }),
+    }
+  : null;
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -67,6 +82,10 @@ const ogImageUrl = new URL(ogImage, 'https://horseshoebend.com').href;
         gtag('config', gaId);
       </script>
     </>
+  )}
+
+  {freshnessSchema && (
+    <script type="application/ld+json" set:html={JSON.stringify(freshnessSchema)} />
   )}
 
   <slot name="head" />

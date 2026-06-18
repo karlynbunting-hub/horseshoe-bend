@@ -1,5 +1,6 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
+import UpdatedStamp from '../../components/UpdatedStamp.astro';
 import SchemaLD from '../../components/SchemaLD.astro';
 import HikeSteps from '../../components/HikeSteps.astro';
 import BookingButton from '../../components/islands/BookingButton.astro';
@@ -70,7 +71,7 @@ const schema = [
 ];
 ---
 
-<PageLayout {title} {description} {canonical}>
+<PageLayout {title} {description} {canonical} updated="2026-06-18" published="2026-06-01">
   <SchemaLD slot="head" {schema} />
 
   <header class="page-hero">
@@ -82,6 +83,7 @@ const schema = [
       <p class="kicker on-dark">Self-guided · 0.6 miles · $10 parking</p>
       <h1>Hike Horseshoe Bend on Your Own</h1>
       <p class="sub">No guide required. No reservation needed. Just park, walk 0.6 miles, and stand at the edge of one of the most iconic views in North America.</p>
+      <UpdatedStamp datetime="2026-06-18" />
       <div class="hero-btns">
         <a href="/parking-fees/" class="btn btn--primary">Parking fees →</a>
         <a href="/best-time-to-visit-horseshoe-bend/" class="btn btn--ghost-light">Best time to visit →</a>

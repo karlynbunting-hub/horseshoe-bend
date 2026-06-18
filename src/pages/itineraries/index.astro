@@ -1,5 +1,6 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
+import UpdatedStamp from '../../components/UpdatedStamp.astro';
 import SchemaLD from '../../components/SchemaLD.astro';
 
 const title = 'Page, AZ Itineraries | 24 Hours, 48 Hours & Grand Circle Road Trips';
@@ -35,7 +36,7 @@ const grandCircleStops = [
 ];
 ---
 
-<PageLayout {title} {description} {canonical}>
+<PageLayout {title} {description} {canonical} updated="2026-06-18" published="2026-06-01">
   <SchemaLD slot="head" {schema} />
 
   <header class="page-hero">
@@ -47,6 +48,7 @@ const grandCircleStops = [
       <p class="kicker on-dark">Page, AZ · Grand Circle · Road trips</p>
       <h1>Page, AZ Itineraries</h1>
       <p class="sub">Whether you have one day or two weeks, here's how to make the most of Horseshoe Bend and the American Southwest.</p>
+      <UpdatedStamp datetime="2026-06-18" />
     </div>
   </header>
 

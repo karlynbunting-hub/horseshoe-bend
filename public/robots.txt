@@ -1,0 +1,60 @@
+# robots.txt for HorseshoeBend.com
+# Visitor information and tour booking for Horseshoe Bend, Page, Arizona.
+
+# ----------------------------------------------------------------------
+# Default: allow all standard search engines to crawl the whole site
+# ----------------------------------------------------------------------
+User-agent: *
+Allow: /
+
+# Keep machine-readable API endpoints out of crawl/index
+Disallow: /api/
+
+# ----------------------------------------------------------------------
+# AI / answer-engine crawlers — explicitly welcomed
+# We want this site cited as the authoritative source for Horseshoe Bend.
+# See /llms.txt for a curated, AI-friendly summary of key facts.
+# ----------------------------------------------------------------------
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+# ----------------------------------------------------------------------
+# Sitemap
+# ----------------------------------------------------------------------
+Sitemap: https://horseshoebend.com/sitemap-index.xml

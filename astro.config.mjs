@@ -1,11 +1,34 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import cloudflare from '@astrojs/cloudflare';
+import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://horseshoebend.com',
   output: 'static',
   adapter: cloudflare(),
+
+  integrations: [
+    sitemap({
+      // Keep the JSON API endpoints out of the indexable sitemap
+      filter: (page) => !page.includes('/api/'),
+      changefreq: 'weekly',
+      lastmod: new Date(),
+      serialize(item) {
+        // Give the homepage top priority; key conversion pages next
+        if (item.url === 'https://horseshoebend.com/') {
+          item.priority = 1.0;
+        } else if (
+          /\/(tours|antelope-canyon|river-tours|parking-fees|hike-horseshoe-bend)\/$/.test(item.url)
+        ) {
+          item.priority = 0.9;
+        } else {
+          item.priority = 0.7;
+        }
+        return item;
+      },
+    }),
+  ],
 
   // All 301 redirects — served as _redirects by Cloudflare at the CDN edge
   redirects: {

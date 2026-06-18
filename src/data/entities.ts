@@ -53,6 +53,12 @@ export const person = {
   jobTitle: 'Manager',
   worksFor: { '@id': ORG_ID },
   url: `${SITE}/about/`,
+  image: {
+    '@type': 'ImageObject',
+    url: `${SITE}/images/author-karlyn-bunting.webp`,
+    width: 400,
+    height: 400,
+  },
   description:
     'Karlyn Bunting was born and raised in Page, Arizona, near Horseshoe Bend, and has lived there his whole life. He previously managed GrandCanyon.com and now manages HorseshoeBend.com, helping visitors get the most out of their Horseshoe Bend visits.',
   homeLocation: {

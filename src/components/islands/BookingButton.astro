@@ -15,21 +15,14 @@ const href = `https://fareharbor.com/embeds/book/antelopecanyonaz/?ref=valerie&s
 <a
   class={`btn btn--${variant} fh-booking`}
   href={href}
-  data-fh-lightbox="true"
-  target="_blank"
-  rel="noopener noreferrer"
 >
   {label}
 </a>
 
-<script>
-// Load FareHarbor lightbox API once
-if (!document.getElementById('fh-embed-script')) {
-  const s = document.createElement('script');
-  s.id = 'fh-embed-script';
-  s.src = 'https://fareharbor.com/embeds/api/v1/?autolightboxes';
-  s.dataset.fhRef = 'antelopecanyonaz';
-  s.async = true;
-  document.head.appendChild(s);
-}
-</script>
+<!--
+  No FareHarbor third-party script: the click is handled by the shared
+  in-page booking modal in Base.astro (it loads the booking URL in an
+  iframe), the same path every other booking link uses. If JS is
+  unavailable, the link still navigates to the FareHarbor booking page.
+-->
+

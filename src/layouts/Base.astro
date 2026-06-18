@@ -12,11 +12,13 @@ const {
   title,
   description = 'Horseshoe Bend — Plan your visit to Page, Arizona. Entrance fees, parking, guided tours, Antelope Canyon combos, and river adventures.',
   canonical,
-  ogImage = '/logo.svg',
+  ogImage = '/images/og-default.webp',
 } = Astro.props;
 
 const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
 const canonicalUrl = canonical ?? new URL(Astro.url.pathname, 'https://horseshoebend.com').href;
+// OG/Twitter scrapers require an absolute image URL
+const ogImageUrl = new URL(ogImage, 'https://horseshoebend.com').href;
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -33,11 +35,22 @@ const canonicalUrl = canonical ?? new URL(Astro.url.pathname, 'https://horseshoe
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
 
   <!-- Open Graph -->
+  <meta property="og:site_name" content="HorseshoeBend.com" />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
-  <meta property="og:image" content={ogImage} />
+  <meta property="og:image" content={ogImageUrl} />
+  <meta property="og:image:type" content="image/webp" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Horseshoe Bend overlook near Page, Arizona" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content={canonicalUrl} />
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImageUrl} />
 
   <!-- Font preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />

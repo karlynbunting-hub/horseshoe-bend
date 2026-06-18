@@ -121,6 +121,20 @@ const schema = {
       </div>
     </div>
   </section>
+
+  <section class="sec related-sec">
+    <div class="wrap">
+      <h2>Keep planning your visit</h2>
+      <ul class="related-links">
+        <li><a href="/plan-your-visit/">Plan your visit →</a></li>
+        <li><a href="/parking-fees/">Parking &amp; fees →</a></li>
+        <li><a href="/hike-horseshoe-bend/">Hike the trail →</a></li>
+        <li><a href="/best-time-to-visit-horseshoe-bend/">Best time to visit →</a></li>
+        <li><a href="/antelope-canyon/">Antelope Canyon tours →</a></li>
+        <li><a href="/tours/">All tours from Page, AZ →</a></li>
+      </ul>
+    </div>
+  </section>
 </PageLayout>
 
 <style>
@@ -132,6 +146,14 @@ const schema = {
 .page-hero .sub { font-size: 18px; color: #aebcc8; margin: 0; max-width: 60ch; }
 
 .faq-sec { background: var(--paper); }
+
+.related-sec { background: var(--cream); border-top: 1px solid var(--sand-line); }
+.related-sec h2 { font-size: clamp(22px, 3vw, 32px); text-transform: uppercase; color: var(--navy); margin: 0 0 28px; }
+.related-links { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.related-links a { font-family: var(--font-mono); font-size: 13px; letter-spacing: .04em; color: var(--navy); display: block; padding: 16px 18px; background: var(--paper); border: 1px solid var(--sand-line); border-radius: 10px; transition: border-color .16s, color .16s; }
+.related-links a:hover { border-color: var(--orange); color: var(--orange-deep); }
+@media (max-width: 760px) { .related-links { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 480px) { .related-links { grid-template-columns: 1fr; } }
 .faq-wrap { display: grid; grid-template-columns: 220px 1fr; gap: 72px; align-items: start; }
 
 .cat-nav { position: sticky; top: 100px; display: flex; flex-direction: column; gap: 4px; }

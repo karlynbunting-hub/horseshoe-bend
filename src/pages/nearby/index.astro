@@ -47,6 +47,7 @@ const schema = {
   <section class="sec nearby-sec">
     <div class="wrap">
       <h2>The Grand Circle from Page, AZ</h2>
+      <p class="nearby-intro">Most visitors pair Horseshoe Bend with an <a href="/antelope-canyon/">Antelope Canyon tour</a> and a <a href="/river-tours/">river or kayak trip</a> before heading out to these icons. See all <a href="/tours/">tours from Page, AZ</a> to build your day.</p>
       <div class="nearby-grid">
         {nearbyAttractions.map((a) => (
           <NearbyCard name={a.name} distance={a.distance} description={a.description} href={a.href} target={a.target} imgSrc={a.imgSrc} imgAlt={a.imgAlt} />
@@ -75,7 +76,10 @@ const schema = {
 .page-hero h1 { font-size: clamp(32px, 6vw, 56px); color: #fff; margin: 12px 0 18px; text-transform: uppercase; }
 .page-hero .sub { font-size: 18px; color: #aebcc8; margin: 0; max-width: 60ch; }
 .nearby-sec { background: var(--paper); }
-.nearby-sec h2 { font-size: clamp(28px, 4vw, 42px); text-transform: uppercase; margin: 16px 0 40px; }
+.nearby-sec h2 { font-size: clamp(28px, 4vw, 42px); text-transform: uppercase; margin: 16px 0 18px; }
+.nearby-intro { font-size: 16px; color: var(--ink-soft); max-width: 70ch; margin: 0 0 40px; line-height: 1.7; }
+.nearby-intro a { color: var(--orange-deep); font-weight: 600; }
+.nearby-intro a:hover { text-decoration: underline; }
 .nearby-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
 .cta-band { background: var(--navy-deep); color: #fff; padding: 80px 0; }
 .cta-inner { display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; }

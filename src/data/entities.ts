@@ -54,12 +54,22 @@ export const person = {
   worksFor: { '@id': ORG_ID },
   url: `${SITE}/about/`,
   description:
-    'Karlyn Bunting manages HorseshoeBend.com, helping visitors plan trips to Horseshoe Bend, Antelope Canyon, and the Page, Arizona area with current, ground-level information.',
+    'Karlyn Bunting was born and raised in Page, Arizona, near Horseshoe Bend, and has lived there his whole life. He previously managed GrandCanyon.com and now manages HorseshoeBend.com, helping visitors get the most out of their Horseshoe Bend visits.',
+  homeLocation: {
+    '@type': 'Place',
+    name: 'Page, Arizona',
+  },
+  alumniOf: {
+    '@type': 'Organization',
+    name: 'GrandCanyon.com',
+    url: 'https://grandcanyon.com/',
+  },
   knowsAbout: [
     'Horseshoe Bend',
     'Antelope Canyon tours',
     'Page, Arizona',
     'Glen Canyon National Recreation Area',
+    'Grand Canyon',
   ],
 } as const;
 

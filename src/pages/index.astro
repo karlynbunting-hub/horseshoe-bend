@@ -50,12 +50,23 @@ const schema = graph([attraction, organization, person, website]);
 
 <PageLayout {title} {description} {canonical} updated="2026-06-18" published="2026-06-01">
   <SchemaLD slot="head" {schema} />
+  <link
+    slot="head"
+    rel="preload"
+    as="image"
+    href="/images/hero-horseshoe-bend-800.webp"
+    imagesrcset="/images/hero-horseshoe-bend-800.webp 800w, /images/hero-horseshoe-bend-1280.webp 1280w, /images/hero-horseshoe-bend.webp 1630w"
+    imagesizes="100vw"
+    fetchpriority="high"
+  />
 
   <!-- ── Hero ──────────────────────────────────────────────── -->
   <section class="hero">
     <div class="hero-bg">
       <img
         src="/images/hero-horseshoe-bend.webp"
+        srcset="/images/hero-horseshoe-bend-800.webp 800w, /images/hero-horseshoe-bend-1280.webp 1280w, /images/hero-horseshoe-bend.webp 1630w"
+        sizes="100vw"
         alt="Aerial view of Horseshoe Bend — the Colorado River curving through red rock canyon near Page, Arizona"
         width="1630"
         height="860"

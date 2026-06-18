@@ -3,7 +3,36 @@
    Navy + burnt orange on warm cream. Adventurous & bold.
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,500&family=Space+Mono:wght@400;700&display=swap');
+/* Self-hosted fonts — no third-party render-blocking request.
+   Archivo is a variable font (one file covers weights 100–900). */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/archivo-var.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Archivo';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/archivo-italic-var.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Space Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/spacemono-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Space Mono';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/spacemono-700.woff2') format('woff2');
+}
 
 :root {
   --navy: #15314a;

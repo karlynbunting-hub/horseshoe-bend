@@ -67,21 +67,35 @@ const freshnessSchema = updated
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={ogImageUrl} />
 
-  <!-- Font preconnect -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Preload the primary self-hosted font (covers headings + body) -->
+  <link rel="preload" href="/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
 
-  <!-- GA4 — loads on every page; straight install (US-dominant audience, no consent banner) -->
+  <!-- GA4 — deferred off the critical path to protect first paint / TBT.
+       Events queue immediately; the heavy script loads after load/idle or first interaction. -->
   {gaId && (
-    <>
-      <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
-      <script is:inline define:vars={{ gaId }}>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', gaId);
-      </script>
-    </>
+    <script is:inline define:vars={{ gaId }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', gaId);
+      var loadGA = function () {
+        if (window.__gaLoaded) return; window.__gaLoaded = true;
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + gaId;
+        document.head.appendChild(s);
+      };
+      var onReady = function () {
+        ('requestIdleCallback' in window)
+          ? requestIdleCallback(loadGA, { timeout: 3000 })
+          : setTimeout(loadGA, 1500);
+      };
+      if (document.readyState === 'complete') onReady();
+      else window.addEventListener('load', onReady);
+      ['scroll', 'keydown', 'pointerdown', 'touchstart'].forEach(function (e) {
+        window.addEventListener(e, loadGA, { once: true, passive: true });
+      });
+    </script>
   )}
 
   {freshnessSchema && (

@@ -59,20 +59,46 @@ const schema = graph([itemList, faqPage, organization, website]);
       </nav>
       <p class="kicker on-dark">Book from Page, AZ · FareHarbor secure checkout</p>
       <h1>Guided Tours from Page, AZ</h1>
-      <p class="sub">Fly over the bend, walk through a slot canyon, or float the Colorado River. All tours depart from or near Page, AZ and can be combined in a single day.</p>
+      <p class="sub">Fly over the bend, walk through a slot canyon, or float the Colorado River. All tours depart from or near Page, AZ and many can be combined in a single day.</p>
       <UpdatedStamp datetime="2026-06-18" />
     </div>
   </header>
 
-  <!-- Intro answer capsule -->
-  <section class="sec lead-sec">
-    <div class="wrap lead-wrap">
-      <p class="lead">Tours from Page, AZ bring together two of the Southwest's signature views in a single day: Horseshoe Bend, where the Colorado River carves a sheer 1,000-foot drop below the overlook, and Antelope Canyon, the Navajo-guided slot canyon a short drive away. You can enjoy Horseshoe Bend on your own with a quick hike, or ride along on a guided tour that pairs it with the canyons. The two destinations complement each other — one an open-air panorama, the other a glowing sandstone corridor — and most visitors take in both on one well-planned day. Below, find your experience, then see how the Antelope Canyon options compare.</p>
+  <!-- Ways to experience Horseshoe Bend -->
+  <section class="sec ways-sec">
+    <div class="wrap">
+      <div class="ways-head">
+        <h2>Ways to experience Horseshoe Bend</h2>
+        <p class="ways-lede">Horseshoe Bend is a 270° curve of the Colorado River with a sheer 1,000-foot drop to the water below. Once known mostly to nearby residents, it has grown into one of the Southwest's most photographed views — now drawing <a href="https://en.wikipedia.org/wiki/Horseshoe_Bend_(Arizona)" target="_blank" rel="noopener noreferrer">more than 2 million visitors a year</a> after its rise on social media. However you like to travel — on foot, from the air, or on the river — there's a way to take it in, and any of them pairs neatly with an Antelope Canyon tour for a full day in Page, AZ.</p>
+      </div>
+      <div class="ways-grid">
+        <article class="ways-card">
+          <span class="ways-tag">On foot</span>
+          <h3>Hike to the rim</h3>
+          <p>The classic, self-guided way: a level 0.6-mile packed-sand trail from the parking lot to the overlook, about 20–25 minutes each way. No guide or reservation needed — just the $10 City of Page parking fee. The closest, least expensive, and most flexible option.</p>
+          <p class="ways-best"><strong>Best for:</strong> most visitors · budget · going at your own pace</p>
+          <a class="ways-link" href="/hike-horseshoe-bend/">Hike Horseshoe Bend on your own →</a>
+        </article>
+        <article class="ways-card">
+          <span class="ways-tag">From the air</span>
+          <h3>Helicopter or airplane tour</h3>
+          <p>Skip the hike and see the full 270° curve from above. A <strong>helicopter</strong> flight runs about 10–12 minutes over the bend, Lake Powell, and Glen Canyon Dam; a fixed-wing <strong>flightseeing</strong> tour adds a wider 30-minute loop with narration. Both depart Page Municipal Airport — a strong choice when walking the trail isn't ideal.</p>
+          <p class="ways-best"><strong>Best for:</strong> mobility considerations · photographers · a sweeping view</p>
+          <a class="ways-link" href="#tours">See the air tours below →</a>
+        </article>
+        <article class="ways-card">
+          <span class="ways-tag">On the river</span>
+          <h3>Kayak or raft the Colorado</h3>
+          <p>Trade the rim for the river and look up at the same walls from 1,000 feet below. <strong>Kayak</strong> the calm, rapid-free water at your own pace, or take a guided <strong>half-day raft</strong> — smooth water, no rapids, welcoming to ages 4 and up — past petroglyphs and canyon wildlife in Glen Canyon.</p>
+          <p class="ways-best"><strong>Best for:</strong> active travelers · families · a from-the-bottom angle</p>
+          <a class="ways-link" href="/river-tours/">Explore river &amp; kayak trips →</a>
+        </article>
+      </div>
     </div>
   </section>
 
   <!-- Featured tours grid -->
-  <section class="sec tours-sec">
+  <section class="sec tours-sec" id="tours">
     <div class="wrap">
       <h2>Find your experience</h2>
       <div class="tours-grid">
@@ -134,7 +160,7 @@ const schema = graph([itemList, faqPage, organization, website]);
       </div>
       <div class="choose-combo">
         <h3>Want both icons together? The Canyon Overlook package</h3>
-        <p>If you'd like a guide to handle the logistics, the Canyon Overlook package pairs a Navajo-guided slot canyon with a private Horseshoe Bend overlook on Navajo land — two signature views, one reservation, no driving or parking to plan. It's the simplest way to see the canyons and the bend together in a single outing.</p>
+        <p>If you'd like a guide to handle the logistics, the Canyon Overlook package pairs the Navajo-guided Lower Antelope Canyon with a visit to the Horseshoe Bend overlook — two signature views, one reservation, no driving or parking to plan. It's the simplest way to see the canyons and the bend together in a single outing.</p>
       </div>
     </div>
   </section>
@@ -191,9 +217,21 @@ const schema = graph([itemList, faqPage, organization, website]);
 .page-hero h1 { font-size: clamp(32px, 6vw, 56px); color: #fff; margin: 12px 0 18px; text-transform: uppercase; }
 .page-hero .sub { font-size: 18px; color: #aebcc8; margin: 0; max-width: 60ch; }
 
-.lead-sec { background: var(--cream); }
-.lead-wrap { max-width: 80ch; }
-.lead { font-size: clamp(17px, 2vw, 20px); line-height: 1.7; color: var(--ink-soft); margin: 0; border-left: 3px solid var(--orange); padding-left: 22px; }
+/* Ways to experience Horseshoe Bend */
+.ways-sec { background: var(--cream); }
+.ways-head { max-width: 80ch; margin: 0 0 40px; }
+.ways-sec h2 { font-size: clamp(28px, 4vw, 42px); text-transform: uppercase; color: var(--navy); margin: 0 0 16px; }
+.ways-lede { font-size: clamp(16px, 1.6vw, 18px); color: var(--ink-soft); line-height: 1.7; margin: 0; }
+.ways-lede a { color: var(--orange-deep); font-weight: 600; }
+.ways-lede a:hover { text-decoration: underline; }
+.ways-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.ways-card { display: flex; flex-direction: column; background: var(--paper); border: 1px solid var(--sand-line); border-radius: var(--radius); padding: 26px; }
+.ways-tag { display: inline-block; align-self: flex-start; font-family: var(--font-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--orange-deep); background: rgba(217,96,31,.10); border: 1px solid rgba(236,122,44,.3); border-radius: 999px; padding: 4px 12px; margin-bottom: 14px; }
+.ways-card h3 { font-size: 21px; color: var(--navy); margin: 0 0 10px; }
+.ways-card p { font-size: 15px; color: var(--ink-soft); line-height: 1.65; margin: 0; }
+.ways-best { margin-top: 12px !important; font-size: 13px !important; color: var(--navy) !important; }
+.ways-link { margin-top: auto; padding-top: 18px; font-family: var(--font-mono); font-size: 12px; letter-spacing: .04em; text-transform: uppercase; color: var(--orange-deep); font-weight: 700; }
+.ways-link:hover { text-decoration: underline; }
 
 .tours-sec { background: var(--paper); }
 .tours-sec h2 { font-size: clamp(28px, 4vw, 42px); text-transform: uppercase; margin: 16px 0 40px; }
@@ -244,6 +282,9 @@ const schema = graph([itemList, faqPage, organization, website]);
 
 @media (max-width: 1024px) {
   .info-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 980px) {
+  .ways-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 860px) {
   .tours-grid { grid-template-columns: 1fr; }

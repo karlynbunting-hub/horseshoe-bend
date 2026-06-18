@@ -5,18 +5,21 @@ import TourCard from '../../components/TourCard.astro';
 import BookingButton from '../../components/islands/BookingButton.astro';
 import AntelopeBanner from '../../components/AntelopeBanner.astro';
 import { tours } from '../../data/tours';
+import { organization, website, graph, ORG_ID } from '../../data/entities';
 
 const title = 'Tours from Page, AZ | Antelope Canyon, River, Heli & Scenic Flights';
 const description: string = 'Book guided tours from Page, AZ: helicopter and scenic flights over Horseshoe Bend, Antelope Canyon combo tours, Secret Canyon, and Colorado River rafting and kayak trips.';
 const canonical = 'https://horseshoebend.com/tours/';
 
-const schema = {
-  '@context': 'https://schema.org',
+const itemList = {
   '@type': 'ItemList',
   name: 'Guided Tours from Page, AZ',
   url: canonical,
   numberOfItems: tours.length + 1,
+  provider: { '@id': ORG_ID },
 };
+
+const schema = graph([itemList, organization, website]);
 ---
 
 <PageLayout {title} {description} {canonical}>

@@ -10,19 +10,20 @@ import BookingButton from '../components/islands/BookingButton.astro';
 import ParkingMap from '../components/ParkingMap.astro';
 import AntelopeBanner from '../components/AntelopeBanner.astro';
 import { featuredTours } from '../data/tours';
+import { organization, person, website, graph, ORG_ID } from '../data/entities';
 
 const title = 'Horseshoe Bend | Colorado River Overlook, Page, AZ';
 const description = 'Horseshoe Bend is a 270° meander of the Colorado River near Page, AZ. Hike 0.6 miles from the parking lot to one of the most photographed views in the American West.';
 const canonical = 'https://horseshoebend.com/';
 
-const schema = {
-  '@context': 'https://schema.org',
+const attraction = {
   '@type': 'TouristAttraction',
+  '@id': 'https://horseshoebend.com/#attraction',
   name: 'Horseshoe Bend',
   description:
     'A 270-degree incised meander of the Colorado River, located 5 miles south of Page, AZ within Glen Canyon National Recreation Area.',
   url: 'https://horseshoebend.com/',
-  image: 'https://horseshoebend.com/og-horseshoe-bend.jpg',
+  image: 'https://horseshoebend.com/images/og-default.webp',
   address: {
     '@type': 'PostalAddress',
     streetAddress: 'US-89, Mile Marker 545',
@@ -41,7 +42,10 @@ const schema = {
   touristType: 'Hikers, Photographers, Families',
   isAccessibleForFree: false,
   priceRange: '$10 parking per vehicle',
+  publisher: { '@id': ORG_ID },
 };
+
+const schema = graph([attraction, organization, person, website]);
 ---
 
 <PageLayout {title} {description} {canonical}>

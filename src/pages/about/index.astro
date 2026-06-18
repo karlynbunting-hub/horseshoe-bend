@@ -1,0 +1,102 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import SchemaLD from '../../components/SchemaLD.astro';
+import { organization, person, website, graph, ORG_ID, PERSON_ID } from '../../data/entities';
+
+const title = 'About HorseshoeBend.com | Page, AZ Local Experts';
+const description = 'Who is behind HorseshoeBend.com — a Page, Arizona-based team providing current, ground-level visitor information and tour booking for Horseshoe Bend and Antelope Canyon.';
+const canonical = 'https://horseshoebend.com/about/';
+const lastUpdated = 'June 18, 2026';
+
+const aboutPage = {
+  '@type': 'AboutPage',
+  '@id': 'https://horseshoebend.com/about/#aboutpage',
+  url: canonical,
+  name: title,
+  description,
+  about: { '@id': ORG_ID },
+  mainEntity: { '@id': PERSON_ID },
+  isPartOf: { '@id': 'https://horseshoebend.com/#website' },
+};
+
+const schema = graph([aboutPage, organization, person, website]);
+---
+
+<PageLayout {title} {description} {canonical}>
+  <SchemaLD slot="head" {schema} />
+
+  <header class="page-hero">
+    <div class="wrap">
+      <nav class="bc" aria-label="Breadcrumb">
+        <a href="/">Home</a><span>›</span>
+        <span aria-current="page">About</span>
+      </nav>
+      <h1>About HorseshoeBend.com</h1>
+      <p class="meta">Page, Arizona local experts · Last updated: {lastUpdated}</p>
+    </div>
+  </header>
+
+  <section class="sec prose-sec">
+    <div class="wrap prose-wrap">
+      <h2>Who we are</h2>
+      <p>HorseshoeBend.com is a Page, Arizona–based visitor guide and tour-booking service for Horseshoe Bend, Antelope Canyon, Glen Canyon, and the wider Grand Circle. We are not the National Park Service or the City of Page — Horseshoe Bend itself is managed by the City of Page and Glen Canyon National Recreation Area. What we do is help visitors plan a smooth trip and book reputable local tours, using information drawn from being here on the ground.</p>
+
+      <p>Our goal is simple: give you accurate, current, practical answers — what the parking actually costs, how long the hike really takes, when the light is best, and which tours are worth your time — without the hype.</p>
+
+      <h2>Why trust this site</h2>
+      <ul>
+        <li><strong>Local, first-hand knowledge.</strong> Our information comes from time spent at Horseshoe Bend and around Page, AZ — not rewritten from other websites.</li>
+        <li><strong>We keep facts current.</strong> Fees, hours, trail conditions, and tour prices change. When they do, we update the pages — and date them so you know how fresh the information is.</li>
+        <li><strong>Straight talk on conditions.</strong> We tell you about the limited guardrails, the minimal shade, and the packed-sand trail, because a safe, well-prepared visit matters more than a polished pitch.</li>
+        <li><strong>Honest about money.</strong> We earn through tour bookings, and we disclose that. We do not earn anything from the $10 parking fee or any NPS service.</li>
+      </ul>
+
+      <h2>Meet the team</h2>
+      <div class="bio">
+        <div class="bio-avatar" aria-hidden="true">KB</div>
+        <div class="bio-body">
+          <h3>Karlyn Bunting</h3>
+          <p class="bio-role">Manager, HorseshoeBend.com</p>
+          <p>Karlyn manages HorseshoeBend.com and oversees the visitor information and tour content across the site. Based in the Page, Arizona area, she focuses on keeping the practical details — fees, hours, trail conditions, and tour options for Horseshoe Bend and Antelope Canyon — accurate and genuinely useful for first-time visitors.</p>
+          <p class="bio-contact">Questions or corrections? <a href="mailto:info@horseshoebend.com">info@horseshoebend.com</a></p>
+        </div>
+      </div>
+
+      <h2>How we keep information accurate</h2>
+      <p>Travel details around Page change with the seasons and the years. We review the most important visitor pages regularly, cross-check fees and hours against the <a href="https://www.nps.gov/glca/planyourvisit/horseshoe-bend.htm" rel="noopener noreferrer" target="_blank">National Park Service</a> and the City of Page, and confirm tour pricing with the operators we book through. Each content page carries a “last updated” date. If you spot something out of date, please tell us — we’d rather fix it than leave a visitor misinformed.</p>
+
+      <h2>Plan your visit</h2>
+      <p>Ready to go? Start with <a href="/plan-your-visit/">Plan Your Visit</a> for the essentials, <a href="/parking-fees/">Parking &amp; Fees</a> for costs, or browse <a href="/tours/">guided tours</a> and <a href="/antelope-canyon/">Antelope Canyon</a> trips you can book online.</p>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+.page-hero { background: var(--navy); color: #fff; padding: 80px 0 56px; }
+.bc { font-family: var(--font-mono); font-size: 12px; letter-spacing: .06em; color: #9fb0bf; margin-bottom: 24px; display: flex; gap: 8px; align-items: center; }
+.bc a { color: #9fb0bf; }
+.bc a:hover { color: #fff; }
+.page-hero h1 { font-size: clamp(28px, 5vw, 48px); color: #fff; margin: 0 0 12px; text-transform: uppercase; }
+.page-hero .meta { font-family: var(--font-mono); font-size: 12px; color: #7f90a0; letter-spacing: .08em; }
+
+.prose-sec { background: var(--paper); }
+.prose-wrap { max-width: 72ch; }
+.prose-wrap h2 { font-size: clamp(22px, 3vw, 30px); text-transform: uppercase; color: var(--navy); margin: 48px 0 16px; padding-bottom: 10px; border-bottom: 2px solid var(--orange); }
+.prose-wrap h2:first-child { margin-top: 0; }
+.prose-wrap h3 { font-size: 20px; color: var(--navy); margin: 0 0 4px; }
+.prose-wrap p { font-size: 15px; color: var(--ink-soft); margin: 0 0 16px; line-height: 1.7; }
+.prose-wrap ul { margin: 0 0 16px; padding-left: 20px; }
+.prose-wrap li { font-size: 15px; color: var(--ink-soft); margin-bottom: 8px; line-height: 1.6; }
+.prose-wrap a { color: var(--orange-deep); font-weight: 600; }
+.prose-wrap a:hover { text-decoration: underline; }
+
+.bio { display: flex; gap: 22px; align-items: flex-start; background: var(--cream); border: 1px solid var(--sand-line); border-radius: 14px; padding: 24px; margin: 8px 0 8px; }
+.bio-avatar { flex: none; width: 72px; height: 72px; border-radius: 50%; background: var(--navy); color: #fff; display: grid; place-items: center; font-family: var(--font-mono); font-size: 22px; letter-spacing: .04em; }
+.bio-body { min-width: 0; }
+.bio-role { font-family: var(--font-mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--orange-deep); margin: 0 0 12px !important; }
+.bio-contact { font-size: 14px; margin-bottom: 0 !important; }
+
+@media (max-width: 560px) {
+  .bio { flex-direction: column; gap: 16px; }
+}
+</style>

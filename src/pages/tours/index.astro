@@ -20,7 +20,32 @@ const itemList = {
   provider: { '@id': ORG_ID },
 };
 
-const schema = graph([itemList, organization, website]);
+const faqs = [
+  {
+    q: 'Do you need a guided tour to visit Horseshoe Bend and Antelope Canyon?',
+    a: 'Horseshoe Bend and Antelope Canyon work as a pair, and each is enjoyed a little differently. Horseshoe Bend is open to everyone on a short, self-guided walk from the City of Page parking area, so you can hike it at your own pace. Antelope Canyon sits on the Navajo Nation and is visited with a licensed Navajo guide, who brings the canyon\'s history and the best photo spots to life. Many visitors do both on the same day: hike Horseshoe Bend, then join a guided canyon tour a few minutes away.',
+  },
+  {
+    q: 'When is the best time to see the Antelope Canyon light beams?',
+    a: 'The light beams appear in Upper Antelope Canyon from roughly April through September, when the midday sun climbs high enough to reach the canyon floor. They are strongest within about a month of the summer solstice in late June, typically between 11 a.m. and 1:30 p.m., so book a midday tour in that window. Outside beam season, and in Lower Antelope Canyon and Canyon X year-round, you trade the beams for glowing reflected color that photographs well at any time of day.',
+  },
+  {
+    q: 'Can you visit Horseshoe Bend and Antelope Canyon in one day?',
+    a: 'Yes. The two are only about a 10- to 15-minute drive apart, so one day is plenty. A common plan is a midday Antelope Canyon tour, which is also light-beam time in summer, followed by Horseshoe Bend in the late afternoon when the lower sun warms the canyon walls. Allow about 1 to 2 hours at Horseshoe Bend including the 1.5-mile round-trip walk, and arrive at your canyon tour 30 minutes early.',
+  },
+];
+
+const faqPage = {
+  '@type': 'FAQPage',
+  '@id': `${canonical}#faq`,
+  mainEntity: faqs.map(({ q, a }) => ({
+    '@type': 'Question',
+    name: q,
+    acceptedAnswer: { '@type': 'Answer', text: a },
+  })),
+};
+
+const schema = graph([itemList, faqPage, organization, website]);
 ---
 
 <PageLayout {title} {description} {canonical} updated="2026-06-18" published="2026-06-01">
@@ -38,6 +63,13 @@ const schema = graph([itemList, organization, website]);
       <UpdatedStamp datetime="2026-06-18" />
     </div>
   </header>
+
+  <!-- Intro answer capsule -->
+  <section class="sec lead-sec">
+    <div class="wrap lead-wrap">
+      <p class="lead">Tours from Page, AZ bring together two of the Southwest's signature views in a single day: Horseshoe Bend, where the Colorado River carves a sheer 1,000-foot drop below the overlook, and Antelope Canyon, the Navajo-guided slot canyon a short drive away. You can enjoy Horseshoe Bend on your own with a quick hike, or ride along on a guided tour that pairs it with the canyons. The two destinations complement each other — one an open-air panorama, the other a glowing sandstone corridor — and most visitors take in both on one well-planned day. Below, find your experience, then see how the Antelope Canyon options compare.</p>
+    </div>
+  </section>
 
   <!-- Featured tours grid -->
   <section class="sec tours-sec">
@@ -69,6 +101,74 @@ const schema = graph([itemList, organization, website]);
   <!-- Antelope Canyon banner -->
   <AntelopeBanner />
 
+  <!-- Which Antelope Canyon tour -->
+  <section class="sec choose-sec">
+    <div class="wrap">
+      <h2>Which Antelope Canyon tour is right for you?</h2>
+      <p class="choose-intro">Every <a href="/antelope-canyon/">Antelope Canyon tour</a> is led by a licensed Navajo guide — it's the only way to enter, and the guides are part of what makes the visit memorable. As a sister site to <a href="https://antelopecanyon.az/" target="_blank" rel="noopener noreferrer">AntelopeCanyon.AZ</a>, we help you match the right canyon to your group. Here's how the options compare.</p>
+      <div class="choose-grid">
+        <article class="choose-card">
+          <span class="choose-tag">Most famous</span>
+          <h3>Upper Antelope Canyon</h3>
+          <p>The canyon you've seen in photographs — wide, flat, sandy-floored, and home to the light beams that drop through the ceiling at midday in summer. The easiest to walk, with no ladders, which makes it a first choice for families, older visitors, and anyone hoping to catch that beam.</p>
+          <p class="choose-best"><strong>Best for:</strong> first-timers · photographers · easy walking</p>
+        </article>
+        <article class="choose-card">
+          <span class="choose-tag">Most popular</span>
+          <h3>Lower Antelope Canyon</h3>
+          <p>A deeper, narrower route you descend on a series of stairways and ladders. It's the more active walk, rewarded with tighter passages, sculpted walls, and soft reflected color throughout the day — a favorite for visitors who want a little adventure and strong value.</p>
+          <p class="choose-best"><strong>Best for:</strong> active visitors · value · all-day color</p>
+        </article>
+        <article class="choose-card">
+          <span class="choose-tag">Most affordable</span>
+          <h3>Antelope Canyon X</h3>
+          <p>A quieter, lower-cost way into the same sandstone formation, with two slot sections and far smaller crowds than Upper or Lower. If your dates are sold out — or you'd simply rather trade the crowds for a calmer walk — Canyon X is the practical choice.</p>
+          <p class="choose-best"><strong>Best for:</strong> budgets · smaller crowds · sold-out dates</p>
+        </article>
+        <article class="choose-card">
+          <span class="choose-tag">Most adventurous</span>
+          <h3>Antelope Ridge Via Ferrata</h3>
+          <p>The only via ferrata inside a slot canyon anywhere — a guided iron-rung route with a rappel and a hands-on climb through private sandstone, gear and instruction included. No climbing experience needed, just a willingness to add some adventure to your visit.</p>
+          <p class="choose-best"><strong>Best for:</strong> thrill-seekers · active groups · something different</p>
+        </article>
+      </div>
+      <div class="choose-combo">
+        <h3>Want both icons together? The Canyon Overlook package</h3>
+        <p>If you'd like a guide to handle the logistics, the Canyon Overlook package pairs a Navajo-guided slot canyon with a private Horseshoe Bend overlook on Navajo land — two signature views, one reservation, no driving or parking to plan. It's the simplest way to see the canyons and the bend together in a single outing.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="sec tfaq-sec">
+    <div class="wrap tfaq-wrap">
+      <h2>Common questions about Page, AZ tours</h2>
+
+      <div class="tfaq-item">
+        <h3>Do you need a guided tour to visit Horseshoe Bend and Antelope Canyon?</h3>
+        <p>Horseshoe Bend and Antelope Canyon work as a pair, and each is enjoyed a little differently. Horseshoe Bend is open to everyone on a short, self-guided walk — you can <a href="/hike-horseshoe-bend/">hike it on your own</a> at your own pace from the <a href="/parking-fees/">City of Page parking area</a>. Antelope Canyon sits on the Navajo Nation and is visited with a licensed Navajo guide, who brings the canyon's history and the best photo spots to life. Many visitors do both on the same day: hike Horseshoe Bend, then join a guided canyon tour a few minutes away.</p>
+      </div>
+
+      <div class="tfaq-item">
+        <h3>When is the best time to see the Antelope Canyon light beams?</h3>
+        <p>The light beams appear in Upper Antelope Canyon from roughly April through September, when the midday sun climbs high enough to reach the canyon floor. They are strongest within about a month of the summer solstice in late June, typically between 11 a.m. and 1:30 p.m., so book a midday tour in that window. Outside beam season — and in Lower Antelope Canyon and Canyon X year-round — you trade the beams for glowing reflected color that photographs well at any time of day. For wider seasonal planning, see our guide to the <a href="/best-time-to-visit-horseshoe-bend/">best time to visit</a>.</p>
+      </div>
+
+      <div class="tfaq-item">
+        <h3>Can you visit Horseshoe Bend and Antelope Canyon in one day?</h3>
+        <p>Yes. The two are only about a 10- to 15-minute drive apart, so one day is plenty. A common plan is a midday Antelope Canyon tour, which is also light-beam time in summer, followed by Horseshoe Bend in the late afternoon when the lower sun warms the canyon walls. Allow about 1 to 2 hours at Horseshoe Bend including the 1.5-mile round-trip walk, and arrive at your canyon tour 30 minutes early. For day-by-day plans, see our <a href="/itineraries/">Page, AZ itineraries</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Local expert -->
+  <section class="sec local-sec">
+    <div class="wrap local-wrap">
+      <h2>Plan your tours with a Page, AZ local</h2>
+      <p>These recommendations come from <a href="/about/">Karlyn Bunting</a>, who has lived in Page, Arizona for more than 50 years. The tours, seasons, and canyon details on this page are kept current from right here in town — so you can book with confidence and spend your visit enjoying the view, not second-guessing the logistics. Have a question we haven't answered? Email <a href="mailto:info@horseshoebend.com">info@horseshoebend.com</a>.</p>
+    </div>
+  </section>
+
   <!-- Booking info -->
   <section class="sec booking-sec">
     <div class="wrap">
@@ -91,9 +191,48 @@ const schema = graph([itemList, organization, website]);
 .page-hero h1 { font-size: clamp(32px, 6vw, 56px); color: #fff; margin: 12px 0 18px; text-transform: uppercase; }
 .page-hero .sub { font-size: 18px; color: #aebcc8; margin: 0; max-width: 60ch; }
 
+.lead-sec { background: var(--cream); }
+.lead-wrap { max-width: 80ch; }
+.lead { font-size: clamp(17px, 2vw, 20px); line-height: 1.7; color: var(--ink-soft); margin: 0; border-left: 3px solid var(--orange); padding-left: 22px; }
+
 .tours-sec { background: var(--paper); }
 .tours-sec h2 { font-size: clamp(28px, 4vw, 42px); text-transform: uppercase; margin: 16px 0 40px; }
 .tours-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
+/* Which Antelope Canyon tour */
+.choose-sec { background: var(--paper); }
+.choose-sec h2 { font-size: clamp(26px, 4vw, 40px); text-transform: uppercase; margin: 0 0 16px; }
+.choose-intro { font-size: 16px; color: var(--ink-soft); max-width: 72ch; line-height: 1.7; margin: 0 0 36px; }
+.choose-intro a { color: var(--orange-deep); font-weight: 600; }
+.choose-intro a:hover { text-decoration: underline; }
+.choose-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.choose-card { background: var(--cream); border: 1px solid var(--sand-line); border-radius: var(--radius); padding: 24px; }
+.choose-tag { display: inline-block; font-family: var(--font-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--orange-deep); background: rgba(217,96,31,.10); border: 1px solid rgba(236,122,44,.3); border-radius: 999px; padding: 4px 12px; margin-bottom: 14px; }
+.choose-card h3 { font-size: 20px; color: var(--navy); margin: 0 0 10px; }
+.choose-card p { font-size: 15px; color: var(--ink-soft); line-height: 1.65; margin: 0; }
+.choose-best { margin-top: 12px !important; font-size: 13px !important; color: var(--navy) !important; }
+.choose-combo { margin-top: 20px; background: var(--navy); color: #fff; border-radius: var(--radius); padding: 28px 30px; }
+.choose-combo h3 { font-size: 21px; color: #fff; margin: 0 0 10px; }
+.choose-combo p { font-size: 15px; color: #c4d0db; line-height: 1.65; margin: 0; }
+
+/* Tours FAQ */
+.tfaq-sec { background: var(--cream); }
+.tfaq-wrap { max-width: 80ch; }
+.tfaq-sec h2 { font-size: clamp(26px, 4vw, 40px); text-transform: uppercase; margin: 0 0 32px; }
+.tfaq-item { padding: 0 0 24px; border-bottom: 1px solid var(--sand-line); margin-bottom: 24px; }
+.tfaq-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.tfaq-item h3 { font-size: 19px; color: var(--navy); margin: 0 0 10px; }
+.tfaq-item p { font-size: 15px; color: var(--ink-soft); line-height: 1.7; margin: 0; }
+.tfaq-item a { color: var(--orange-deep); font-weight: 600; }
+.tfaq-item a:hover { text-decoration: underline; }
+
+/* Local expert */
+.local-sec { background: var(--navy-deep); color: #fff; }
+.local-wrap { max-width: 76ch; }
+.local-sec h2 { font-size: clamp(24px, 3.5vw, 34px); text-transform: uppercase; color: #fff; margin: 0 0 16px; }
+.local-sec p { font-size: 16px; color: #c4d0db; line-height: 1.7; margin: 0; }
+.local-sec a { color: var(--orange-bright); font-weight: 600; }
+.local-sec a:hover { text-decoration: underline; }
 
 
 .booking-sec { background: var(--paper); }
@@ -108,6 +247,7 @@ const schema = graph([itemList, organization, website]);
 }
 @media (max-width: 860px) {
   .tours-grid { grid-template-columns: 1fr; }
+  .choose-grid { grid-template-columns: 1fr; }
 
   .info-grid { grid-template-columns: 1fr; }
 }

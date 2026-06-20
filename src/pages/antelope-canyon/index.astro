@@ -8,6 +8,47 @@ const title = 'Antelope Canyon Tours from Page, AZ | Upper, Lower & Cathedral';
 const description = 'Book guided tours of Upper and Lower Antelope Canyon, plus Cathedral Slot Canyon — 4 miles from Horseshoe Bend. Navajo-guided tours required. Book well in advance.';
 const canonical = 'https://horseshoebend.com/antelope-canyon/';
 
+const extraTours = [
+  {
+    name: 'Canyon Overlook Tour',
+    aka: 'Lower Antelope Canyon Shuttle',
+    type: 'Combo',
+    difficulty: 'Moderate',
+    length: '4.5 hrs · $115/person',
+    notes: 'A Navajo-guided combo covering Lower Antelope Canyon\'s swirling Corkscrew passages plus a stop at Horseshoe Bend — shuttle, snacks, and drinks all included. All-inclusive pricing, no hidden fees.',
+    bestFor: 'Visitors who want both iconic sights in one hassle-free, all-inclusive booking',
+    imgSrc: '/images/tour-canyon-overlook.webp',
+    bookingUrl: 'https://book.nativeamericantours.com/?iframe=true&tid=lact&oid=1&pid=1&aid=2',
+    bookingTarget: '_blank',
+    bookingLabel: 'Check Availability Now',
+  },
+  {
+    name: 'The Trilogy Tour',
+    aka: 'Lower Antelope Canyon Shuttle',
+    type: 'Upper-Lower-Boat',
+    difficulty: 'Moderate',
+    length: '8 hrs · $375/person',
+    notes: 'Page\'s most complete canyon day — Navajo-guided walks through Lower and Upper Antelope Canyon, a boxed lunch, and a scenic Lake Powell boat tour, all in one all-inclusive 8-hour excursion with round-trip shuttle.',
+    bestFor: 'Those who want Upper, Lower, and Lake Powell covered in a single fully-guided day',
+    imgSrc: '/images/tour-trilogy-boat.webp',
+    bookingUrl: 'https://book.nativeamericantours.com/?iframe=true&tid=lact&oid=1&pid=3&aid=2',
+    bookingTarget: '_blank',
+    bookingLabel: 'Check Availability Now',
+  },
+  {
+    name: 'Antelope Canyon Kayak & Hike',
+    aka: 'High Desert Paddle Co.',
+    type: 'Kayak',
+    difficulty: 'Beginner',
+    length: '4 hrs · $130/person',
+    notes: 'Paddle from Antelope Point Marina across calm Lake Powell waters into a slot canyon only reachable by water — then hike through with a Navajo guide. Far fewer crowds than the main shuttle entrances.',
+    bestFor: 'Those who want a water-accessed, crowd-free Antelope Canyon experience from a completely different angle',
+    imgSrc: '/images/tour-antelope-kayak.webp',
+    bookingUrl: 'https://fareharbor.com/embeds/book/lakepowellpaddleexpress/items/696461/?asn=fhdn&asn-ref=antelopecanyonaz&ref=antelopecanyonaz&bookable-only=yes&full-items=yes&marketplace=yes&flow=no&branding=no',
+    bookingLabel: 'Check Availability Now',
+  },
+];
+
 const moreCanyons = [
   {
     name: 'Secret Antelope Canyon',
@@ -185,6 +226,28 @@ const schema = {
               </div>
               <p class="cc-best"><strong>Best for:</strong> {c.bestFor}</p>
               <a class="btn btn--navy" href={c.bookingUrl}>{c.bookingLabel}</a>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="canyons-grid" style="margin-top:24px;">
+        {extraTours.map((c) => (
+          <div class="canyon-card">
+            <div class="cc-img">
+              <span class="cc-tag">{c.type}</span>
+              <img src={c.imgSrc} alt={`${c.name} — tour near Page, AZ`} width="800" height="533" />
+            </div>
+            <div class="cc-body">
+              <p class="kicker">{c.aka}</p>
+              <h3>{c.name}</h3>
+              <p class="cc-desc">{c.notes}</p>
+              <div class="cc-meta">
+                <div class="cm-item"><span>Difficulty</span><strong>{c.difficulty}</strong></div>
+                <div class="cm-item"><span>Details</span><strong>{c.length}</strong></div>
+              </div>
+              <p class="cc-best"><strong>Best for:</strong> {c.bestFor}</p>
+              <a class="btn btn--navy" href={c.bookingUrl} target={c.bookingTarget}>{c.bookingLabel}</a>
             </div>
           </div>
         ))}

@@ -23,6 +23,9 @@ const {
 } = Astro.props;
 
 const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
+const adsId = import.meta.env.PUBLIC_GOOGLE_ADS_ID;
+// gtag.js only needs to be loaded once; either ID can carry the request.
+const tagLoaderId = gaId ?? adsId;
 const canonicalUrl = canonical ?? new URL(Astro.url.pathname, 'https://horseshoebend.com').href;
 // OG/Twitter scrapers require an absolute image URL
 const ogImageUrl = new URL(ogImage, 'https://horseshoebend.com').href;
@@ -70,19 +73,20 @@ const freshnessSchema = updated
   <!-- Preload the primary self-hosted font (covers headings + body) -->
   <link rel="preload" href="/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
 
-  <!-- GA4 — deferred off the critical path to protect first paint / TBT.
+  <!-- GA4 + Google Ads — deferred off the critical path to protect first paint / TBT.
        Events queue immediately; the heavy script loads after load/idle or first interaction. -->
-  {gaId && (
-    <script is:inline define:vars={{ gaId }}>
+  {tagLoaderId && (
+    <script is:inline define:vars={{ gaId, adsId, tagLoaderId }}>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', gaId);
+      if (gaId) gtag('config', gaId);
+      if (adsId) gtag('config', adsId);
       var loadGA = function () {
         if (window.__gaLoaded) return; window.__gaLoaded = true;
         var s = document.createElement('script');
         s.async = true;
-        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + gaId;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + tagLoaderId;
         document.head.appendChild(s);
       };
       // Real users almost always interact (scroll/tap) — load GA then.

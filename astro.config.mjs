@@ -143,5 +143,40 @@ export default defineConfig({
     '/category/latest-news/page/2/':                             '/',
     '/tag/desktop/':                                             '/',
     '/dsc_4788-2/':                                             '/',
+    '/horseshoe_bend_hdr1-920x400/':                            '/',
+
+    // WP /tag/ archives (the /category/ equivalents were already covered)
+    '/tag/indoor-shooting-range/':                              '/antelope-canyon/',
+    '/tag/shooting-experience/':                                '/antelope-canyon/',
+    '/tag/machine-guns/':                                       '/antelope-canyon/',
+    '/tag/glen-canyon-float-trip/':                             '/river-tours/',
+    '/tag/lake-powell-tours/':                                  '/river-tours/',
+    '/tag/tours/':                                              '/tours/',
+    '/tag/tours-from-grand-canyon/':                            '/tours/',
+    '/tag/south-rim-tours/':                                    '/tours/',
+    '/tag/4x4-tours/':                                          '/tours/',
+
+    // Legacy slug variants that differ from a covered rule by a word or hyphen
+    '/best-time-visit-horseshoebend/':                          '/best-time-to-visit-horseshoe-bend/',
+    '/brian-klimowski-photography-tips-from-pros/':             '/best-time-to-visit-horseshoe-bend/',
+    '/tips-from-the-pros-alaina-ann/':                          '/best-time-to-visit-horseshoe-bend/',
+    '/photography/':                                            '/best-time-to-visit-horseshoe-bend/',
+    '/visit/':                                                  '/plan-your-visit/',
+    '/contact-us/':                                             '/about/',
+
+    // WP attachment pages from the Klimowski photography post, whose parent
+    // page and image files already redirect to the same target.
+    '/predawn/':                                                '/best-time-to-visit-horseshoe-bend/',
+    '/firstlight/':                                             '/best-time-to-visit-horseshoe-bend/',
+
+    // Google Web Stories (index follows the /news/ convention)
+    '/web-stories/':                                            '/',
+    '/web-stories/kayak-horseshoe-bend/':                       '/river-tours/',
+
+    // Pagination the existing series missed
+    '/news/7/':                                                 '/',
+    '/news/8/':                                                 '/',
+    '/news/page/2/':                                            '/',
+    '/itineraries/page/5/':                                     '/itineraries/',
   },
 });

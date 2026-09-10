@@ -190,6 +190,7 @@ const schema = graph([attraction, organization, person, website]);
             ctaLabel={t.ctaLabel}
             ctaHref={t.ctaHref}
             ctaTarget={t.ctaTarget}
+            ctaDisabled={t.id === 'antelope-canyon-combo'}
             dark={t.type === 'air' || t.type === 'heli'}
           />
         ))}

@@ -117,6 +117,7 @@ const schema = graph([itemList, faqPage, organization, website]);
             ctaHref={t.ctaHref}
             ctaTarget={t.ctaTarget}
             ctaLabel={t.ctaLabel}
+            ctaDisabled={t.id === 'antelope-canyon-combo'}
             dark={t.type === 'air' || t.type === 'heli'}
           />
         ))}

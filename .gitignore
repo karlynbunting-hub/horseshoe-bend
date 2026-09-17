@@ -22,3 +22,9 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# local reference material (1GB+ of images/video — backed up outside git)
+source/
+
+# wrangler local dev cache
+.wrangler/

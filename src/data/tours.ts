@@ -2,7 +2,7 @@ export interface Tour {
   id: string;
   name: string;
   tagLabel: string;
-  type: 'air' | 'antelope' | 'river' | 'heli' | 'secret';
+  type: 'air' | 'antelope' | 'river' | 'heli' | 'secret' | 'utv';
   price: string;
   priceFrom: number;
   description: string;
@@ -79,7 +79,6 @@ export const tours: Tour[] = [
     imgSrc: '/images/tour-river-kayak.webp',
     imgAlt: 'Guided raft on the Colorado River below Horseshoe Bend canyon walls',
     ctaHref: 'https://fareharbor.com/embeds/book/wrahorseshoebend-aramark/items/655797/?asn=fhdn&asn-ref=antelopecanyonaz&ref=antelopecanyonaz&bookable-only=yes&full-items=yes&marketplace=yes&flow=no&branding=no',
-    ctaTarget: '_blank',
     featured: true,
   },
   {
@@ -122,23 +121,22 @@ export const tours: Tour[] = [
     featured: true,
   },
   {
-    id: 'horseshoe-bend-air',
-    name: 'Horseshoe Bend Air',
-    tagLabel: 'Scenic Flight',
-    type: 'air',
-    price: 'from $189',
-    priceFrom: 189,
+    id: 'horseshoe-bend-utv',
+    name: 'Horseshoe Bend Off-Road UTV Adventure',
+    tagLabel: 'Off-Road UTV',
+    type: 'utv',
+    price: 'from $145',
+    priceFrom: 145,
     description:
-      'A 30-minute fixed-wing flightseeing tour from Page with plush seating, oversized windows, and multilingual narration — sweeping aerial views of Glen Canyon Dam, Lake Powell, and the Colorado River\'s 1,000-foot bend.',
-    duration: '30 min',
-    seasonality: 'Year-round',
-    audience: 'All ages',
+      'Take the wheel on a guided off-road ride from Page — sandy washes, slickrock trails, and views of Lake Powell — finishing at the Horseshoe Bend overlook. Helmets, goggles, water, and park admission are included. Each booking requires at least 2 adults.',
+    duration: '2.5 hrs',
+    seasonality: 'Guided',
+    audience: 'Ages 4+',
     href: '/tours/',
-    bookingUrl: 'https://www.papillon.com/lake-powell-page/lake-powell-page-tours/horseshoe-bend-flightseeing-tour/?ref=vinpaitoon',
-    imgSrc: '/images/tour-air-scenic.webp',
-    imgAlt: 'Red and white Papillon scenic flight plane in the air above the Colorado Plateau',
-    ctaHref: 'https://www.papillon.com/lake-powell-page/lake-powell-page-tours/horseshoe-bend-flightseeing-tour/?ref=vinpaitoon',
-    ctaTarget: '_blank',
+    bookingUrl: 'https://fareharbor.com/embeds/book/pagehonda/items/664503/?asn=fhdn&asn-ref=antelopecanyonaz&ref=antelopecanyonaz&bookable-only=yes&full-items=yes&marketplace=yes&flow=no&branding=no',
+    imgSrc: '/images/tour-utv-adventure.webp',
+    imgAlt: 'Line of UTVs driving a red-dirt desert trail toward the canyon rim near Horseshoe Bend',
+    ctaHref: 'https://fareharbor.com/embeds/book/pagehonda/items/664503/?asn=fhdn&asn-ref=antelopecanyonaz&ref=antelopecanyonaz&bookable-only=yes&full-items=yes&marketplace=yes&flow=no&branding=no',
     featured: true,
   },
 ];
